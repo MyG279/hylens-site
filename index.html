@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hylens IA · Precision hydration, calculated from your meals</title>
-<meta name="description" content="Closed Android beta: leave your Gmail to get invited. At launch, founder rate for the first 100 subscribers (€4.99/month or €29.99/year).">
+<meta name="description" content="Android closed beta (Gmail). iPhone waitlist. Founder rate: 100 spots per store (€4.99/mo or €29.99/yr).">
 <meta property="og:title" content="Hylens IA · Precision hydration, calculated from your meals">
 <meta property="og:description" content="Your body is 60% water. Hylens helps you understand it better. Free during the Android beta.">
 <meta property="og:type" content="website">
@@ -273,45 +273,56 @@ body.has-play .if-beta, body:not(.has-play) .if-play { display: none !important;
 
 /* Appel final */
 .final { padding-block: 30px 110px; }
-.final-box { position: relative; overflow: hidden; border-radius: 36px; padding: clamp(32px, 6vw, 72px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 40px; align-items: start; }
+.final-box { position: relative; overflow: hidden; border-radius: 36px; padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 28px; }
 .final-box > * { position: relative; z-index: 1; min-width: 0; }
 .final-box::before { content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(61, 214, 208, 0.35), transparent 65%); animation: drift 12s ease-in-out infinite alternate; pointer-events: none; }
 @keyframes drift { to { transform: translate(-80px, 60px) scale(1.1); } }
-.final-box h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.06; font-weight: 800; }
-.final-copy { display: flex; flex-direction: column; gap: 18px; min-width: 0; position: relative; }
-.final-copy p { color: var(--muted); max-width: 44ch; font-size: 18px; }
-.final-copy p b { color: var(--ink); }
-.join { display: flex; flex-direction: column; gap: 16px; min-width: 0; position: relative; }
-.join .btn { align-self: flex-start; }
-.join ol { margin: 0; padding-left: 22px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
-.copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 15px; color: var(--muted); }
-.copy-row code { font: 500 15px/1 var(--font); color: var(--ink); overflow-wrap: anywhere; max-width: 100%; }
-.copy-row button { background: none; border: 0; padding: 0; color: var(--aqua); font: 600 15px/1 var(--font); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.signup-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: 100%; align-items: stretch; }
-.signup-card.ios { border-color: color-mix(in srgb, var(--sport) 28%, var(--line)); }
-.signup-card { padding: 22px 20px; border-radius: 22px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); display: flex; flex-direction: column; gap: 12px; min-width: 0; height: 100%; overflow: hidden; }
-.signup-card h3 { font: 700 18px/1.3 var(--font); margin: 0; letter-spacing: -0.01em; }
-.signup-card > p { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0; overflow-wrap: anywhere; }
-.signup-card .field { min-width: 0; }
-.signup-card .field label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
-.signup-card .field input { width: 100%; box-sizing: border-box; padding: 13px 14px; border-radius: 14px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.28); color: var(--ink); font: 500 15px/1.2 var(--font); }
-.signup-card .field input:focus { outline: none; border-color: color-mix(in srgb, var(--aqua) 55%, transparent); box-shadow: 0 0 0 3px rgba(61, 214, 208, 0.15); }
-.signup-card .btn { width: 100%; max-width: 100%; justify-content: center; margin-top: 2px; white-space: normal; text-align: center; line-height: 1.25; min-height: 50px; height: auto; padding: 12px 14px; border-radius: 14px; font-size: 15px; }
-.signup-card .btn.store { min-height: 50px; padding: 12px 14px; }
-.signup-card .form-feedback { margin-top: auto; min-height: 52px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.18); display: flex; align-items: center; }
-.signup-card .form-feedback.is-empty { min-height: 0; padding: 0; border: 0; background: transparent; }
+.final-box h2 { font-size: clamp(28px, 3.8vw, 44px); line-height: 1.08; font-weight: 800; }
+.final-copy { display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; margin: 0 auto; max-width: 640px; }
+.final-copy .label { margin-bottom: 2px; }
+.price-chip { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 0 auto; padding: 8px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--aqua) 28%, transparent); background: rgba(61, 214, 208, 0.08); color: var(--muted); font-size: 13px; line-height: 1.35; }
+.price-chip b { color: var(--aqua); font-weight: 700; }
+.join { display: flex; flex-direction: column; gap: 16px; min-width: 0; width: 100%; align-items: center; }
+.join .btn { align-self: center; }
+.copy-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--faint); }
+.copy-row code { font: 500 13px/1 var(--font); color: var(--muted); overflow-wrap: anywhere; max-width: 100%; }
+.copy-row button { background: none; border: 0; padding: 0; color: var(--aqua); font: 600 13px/1 var(--font); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.signup-stack { width: 100%; max-width: 980px; display: flex; flex-direction: column; gap: 10px; }
+.join-hints { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0 4px; }
+.join-hints span { font-size: 12px; line-height: 1.35; color: var(--faint); text-align: center; }
+.signup-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; align-items: stretch; }
+.signup-card { --accent: var(--aqua); position: relative; padding: 16px 14px 14px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.035); display: flex; flex-direction: column; gap: 10px; min-width: 0; height: 100%; overflow: hidden; }
+.signup-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0.85; }
+.signup-card#formFounder { --accent: var(--water); }
+.signup-card.ios { --accent: var(--sport); border-color: color-mix(in srgb, var(--sport) 18%, var(--line)); }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; min-height: 40px; }
+.card-title { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.signup-card h3 { font: 700 16px/1.2 var(--font); margin: 0; letter-spacing: -0.02em; color: var(--ink); }
+.card-tag { font: 500 11px/1.3 var(--font); letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); }
+.signup-card .field { min-width: 0; margin-top: 2px; }
+.signup-card .field label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.signup-card .field input { width: 100%; box-sizing: border-box; padding: 11px 12px; border-radius: 11px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.32); color: var(--ink); font: 500 15px/1.2 var(--font); }
+.signup-card .field input::placeholder { color: color-mix(in srgb, var(--faint) 85%, transparent); }
+.signup-card .field input:focus { outline: none; border-color: color-mix(in srgb, var(--accent) 55%, transparent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+.signup-card .btn { width: 100%; max-width: 100%; justify-content: center; margin-top: auto; white-space: nowrap; text-align: center; line-height: 1.2; min-height: 44px; height: auto; padding: 10px 12px; border-radius: 11px; font-size: 14px; font-weight: 600; }
+.signup-card .btn.store { min-height: 44px; padding: 10px 12px; }
+.signup-card .form-feedback { display: none; margin-top: 4px; padding: 7px 10px; border-radius: 9px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.22); }
+.signup-card .form-feedback:not(.is-empty) { display: flex; align-items: center; }
 .signup-card .form-feedback.is-ok { border-color: color-mix(in srgb, var(--k) 35%, transparent); background: color-mix(in srgb, var(--k) 8%, transparent); }
-.signup-card .form-msg { font-size: 13px; line-height: 1.45; margin: 0; overflow-wrap: anywhere; word-break: break-word; width: 100%; }
+.signup-card .form-msg { font-size: 12px; line-height: 1.35; margin: 0; overflow-wrap: anywhere; word-break: break-word; width: 100%; }
 .signup-card .form-msg.ok { color: #B8E8C4; font-weight: 600; }
 .signup-card .form-msg.hint { color: var(--muted); font-weight: 500; }
-.signup-card.is-full { opacity: 0.55; pointer-events: none; filter: grayscale(0.2); }
-.slot-pill { display: inline-flex; align-items: center; align-self: flex-start; font: 700 13px/1.35 var(--font); letter-spacing: 0.02em; padding: 8px 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--aqua) 40%, transparent); background: color-mix(in srgb, var(--aqua) 12%, transparent); color: #9AECE8; margin: 0; }
-.signup-card.ios .slot-pill { border-color: color-mix(in srgb, var(--sport) 45%, transparent); background: color-mix(in srgb, var(--sport) 12%, transparent); color: #C4B5FF; }
-.slot-pill.is-low { border-color: color-mix(in srgb, var(--kcal) 50%, transparent); background: color-mix(in srgb, var(--kcal) 10%, transparent); color: var(--kcal); }
-.slot-pill.is-full { border-color: var(--line); background: rgba(255, 255, 255, 0.05); color: var(--muted); font-weight: 600; }
-.founder-prices { font-size: 16px; line-height: 1.45; color: var(--aqua); max-width: 48ch; margin: 0; }
-@media (max-width: 1060px) { .signup-grid { grid-template-columns: 1fr; } }
-@media (max-width: 860px) { .final-box { grid-template-columns: 1fr; } }
+.signup-card.is-full { opacity: 0.5; pointer-events: none; filter: grayscale(0.25); }
+.slot-pill { display: inline-flex; align-items: center; flex: none; font: 700 10px/1.2 var(--font); letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--aqua) 35%, transparent); background: rgba(61, 214, 208, 0.1); color: #9AECE8; margin: 0; white-space: nowrap; }
+.signup-card.ios .slot-pill { border-color: color-mix(in srgb, var(--sport) 40%, transparent); background: rgba(155, 140, 255, 0.12); color: #C4B5FF; }
+.slot-pill.is-low { border-color: color-mix(in srgb, var(--kcal) 45%, transparent); background: rgba(245, 179, 1, 0.1); color: var(--kcal); }
+.slot-pill.is-full { border-color: var(--line); background: rgba(255, 255, 255, 0.04); color: var(--faint); font-weight: 600; }
+@media (max-width: 960px) {
+  .signup-stack { max-width: 420px; margin: 0 auto; }
+  .join-hints { display: none; }
+  .signup-grid { grid-template-columns: 1fr; }
+  .signup-card .card-tag { display: block; }
+}
 
 /* Pied de page */
 footer { border-top: 1px solid var(--line); padding-block: 48px; font-size: 14px; color: var(--faint); background: rgba(3, 13, 24, 0.6); }
@@ -367,18 +378,18 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <span class="proof rv"><img src="assets/logo.png" alt=""><span data-t="hero.proof" id="heroProof"><b>Closed beta</b> · 3 tester spots available</span></span>
+        <span class="proof rv"><img src="assets/logo.png" alt=""><span data-t="hero.proof" id="heroProof">Closed beta · <b>3</b> testers</span></span>
         <h1 class="rv" style="--d: .08s"><span data-t="hero.h1a">Your body is 60% water.</span><span data-t="hero.h1b">Hylens helps you <em class="glow">understand it better.</em></span></h1>
-        <p class="lede rv" style="--d: .16s" data-t="hero.lede">Snap your meal: Hylens measures its salt, potassium and calories, then adjusts your water goal to your workout and the heat of the day.</p>
+        <p class="lede rv" style="--d: .16s" data-t="hero.lede">Photo your meal. Hylens tracks salt, potassium and calories, and adjusts your water goal.</p>
         <div class="cta-row rv" style="--d: .24s">
           <a class="btn store breathe" href="#join" data-cta>
             <svg aria-hidden="true"><use href="#gplay"/></svg>
             <span class="if-play"><small data-t="cta.getiton">Get it on</small><b>Google Play</b></span>
-            <span class="if-beta"><small data-t="cta.android">Android</small><b data-t="cta.beta">Apply for the beta</b></span>
+            <span class="if-beta"><small data-t="cta.android">Android</small><b data-t="cta.beta">Apply</b></span>
           </a>
-          <a class="btn ghost if-beta" href="#formIos"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">On iPhone? Join the waitlist</span></a>
+          <a class="btn ghost if-beta" href="#formIos"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">iPhone waitlist</span></a>
         </div>
-        <p class="note rv" style="--d: .3s" data-t="hero.note">Free access for testers · Gmail invitation required</p>
+        <p class="note rv" style="--d: .3s" data-t="hero.note">Gmail required for invite</p>
       </div>
 
       <div class="app glass rv" style="--d: .2s" id="hyd" role="group" aria-label="Live demo: today’s water, salt and potassium" data-ta="hyd.label">
@@ -534,7 +545,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
       </div>
       <div class="more glass rv">
         <span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z M12 15v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <p data-t="mt.more"><b>And much more in the app.</b> Features we’d rather let you discover for yourself.</p>
+        <p data-t="mt.more"><b>More in the app.</b></p>
         <div class="ghosts" aria-hidden="true"><span style="--c: var(--water)">Rnplqe vtaso</span><span style="--c: var(--sport)">Bkrw ztpexn</span><span style="--c: var(--k)">Lmqvoed</span></div>
       </div>
     </div>
@@ -585,8 +596,8 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
         <details class="glass"><summary data-t="q1.q">How accurate is it?</summary><div class="ans"><p data-t="q1.a">Hylens recognises the foods and estimates the portions from your photo. It’s an estimate: you can correct any food or enter its exact weight in two taps and everything updates.</p><p class="tip" data-t="q1.tip"><b>Tip:</b> good light and a photo taken from above give the best results.</p></div></details>
         <details class="glass"><summary data-t="q7.q">Why track salt and potassium?</summary><div class="ans"><p data-t="q7.a">Salt makes your body hold on to water, and potassium helps balance it. Following both at each meal helps you understand your hydration, not just count glasses.</p></div></details>
         <details class="glass"><summary data-t="q2.q">What happens to my photos?</summary><div class="ans"><p data-t="q2.a">Your photo is sent to our analysis service for the calculation, then Hylens doesn’t keep it. Your meals and your history stay on your phone. Details in our <a href="https://api.hectorone.fr/privacy">privacy policy</a>.</p></div></details>
-        <details class="glass"><summary data-t="q3.q">How much does it cost?</summary><div class="ans"><p data-t="q3.a">Nothing during the Android closed beta. At launch, Hylens Premium is €9.99/month or €34.99/year. The first <b>100 subscriptions per platform</b> (Android and iPhone) keep €4.99/month or €29.99/year while the subscription stays active.</p></div></details>
-        <details class="glass"><summary data-t="q4.q">Is it available on iPhone?</summary><div class="ans"><p data-t="q4.a">Not yet: the closed beta is on Android. <a href="#formIos">Join the iPhone waitlist</a> — the first 100 registrations get founder pricing on release day.</p></div></details>
+        <details class="glass"><summary data-t="q3.q">How much does it cost?</summary><div class="ans"><p data-t="q3.a">Free on Android beta. Then Premium €9.99/mo or €34.99/yr. Founder rate €4.99 / €29.99 for the first 100 subscriptions on Android and iPhone (while subscribed).</p></div></details>
+        <details class="glass"><summary data-t="q4.q">Is it available on iPhone?</summary><div class="ans"><p data-t="q4.a">Android beta only for now. <a href="#formIos">iPhone waitlist</a>: 100 founder spots.</p></div></details>
         <details class="glass"><summary data-t="q5.q">Do I need a smartwatch?</summary><div class="ans"><p data-t="q5.a">No. With your permission, Health Connect adds your steps and workouts automatically. Without it, you log your workouts by hand.</p></div></details>
         <details class="glass"><summary data-t="q6.q">Is it medical advice?</summary><div class="ans"><p data-t="q6.a">No. Hylens gives estimates and general wellness guidance. For any health question, talk to a professional.</p></div></details>
       </div>
@@ -597,49 +608,68 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     <div class="wrap">
       <div class="final-box glass rv">
         <div class="final-copy">
-          <h2 data-t="j.h2">Closed beta. <em class="glow">Founder pricing at launch.</em></h2>
-          <p data-t="j.p">Access is by invitation. We add your Gmail to the closed test before you can install from Google Play.</p>
-          <p class="founder-prices" data-t="j.prices">Founder rate on each store: <b>100 spots on Android</b> and <b>100 on iPhone</b> — €4.99/month or €29.99/year (public €9.99 / €34.99), while your subscription stays active.</p>
-          <p class="tease" data-t="j.tease">What you’ve seen here is only part of Hylens.</p>
+          <span class="label" data-t="j.k">Sign up</span>
+          <h2 data-t="j.h2">Join Hylens</h2>
+          <p class="price-chip" data-t="j.prices"><b>Founder</b> · €4.99/mo · 100 spots per store</p>
         </div>
         <div class="join">
           <a class="btn store breathe if-play" href="#" data-cta>
             <svg aria-hidden="true"><use href="#gplay"/></svg>
             <span><small data-t="cta.getiton">Get it on</small><b>Google Play</b></span>
           </a>
-          <div class="if-beta signup-grid" id="signupGrid">
+          <div class="if-beta signup-stack" id="signupGrid">
+            <div class="join-hints" aria-hidden="true">
+              <span data-t="j.hint.test">Android beta · Gmail</span>
+              <span data-t="j.hint.found">Play launch · founder rate</span>
+              <span data-t="j.hint.ios">App Store · founder rate</span>
+            </div>
+            <div class="signup-grid">
             <form class="signup-card" id="formTester" novalidate>
-              <h3 data-t="j.test.h">Tester application</h3>
-              <p data-t="j.test.p" id="testerBlurb"><b>3 spots</b> available on our Google Play closed test. Please enter the Gmail address linked to your Android device.</p>
+              <div class="card-head">
+                <div class="card-title">
+                  <h3 data-t="j.test.h">Tester</h3>
+                  <span class="card-tag" data-t="j.test.tag">Now</span>
+                </div>
+                <p class="slot-pill" id="testerPill" aria-live="polite"></p>
+              </div>
               <div class="field">
-                <label for="gmailTester" data-t="j.test.label">Gmail address</label>
+                <label for="gmailTester" data-t="j.test.label">Gmail</label>
                 <input type="email" id="gmailTester" name="gmail" inputmode="email" autocomplete="email" required placeholder="you@gmail.com" data-ph="j.test.ph" data-ta="j.test.label">
               </div>
-              <button class="btn store breathe" type="submit" data-t="j.test.btn">Submit application</button>
+              <button class="btn store breathe" type="submit" data-t="j.test.btn">Apply</button>
               <div class="form-feedback is-empty"><p class="form-msg" id="testerMsg" aria-live="polite"></p></div>
             </form>
             <form class="signup-card" id="formFounder" novalidate>
-              <h3 data-t="j.found.h">Android · Founder rate</h3>
-              <p class="slot-pill" id="founderPill" aria-live="polite"></p>
-              <p data-t="j.found.p" id="founderBlurb">Waitlist for Google Play launch. Reduced Premium for the first Android subscriptions at public release.</p>
+              <div class="card-head">
+                <div class="card-title">
+                  <h3 data-t="j.found.h">Android</h3>
+                  <span class="card-tag" data-t="j.found.tag">Launch</span>
+                </div>
+                <p class="slot-pill" id="founderPill" aria-live="polite"></p>
+              </div>
               <div class="field">
-                <label for="emailFounder" data-t="j.found.label">Email address</label>
+                <label for="emailFounder" data-t="j.found.label">Email</label>
                 <input type="email" id="emailFounder" name="email" inputmode="email" autocomplete="email" required placeholder="you@email.com" data-ph="j.found.ph" data-ta="j.found.label">
               </div>
-              <button class="btn ghost" type="submit" data-t="j.found.btn">Join Android waitlist</button>
+              <button class="btn ghost" type="submit" data-t="j.found.btn">Waitlist</button>
               <div class="form-feedback is-empty"><p class="form-msg" id="founderMsg" aria-live="polite"></p></div>
             </form>
             <form class="signup-card ios" id="formIos" novalidate>
-              <h3 data-t="j.ios.h">iPhone · Founder rate</h3>
-              <p class="slot-pill ios" id="iosPill" aria-live="polite"></p>
-              <p data-t="j.ios.p" id="iosBlurb">Waitlist for App Store release. Founder rate on the day Hylens launches on iPhone.</p>
+              <div class="card-head">
+                <div class="card-title">
+                  <h3 data-t="j.ios.h">iPhone</h3>
+                  <span class="card-tag" data-t="j.ios.tag">Launch</span>
+                </div>
+                <p class="slot-pill ios" id="iosPill" aria-live="polite"></p>
+              </div>
               <div class="field">
-                <label for="emailIos" data-t="j.ios.label">Email address</label>
+                <label for="emailIos" data-t="j.ios.label">Email</label>
                 <input type="email" id="emailIos" name="email" inputmode="email" autocomplete="email" required placeholder="you@icloud.com" data-ph="j.ios.ph" data-ta="j.ios.label">
               </div>
-              <button class="btn ghost" type="submit" data-t="j.ios.btn">Join iPhone waitlist</button>
+              <button class="btn ghost" type="submit" data-t="j.ios.btn">Waitlist</button>
               <div class="form-feedback is-empty"><p class="form-msg" id="iosMsg" aria-live="polite"></p></div>
             </form>
+            </div>
           </div>
           <div class="copy-row if-beta"><span data-t="j.or">Contact</span> <code class="mail-addr"></code> <button type="button" id="copy" data-t="j.copy">Copy</button></div>
         </div>
@@ -653,7 +683,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     <div class="cols">
       <div>
         <a class="brand" href="#"><img src="assets/logo.png" alt="" width="34" height="34">Hylens IA</a>
-        <p data-t="ft.p">Hydration, salt, potassium and calories from a photo of your meal. General wellness information, not medical advice.</p>
+        <p data-t="ft.p">Hydration and nutrition from a photo. Wellness info, not medical advice.</p>
       </div>
       <div>
         <h4 data-t="ft.app">App</h4>
@@ -685,7 +715,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     </div>
   </div>
 </footer>
-<div class="dock" id="dock"><a class="btn store" href="#join" data-cta><svg aria-hidden="true"><use href="#gplay"/></svg><span class="if-beta"><b data-t="cta.beta">Apply for the beta</b></span><span class="if-play"><b data-t="cta.download">Download</b></span></a></div>
+<div class="dock" id="dock"><a class="btn store" href="#join" data-cta><svg aria-hidden="true"><use href="#gplay"/></svg><span class="if-beta"><b data-t="cta.beta">Apply</b></span><span class="if-play"><b data-t="cta.download">Download</b></span></a></div>
 
 <script>
 (function () {
@@ -714,7 +744,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
 
   var FR = {
     "meta.title": "Hylens IA · L’hydratation de précision, calculée sur vos repas",
-    "meta.desc": "Bêta fermée Android (Gmail) et liste d’attente iPhone. Tarif fondateur : 100 places par plateforme (4,99 €/mois ou 29,99 €/an).",
+    "meta.desc": "Bêta Android (Gmail) · liste iPhone · 100 places fondateur par store (4,99 €/mois ou 29,99 €/an).",
     "nav.how": "Fonctionnement",
     "nav.fuel": "Calories",
     "nav.faq": "Questions",
@@ -722,13 +752,13 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     "cta.download": "Télécharger",
     "cta.getiton": "Disponible sur",
     "cta.android": "Android",
-    "cta.beta": "Candidater en bêta",
-    "cta.ios": "Sur iPhone ? Liste d’attente",
-    "hero.proof": "<b>Bêta fermée</b> · {n} places testeur disponibles",
+    "cta.beta": "Candidater",
+    "cta.ios": "Liste iPhone",
+    "hero.proof": "Bêta fermée · <b>{n}</b> testeurs",
     "hero.h1a": "Votre corps est à 60 % d’eau.",
     "hero.h1b": "Hylens vous aide à <em class=\"glow\">mieux le comprendre.</em>",
-    "hero.lede": "Prenez votre repas en photo : Hylens mesure son sel, son potassium et ses calories, puis ajuste votre objectif d’eau à votre sport et à la chaleur du jour.",
-    "hero.note": "Accès gratuit pour les testeurs · Invitation sur Gmail requise",
+    "hero.lede": "Photo du repas. Sel, potassium, calories — et votre objectif d’eau ajusté.",
+    "hero.note": "Gmail requis pour l’invitation",
     "hyd.label": "Démo interactive : l’eau, le sel et le potassium du jour",
     "hyd.water": "Eau",
     "hyd.salt": "Sel",
@@ -781,8 +811,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     "mt.k": "Dans l’appli",
     "mt.h2": "Tout ce qui joue sur votre hydratation, au même endroit.",
     "mt.p": "Ce n’est qu’un aperçu. Le reste vous attend dans l’appli.",
-    "mt.more": "<b>Et bien plus dans l’appli.</b> Des fonctions qu’on préfère vous laisser découvrir.",
-    "j.tease": "Ce que vous avez vu ici n’est qu’une partie de Hylens.",
+    "mt.more": "<b>Et plus dans l’appli.</b>",
     "t1.t": "Eau",
     "t1.v": "1,8 / 2,6 L",
     "t1.p": "Votre objectif du jour, verre après verre.",
@@ -822,44 +851,48 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     "q2.q": "Que deviennent mes photos ?",
     "q2.a": "La photo est envoyée à notre service d’analyse le temps du calcul, puis Hylens ne la conserve pas. Vos repas et votre historique restent sur votre téléphone. Tous les détails dans notre <a href=\"https://api.hectorone.fr/privacy\">politique de confidentialité</a>.",
     "q3.q": "Combien ça coûte ?",
-    "q3.a": "Rien pendant la bêta fermée Android. Au lancement, Hylens Premium est à 9,99 €/mois ou 34,99 €/an. Les 100 premiers abonnements <b>par plateforme</b> (Android et iPhone) gardent 4,99 €/mois ou 29,99 €/an tant que l’abonnement reste actif.",
+    "q3.a": "Gratuit en bêta Android. Ensuite Premium : 9,99 €/mois ou 34,99 €/an. Tarif fondateur 4,99 € / 29,99 € pour les 100 premiers abonnements Android et iPhone (tant que l’abonnement reste actif).",
     "q4.q": "Et sur iPhone ?",
-    "q4.a": "Pas encore : la bêta fermée est sur Android. <a href=\"#formIos\">Rejoignez la liste d’attente iPhone</a> — les 100 premières inscriptions bénéficient du tarif fondateur le jour de la sortie.",
+    "q4.a": "Bêta Android seulement pour l’instant. <a href=\"#formIos\">Liste d’attente iPhone</a> : 100 places au tarif fondateur.",
     "q5.q": "Faut-il une montre connectée ?",
     "q5.a": "Non. Avec votre accord, Health Connect ajoute vos pas et vos séances tout seul. Sans lui, vous notez vos séances à la main.",
     "q6.q": "Est-ce un avis médical ?",
     "q6.a": "Non. Hylens donne des estimations et des repères de bien-être. Pour toute question de santé, parlez-en à un professionnel.",
-    "j.h2": "Bêta fermée. <em class=\"glow\">Tarif fondateur au lancement.</em>",
-    "j.p": "L’accès se fait sur invitation. Votre Gmail est ajouté à la liste de test avant l’installation via Google Play.",
-    "j.prices": "Tarif fondateur par plateforme : <b>100 places Android</b> et <b>100 places iPhone</b> — 4,99 €/mois ou 29,99 €/an (public 9,99 € / 34,99 €), tant que l’abonnement reste actif.",
-    "j.test.h": "Candidature testeur",
-    "j.test.p": "<b>{n} places</b> disponibles sur la liste de test Google Play. Merci d’indiquer le Gmail associé à votre appareil Android.",
-    "j.test.label": "Adresse Gmail",
+    "j.k": "Accès",
+    "j.h2": "Rejoindre Hylens",
+    "j.prices": "<b>Fondateur</b> · 4,99 €/mois · 100 places / store",
+    "j.hint.test": "Bêta Android · Gmail",
+    "j.hint.found": "Sortie Play · tarif fondateur",
+    "j.hint.ios": "App Store · tarif fondateur",
+    "j.test.h": "Testeur",
+    "j.test.tag": "Maintenant",
+    "j.test.pill": "{n} places",
+    "j.test.label": "Gmail",
     "j.test.ph": "vous@gmail.com",
-    "j.test.btn": "Envoyer la candidature",
-    "j.test.bad": "Veuillez saisir une adresse Gmail valide.",
-    "j.test.full": "La liste testeurs est complète. Vous pouvez réserver le tarif fondateur ci-contre.",
-    "j.found.h": "Android · Tarif fondateur",
-    "j.found.pill": "<b>{r} places</b> restantes sur {cap}",
-    "j.found.full": "Les {cap} places fondateur Android sont réservées.",
-    "j.found.p": "Liste d’attente pour le lancement Google Play. Tarif Premium réduit le jour de la mise en ligne.",
-    "j.found.label": "Adresse e-mail",
+    "j.test.btn": "Candidater",
+    "j.test.bad": "Gmail invalide.",
+    "j.test.full": "Complet",
+    "j.found.h": "Android",
+    "j.found.tag": "Lancement",
+    "j.found.pill": "{r} / {cap}",
+    "j.found.full": "Complet",
+    "j.found.label": "E-mail",
     "j.found.ph": "vous@email.com",
-    "j.found.btn": "Rejoindre la liste Android",
-    "j.found.bad": "Veuillez saisir une adresse e-mail valide.",
-    "j.ios.h": "iPhone · Tarif fondateur",
-    "j.ios.pill": "<b>{r} places</b> restantes sur {cap}",
-    "j.ios.full": "Les {cap} places fondateur iPhone sont réservées.",
-    "j.ios.p": "Liste d’attente pour la sortie App Store. Même tarif fondateur le jour du lancement sur iPhone.",
-    "j.ios.label": "Adresse e-mail",
+    "j.found.btn": "Liste d’attente",
+    "j.found.bad": "E-mail invalide.",
+    "j.ios.h": "iPhone",
+    "j.ios.tag": "Lancement",
+    "j.ios.pill": "{r} / {cap}",
+    "j.ios.full": "Complet",
+    "j.ios.label": "E-mail",
     "j.ios.ph": "vous@icloud.com",
-    "j.ios.btn": "Rejoindre la liste iPhone",
-    "j.ios.bad": "Veuillez saisir une adresse e-mail valide.",
-    "j.sent": "Demande enregistrée. Nous vous recontacterons sous peu.",
-    "j.mailHint": "Un e-mail prérempli s’ouvre. Merci de l’envoyer pour valider votre demande.",
+    "j.ios.btn": "Liste d’attente",
+    "j.ios.bad": "E-mail invalide.",
+    "j.sent": "Enregistré.",
+    "j.mailHint": "Envoyez l’e-mail ouvert pour confirmer.",
     "j.or": "Contact",
     "j.copy": "Copier",
-    "ft.p": "Hydratation, sel, potassium et calories de vos repas, en une photo. Informations de bien-être générales, pas un avis médical.",
+    "ft.p": "Hydratation et nutrition depuis une photo. Bien-être, pas avis médical.",
     "ft.app": "Application",
     "ft.join": "Rejoindre la bêta",
     "ft.info": "Informations",
@@ -882,10 +915,25 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
   var EN = { "meta.title": document.title, "meta.desc": document.querySelector('meta[name="description"]').content };
   document.querySelectorAll("[data-t]").forEach(function (el) { EN[el.dataset.t] = el.innerHTML; });
   document.querySelectorAll("[data-ta]").forEach(function (el) { EN[el.dataset.ta] = el.getAttribute("aria-label"); });
-  EN["j.found.pill"] = "<b>{r} spots</b> left out of {cap}";
-  EN["j.found.full"] = "All {cap} Android founder spots are reserved.";
-  EN["j.ios.pill"] = "<b>{r} spots</b> left out of {cap}";
-  EN["j.ios.full"] = "All {cap} iPhone founder spots are reserved.";
+  EN["j.test.pill"] = "{n} spots";
+  EN["j.found.pill"] = "{r} / {cap}";
+  EN["j.found.full"] = "Full";
+  EN["j.ios.pill"] = "{r} / {cap}";
+  EN["j.ios.full"] = "Full";
+  EN["j.sent"] = "Saved.";
+  EN["j.mailHint"] = "Send the opened email to confirm.";
+  EN["j.test.bad"] = "Invalid Gmail.";
+  EN["j.found.bad"] = EN["j.ios.bad"] = "Invalid email.";
+  EN["j.test.full"] = "Full";
+  EN["mt.more"] = "<b>More in the app.</b>";
+  EN["cta.beta"] = "Apply";
+  EN["j.k"] = "Access";
+  EN["j.prices"] = "<b>Founder</b> · €4.99/mo · 100 spots per store";
+  EN["j.hint.test"] = "Android beta · Gmail";
+  EN["j.hint.found"] = "Play launch · founder rate";
+  EN["j.hint.ios"] = "App Store · founder rate";
+  EN["j.test.tag"] = "Now";
+  EN["j.found.tag"] = EN["j.ios.tag"] = "Launch";
 
   var lang = "en";
   function fmt(n, d) { return new Intl.NumberFormat(DYN[lang].locale, { minimumFractionDigits: d, maximumFractionDigits: d }).format(n); }
@@ -1238,7 +1286,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
       if (msg && !msg.classList.contains("ok")) setFormMsg(msg, "hint", fillCap(d["j." + key + ".full"], 0, cap));
     } else {
       pill.className = (pillId === "iosPill" ? "slot-pill ios" : "slot-pill") + (left <= 10 ? " is-low" : "");
-      pill.innerHTML = fillCap(d["j." + key + ".pill"], left, cap);
+      pill.textContent = fillCap(d["j." + key + ".pill"], left, cap);
       form.classList.remove("is-full");
       if (msg && !msg.classList.contains("ok")) setFormMsg(msg, "", "");
     }
@@ -1248,17 +1296,20 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     var d = lang === "fr" ? FR : EN;
     var hp = $("heroProof");
     if (hp && d["hero.proof"]) hp.innerHTML = slotText(d["hero.proof"], TESTER_SLOTS);
-    var bl = $("testerBlurb");
-    if (bl && d["j.test.p"]) bl.innerHTML = slotText(d["j.test.p"], TESTER_SLOTS);
+    var tp = $("testerPill");
     var card = $("formTester");
     var tm = $("testerMsg");
-    if (card && tm) {
+    if (card && tp) {
       if (TESTER_SLOTS <= 0) {
+        tp.className = "slot-pill is-full";
+        tp.textContent = d["j.test.full"];
         card.classList.add("is-full");
-        setFormMsg(tm, "hint", d["j.test.full"]);
-      } else if (!tm.classList.contains("ok")) {
+        if (tm && !tm.classList.contains("ok")) setFormMsg(tm, "hint", d["j.test.full"]);
+      } else {
+        tp.className = "slot-pill" + (TESTER_SLOTS <= 2 ? " is-low" : "");
+        tp.textContent = slotText(d["j.test.pill"], TESTER_SLOTS);
         card.classList.remove("is-full");
-        setFormMsg(tm, "", "");
+        if (tm && !tm.classList.contains("ok")) setFormMsg(tm, "", "");
       }
     }
     renderFounderCard("formFounder", "founderPill", FOUNDER_CAP, FOUNDER_TAKEN, "found");
@@ -1338,7 +1389,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
       } else {
         openCompose(
           lang === "fr" ? "Liste d’attente iPhone · Hylens" : "Hylens iPhone founder waitlist",
-          (lang === "fr" ? "Bonjour,\n\nInscription à la liste d’attente iPhone (tarif fondateur, " + IOS_FOUNDER_CAP + " places).\nE-mail :\n" : "Hello,\n\niPhone founder waitlist (" + IOS_FOUNDER_CAP + " spots).\nEmail:\n") + email + "\n"
+          (lang === "fr" ? "Bonjour,\n\nListe d’attente iPhone (tarif fondateur).\nE-mail :\n" : "Hello,\n\niPhone founder waitlist.\nEmail:\n") + email + "\n"
         );
         setFormMsg($("iosMsg"), "hint", d["j.mailHint"]);
       }
