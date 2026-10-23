@@ -287,7 +287,8 @@ body.has-play .if-beta, body:not(.has-play) .if-play { display: none !important;
 .copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 15px; color: var(--muted); }
 .copy-row code { font: 500 15px/1 var(--font); color: var(--ink); overflow-wrap: anywhere; max-width: 100%; }
 .copy-row button { background: none; border: 0; padding: 0; color: var(--aqua); font: 600 15px/1 var(--font); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.signup-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: 100%; align-items: stretch; }
+.signup-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: 100%; align-items: stretch; }
+.signup-card.ios { border-color: color-mix(in srgb, var(--sport) 28%, var(--line)); }
 .signup-card { padding: 22px 20px; border-radius: 22px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); display: flex; flex-direction: column; gap: 12px; min-width: 0; height: 100%; overflow: hidden; }
 .signup-card h3 { font: 700 18px/1.3 var(--font); margin: 0; letter-spacing: -0.01em; }
 .signup-card > p { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0; overflow-wrap: anywhere; }
@@ -305,7 +306,8 @@ body.has-play .if-beta, body:not(.has-play) .if-play { display: none !important;
 .signup-card .form-msg.hint { color: var(--muted); font-weight: 500; }
 .signup-card.is-full { opacity: 0.55; pointer-events: none; filter: grayscale(0.2); }
 .founder-prices { font-size: 16px; line-height: 1.45; color: var(--aqua); max-width: 48ch; margin: 0; }
-@media (max-width: 860px) { .final-box { grid-template-columns: 1fr; } .signup-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1060px) { .signup-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .final-box { grid-template-columns: 1fr; } }
 
 /* Pied de page */
 footer { border-top: 1px solid var(--line); padding-block: 48px; font-size: 14px; color: var(--faint); background: rgba(3, 13, 24, 0.6); }
@@ -370,7 +372,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
             <span class="if-play"><small data-t="cta.getiton">Get it on</small><b>Google Play</b></span>
             <span class="if-beta"><small data-t="cta.android">Android</small><b data-t="cta.beta">Apply for the beta</b></span>
           </a>
-          <a class="btn ghost" href="#" data-mail="ios"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">On iPhone? Get notified</span></a>
+          <a class="btn ghost if-beta" href="#formIos"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">On iPhone? Join the waitlist</span></a>
         </div>
         <p class="note rv" style="--d: .3s" data-t="hero.note">Free access for testers · Gmail invitation required</p>
       </div>
@@ -579,8 +581,8 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
         <details class="glass"><summary data-t="q1.q">How accurate is it?</summary><div class="ans"><p data-t="q1.a">Hylens recognises the foods and estimates the portions from your photo. It’s an estimate: you can correct any food or enter its exact weight in two taps and everything updates.</p><p class="tip" data-t="q1.tip"><b>Tip:</b> good light and a photo taken from above give the best results.</p></div></details>
         <details class="glass"><summary data-t="q7.q">Why track salt and potassium?</summary><div class="ans"><p data-t="q7.a">Salt makes your body hold on to water, and potassium helps balance it. Following both at each meal helps you understand your hydration, not just count glasses.</p></div></details>
         <details class="glass"><summary data-t="q2.q">What happens to my photos?</summary><div class="ans"><p data-t="q2.a">Your photo is sent to our analysis service for the calculation, then Hylens doesn’t keep it. Your meals and your history stay on your phone. Details in our <a href="https://api.hectorone.fr/privacy">privacy policy</a>.</p></div></details>
-        <details class="glass"><summary data-t="q3.q">How much does it cost?</summary><div class="ans"><p data-t="q3.a">Nothing during the closed beta. At launch, Hylens Premium is €9.99/month or €34.99/year. The first 100 subscribers keep €4.99/month or €29.99/year for as long as they stay subscribed.</p></div></details>
-        <details class="glass"><summary data-t="q4.q">Is it available on iPhone?</summary><div class="ans"><p data-t="q4.a">Not yet: the beta starts on Android. <a href="#" data-mail="ios">Send us a message</a> and we’ll tell you as soon as the iPhone version is out.</p></div></details>
+        <details class="glass"><summary data-t="q3.q">How much does it cost?</summary><div class="ans"><p data-t="q3.a">Nothing during the Android closed beta. At launch, Hylens Premium is €9.99/month or €34.99/year. The first <b>100 subscriptions per platform</b> (Android and iPhone) keep €4.99/month or €29.99/year while the subscription stays active.</p></div></details>
+        <details class="glass"><summary data-t="q4.q">Is it available on iPhone?</summary><div class="ans"><p data-t="q4.a">Not yet: the closed beta is on Android. <a href="#formIos">Join the iPhone waitlist</a> — the first 100 registrations get founder pricing on release day.</p></div></details>
         <details class="glass"><summary data-t="q5.q">Do I need a smartwatch?</summary><div class="ans"><p data-t="q5.a">No. With your permission, Health Connect adds your steps and workouts automatically. Without it, you log your workouts by hand.</p></div></details>
         <details class="glass"><summary data-t="q6.q">Is it medical advice?</summary><div class="ans"><p data-t="q6.a">No. Hylens gives estimates and general wellness guidance. For any health question, talk to a professional.</p></div></details>
       </div>
@@ -593,7 +595,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
         <div class="final-copy">
           <h2 data-t="j.h2">Closed beta. <em class="glow">Founder pricing at launch.</em></h2>
           <p data-t="j.p">Access is by invitation. We add your Gmail to the closed test before you can install from Google Play.</p>
-          <p class="founder-prices" data-t="j.prices">First 100 Premium subscriptions: <b>€4.99/month</b> or <b>€29.99/year</b> (public price €9.99 / €34.99), while your subscription remains active.</p>
+          <p class="founder-prices" data-t="j.prices">Founder rate on each store: <b>100 spots on Android</b> and <b>100 on iPhone</b> — €4.99/month or €29.99/year (public €9.99 / €34.99), while your subscription stays active.</p>
           <p class="tease" data-t="j.tease">What you’ve seen here is only part of Hylens.</p>
         </div>
         <div class="join">
@@ -613,17 +615,26 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
               <div class="form-feedback is-empty"><p class="form-msg" id="testerMsg" aria-live="polite"></p></div>
             </form>
             <form class="signup-card" id="formFounder" novalidate>
-              <h3 data-t="j.found.h">Founder pricing</h3>
-              <p data-t="j.found.p">Join the launch waitlist. Reduced Premium rate for the <b>first 100</b> subscriptions.</p>
+              <h3 data-t="j.found.h">Android · Founder rate</h3>
+              <p data-t="j.found.p">Waitlist for Google Play launch. Reduced Premium for the <b>first 100</b> Android subscriptions.</p>
               <div class="field">
                 <label for="emailFounder" data-t="j.found.label">Email address</label>
                 <input type="email" id="emailFounder" name="email" inputmode="email" autocomplete="email" required placeholder="you@email.com" data-ph="j.found.ph" data-ta="j.found.label">
               </div>
-              <button class="btn ghost" type="submit" data-t="j.found.btn">Join waitlist</button>
+              <button class="btn ghost" type="submit" data-t="j.found.btn">Join Android waitlist</button>
               <div class="form-feedback is-empty"><p class="form-msg" id="founderMsg" aria-live="polite"></p></div>
             </form>
+            <form class="signup-card ios" id="formIos" novalidate>
+              <h3 data-t="j.ios.h">iPhone · Founder rate</h3>
+              <p data-t="j.ios.p">Waitlist for App Store release. Same founder rate for the <b>first 100</b> iPhone subscriptions.</p>
+              <div class="field">
+                <label for="emailIos" data-t="j.ios.label">Email address</label>
+                <input type="email" id="emailIos" name="email" inputmode="email" autocomplete="email" required placeholder="you@icloud.com" data-ph="j.ios.ph" data-ta="j.ios.label">
+              </div>
+              <button class="btn ghost" type="submit" data-t="j.ios.btn">Join iPhone waitlist</button>
+              <div class="form-feedback is-empty"><p class="form-msg" id="iosMsg" aria-live="polite"></p></div>
+            </form>
           </div>
-          <a class="btn ghost if-beta" href="#" data-mail="ios"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">On iPhone? Get notified</span></a>
           <div class="copy-row if-beta"><span data-t="j.or">Contact</span> <code class="mail-addr"></code> <button type="button" id="copy" data-t="j.copy">Copy</button></div>
         </div>
       </div>
@@ -681,6 +692,8 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
   /** Formulaires Google (optionnel) : action = URL …/formResponse, entry = id du champ (entry.123456). */
   var FORM_TESTER = { action: "", entry: "" };
   var FORM_FOUNDER = { action: "", entry: "" };
+  var FORM_IOS = { action: "", entry: "" };
+  var IOS_FOUNDER_SLOTS = 100;
 
   // Avis RÉELS de bêta-testeurs, avec leur accord écrit. Vide = section cachée.
   // Exemple : { prenom: "Camille", detail: "Bêta-testeuse depuis octobre", texte: "…" }
@@ -691,7 +704,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
 
   var FR = {
     "meta.title": "Hylens IA · L’hydratation de précision, calculée sur vos repas",
-    "meta.desc": "Bêta fermée Android : laissez votre Gmail pour être invité. Au lancement, tarif fondateur pour les 100 premiers abonnés (4,99 €/mois ou 29,99 €/an).",
+    "meta.desc": "Bêta fermée Android (Gmail) et liste d’attente iPhone. Tarif fondateur : 100 places par plateforme (4,99 €/mois ou 29,99 €/an).",
     "nav.how": "Fonctionnement",
     "nav.fuel": "Calories",
     "nav.faq": "Questions",
@@ -700,7 +713,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     "cta.getiton": "Disponible sur",
     "cta.android": "Android",
     "cta.beta": "Candidater en bêta",
-    "cta.ios": "Sur iPhone ? Être prévenu",
+    "cta.ios": "Sur iPhone ? Liste d’attente",
     "hero.proof": "<b>Bêta fermée</b> · {n} places testeur disponibles",
     "hero.h1a": "Votre corps est à 60 % d’eau.",
     "hero.h1b": "Hylens vous aide à <em class=\"glow\">mieux le comprendre.</em>",
@@ -799,16 +812,16 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     "q2.q": "Que deviennent mes photos ?",
     "q2.a": "La photo est envoyée à notre service d’analyse le temps du calcul, puis Hylens ne la conserve pas. Vos repas et votre historique restent sur votre téléphone. Tous les détails dans notre <a href=\"https://api.hectorone.fr/privacy\">politique de confidentialité</a>.",
     "q3.q": "Combien ça coûte ?",
-    "q3.a": "Rien pendant la bêta fermée. Au lancement, Hylens Premium est à 9,99 €/mois ou 34,99 €/an. Les 100 premiers abonnés gardent 4,99 €/mois ou 29,99 €/an tant que leur abonnement reste actif.",
+    "q3.a": "Rien pendant la bêta fermée Android. Au lancement, Hylens Premium est à 9,99 €/mois ou 34,99 €/an. Les 100 premiers abonnements <b>par plateforme</b> (Android et iPhone) gardent 4,99 €/mois ou 29,99 €/an tant que l’abonnement reste actif.",
     "q4.q": "Et sur iPhone ?",
-    "q4.a": "Pas encore : la bêta commence sur Android. <a href=\"#\" data-mail=\"ios\">Écrivez-nous</a> et nous vous prévenons dès la sortie sur iPhone.",
+    "q4.a": "Pas encore : la bêta fermée est sur Android. <a href=\"#formIos\">Rejoignez la liste d’attente iPhone</a> — les 100 premières inscriptions bénéficient du tarif fondateur le jour de la sortie.",
     "q5.q": "Faut-il une montre connectée ?",
     "q5.a": "Non. Avec votre accord, Health Connect ajoute vos pas et vos séances tout seul. Sans lui, vous notez vos séances à la main.",
     "q6.q": "Est-ce un avis médical ?",
     "q6.a": "Non. Hylens donne des estimations et des repères de bien-être. Pour toute question de santé, parlez-en à un professionnel.",
     "j.h2": "Bêta fermée. <em class=\"glow\">Tarif fondateur au lancement.</em>",
     "j.p": "L’accès se fait sur invitation. Votre Gmail est ajouté à la liste de test avant l’installation via Google Play.",
-    "j.prices": "100 premiers abonnements Premium : <b>4,99 €/mois</b> ou <b>29,99 €/an</b> (tarif public 9,99 € / 34,99 €), tant que l’abonnement reste actif.",
+    "j.prices": "Tarif fondateur par plateforme : <b>100 places Android</b> et <b>100 places iPhone</b> — 4,99 €/mois ou 29,99 €/an (public 9,99 € / 34,99 €), tant que l’abonnement reste actif.",
     "j.test.h": "Candidature testeur",
     "j.test.p": "<b>{n} places</b> disponibles sur la liste de test Google Play. Merci d’indiquer le Gmail associé à votre appareil Android.",
     "j.test.label": "Adresse Gmail",
@@ -816,12 +829,18 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     "j.test.btn": "Envoyer la candidature",
     "j.test.bad": "Veuillez saisir une adresse Gmail valide.",
     "j.test.full": "La liste testeurs est complète. Vous pouvez réserver le tarif fondateur ci-contre.",
-    "j.found.h": "Tarif fondateur",
-    "j.found.p": "Inscription à la liste d’attente pour le lancement. Tarif Premium réduit pour les <b>100 premiers</b> abonnements.",
+    "j.found.h": "Android · Tarif fondateur",
+    "j.found.p": "Liste d’attente pour le lancement Google Play. Tarif Premium réduit pour les <b>100 premiers</b> abonnements Android.",
     "j.found.label": "Adresse e-mail",
     "j.found.ph": "vous@email.com",
-    "j.found.btn": "Rejoindre la liste d’attente",
+    "j.found.btn": "Rejoindre la liste Android",
     "j.found.bad": "Veuillez saisir une adresse e-mail valide.",
+    "j.ios.h": "iPhone · Tarif fondateur",
+    "j.ios.p": "Liste d’attente pour la sortie App Store. Même tarif fondateur pour les <b>100 premiers</b> abonnements iPhone.",
+    "j.ios.label": "Adresse e-mail",
+    "j.ios.ph": "vous@icloud.com",
+    "j.ios.btn": "Rejoindre la liste iPhone",
+    "j.ios.bad": "Veuillez saisir une adresse e-mail valide.",
     "j.sent": "Demande enregistrée. Nous vous recontacterons sous peu.",
     "j.mailHint": "Un e-mail prérempli s’ouvre. Merci de l’envoyer pour valider votre demande.",
     "j.or": "Contact",
@@ -1250,10 +1269,31 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
         $("formFounder").reset();
       } else {
         openCompose(
-          lang === "fr" ? "Liste d’attente tarif fondateur Hylens" : "Hylens founder pricing waitlist",
-          (lang === "fr" ? "Bonjour,\n\nInscription à la liste d’attente pour le tarif fondateur.\nE-mail :\n" : "Hello,\n\nWaitlist registration for founder pricing.\nEmail:\n") + email + "\n"
+          lang === "fr" ? "Liste d’attente Android · Hylens" : "Hylens Android founder waitlist",
+          (lang === "fr" ? "Bonjour,\n\nInscription à la liste d’attente Android (tarif fondateur).\nE-mail :\n" : "Hello,\n\nAndroid founder waitlist registration.\nEmail:\n") + email + "\n"
         );
         setFormMsg($("founderMsg"), "hint", d["j.mailHint"]);
+      }
+    });
+  });
+  $("formIos").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = lang === "fr" ? FR : EN;
+    var email = $("emailIos").value.trim();
+    if (!validEmail(email)) {
+      setFormMsg($("iosMsg"), "hint", d["j.ios.bad"]);
+      return;
+    }
+    postGoogleForm(FORM_IOS, email).then(function (ok) {
+      if (ok) {
+        setFormMsg($("iosMsg"), "ok", d["j.sent"]);
+        $("formIos").reset();
+      } else {
+        openCompose(
+          lang === "fr" ? "Liste d’attente iPhone · Hylens" : "Hylens iPhone founder waitlist",
+          (lang === "fr" ? "Bonjour,\n\nInscription à la liste d’attente iPhone (tarif fondateur, " + IOS_FOUNDER_SLOTS + " places).\nE-mail :\n" : "Hello,\n\niPhone founder waitlist (" + IOS_FOUNDER_SLOTS + " spots).\nEmail:\n") + email + "\n"
+        );
+        setFormMsg($("iosMsg"), "hint", d["j.mailHint"]);
       }
     });
   });
