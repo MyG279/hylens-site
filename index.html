@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hylens IA · Precision hydration, calculated from your meals</title>
-<meta name="description" content="Snap your meal: Hylens measures salt, potassium and calories, then adjusts your water goal to your workouts and the heat. Free during the Android beta.">
+<meta name="description" content="Closed Android beta: leave your Gmail to get invited. At launch, founder rate for the first 100 subscribers (€4.99/month or €29.99/year).">
 <meta property="og:title" content="Hylens IA · Precision hydration, calculated from your meals">
 <meta property="og:description" content="Your body is 60% water. Hylens helps you understand it better. Free during the Android beta.">
 <meta property="og:type" content="website">
@@ -286,7 +286,20 @@ body.has-play .if-beta, body:not(.has-play) .if-play { display: none !important;
 .copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 15px; color: var(--muted); }
 .copy-row code { font: 500 15px/1 var(--font); color: var(--ink); }
 .copy-row button { background: none; border: 0; padding: 0; color: var(--aqua); font: 600 15px/1 var(--font); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 860px) { .final-box { grid-template-columns: 1fr; } }
+.signup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
+.signup-card { padding: 22px; border-radius: 22px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.signup-card h3 { font: 700 20px/1.25 var(--font); margin: 0; }
+.signup-card > p { color: var(--muted); font-size: 15px; line-height: 1.45; margin: 0; }
+.signup-card .field label { display: block; font-size: 13px; color: var(--faint); margin-bottom: 6px; }
+.signup-card .field input { width: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.28); color: var(--ink); font: 500 16px/1 var(--font); }
+.signup-card .field input:focus { outline: none; border-color: color-mix(in srgb, var(--aqua) 55%, transparent); box-shadow: 0 0 0 3px rgba(61, 214, 208, 0.15); }
+.signup-card .btn { width: 100%; justify-content: center; margin-top: 4px; }
+.signup-card .form-msg { font-size: 14px; line-height: 1.4; margin: 0; min-height: 1.2em; }
+.signup-card .form-msg.ok { color: var(--k); font-weight: 600; }
+.signup-card .form-msg.hint { color: var(--muted); }
+.signup-card.is-full { opacity: 0.55; pointer-events: none; filter: grayscale(0.2); }
+.founder-prices { font-size: 16px; line-height: 1.45; color: var(--aqua); max-width: 48ch; margin: 0; }
+@media (max-width: 860px) { .final-box { grid-template-columns: 1fr; } .signup-grid { grid-template-columns: 1fr; } }
 
 /* Pied de page */
 footer { border-top: 1px solid var(--line); padding-block: 48px; font-size: 14px; color: var(--faint); background: rgba(3, 13, 24, 0.6); }
@@ -333,7 +346,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
       <a class="link" href="#fuel" data-t="nav.fuel">Calories</a>
       <a class="link" href="#faq" data-t="nav.faq">FAQ</a>
       <button class="lang" type="button" id="lang" aria-label="Changer de langue / Change language">FR</button>
-      <a class="btn small" href="#join" data-cta><span class="if-beta" data-t="cta.short">Try it free</span><span class="if-play" data-t="cta.download">Download</span></a>
+      <a class="btn small" href="#join" data-cta><span class="if-beta" data-t="cta.short">Join</span><span class="if-play" data-t="cta.download">Download</span></a>
     </nav>
   </div>
 </header>
@@ -342,18 +355,18 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <span class="proof rv"><img src="assets/logo.png" alt=""><span data-t="hero.proof"><b>Free Android beta</b> · No ads</span></span>
+        <span class="proof rv"><img src="assets/logo.png" alt=""><span data-t="hero.proof" id="heroProof"><b>Closed beta</b> · 3 tester spots left</span></span>
         <h1 class="rv" style="--d: .08s"><span data-t="hero.h1a">Your body is 60% water.</span><span data-t="hero.h1b">Hylens helps you <em class="glow">understand it better.</em></span></h1>
         <p class="lede rv" style="--d: .16s" data-t="hero.lede">Snap your meal: Hylens measures its salt, potassium and calories, then adjusts your water goal to your workout and the heat of the day.</p>
         <div class="cta-row rv" style="--d: .24s">
           <a class="btn store breathe" href="#join" data-cta>
             <svg aria-hidden="true"><use href="#gplay"/></svg>
             <span class="if-play"><small data-t="cta.getiton">Get it on</small><b>Google Play</b></span>
-            <span class="if-beta"><small data-t="cta.android">Android</small><b data-t="cta.beta">Join the free beta</b></span>
+            <span class="if-beta"><small data-t="cta.android">Android</small><b data-t="cta.beta">Request a tester spot</b></span>
           </a>
           <a class="btn ghost" href="#" data-mail="ios"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">On iPhone? Get notified</span></a>
         </div>
-        <p class="note rv" style="--d: .3s" data-t="hero.note">Free during the beta · No credit card</p>
+        <p class="note rv" style="--d: .3s" data-t="hero.note">Free during the beta · Gmail required for the invite</p>
       </div>
 
       <div class="app glass rv" style="--d: .2s" id="hyd" role="group" aria-label="Live demo: today’s water, salt and potassium" data-ta="hyd.label">
@@ -560,7 +573,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
         <details class="glass"><summary data-t="q1.q">How accurate is it?</summary><div class="ans"><p data-t="q1.a">Hylens recognises the foods and estimates the portions from your photo. It’s an estimate: you can correct any food or enter its exact weight in two taps and everything updates.</p><p class="tip" data-t="q1.tip"><b>Tip:</b> good light and a photo taken from above give the best results.</p></div></details>
         <details class="glass"><summary data-t="q7.q">Why track salt and potassium?</summary><div class="ans"><p data-t="q7.a">Salt makes your body hold on to water, and potassium helps balance it. Following both at each meal helps you understand your hydration, not just count glasses.</p></div></details>
         <details class="glass"><summary data-t="q2.q">What happens to my photos?</summary><div class="ans"><p data-t="q2.a">Your photo is sent to our analysis service for the calculation, then Hylens doesn’t keep it. Your meals and your history stay on your phone. Details in our <a href="https://api.hectorone.fr/privacy">privacy policy</a>.</p></div></details>
-        <details class="glass"><summary data-t="q3.q">How much does it cost?</summary><div class="ans"><p data-t="q3.a">Nothing during the beta, and no credit card needed.</p></div></details>
+        <details class="glass"><summary data-t="q3.q">How much does it cost?</summary><div class="ans"><p data-t="q3.a">Nothing during the closed beta. At launch, Hylens Premium is €9.99/month or €34.99/year. The first 100 subscribers keep €4.99/month or €29.99/year for as long as they stay subscribed.</p></div></details>
         <details class="glass"><summary data-t="q4.q">Is it available on iPhone?</summary><div class="ans"><p data-t="q4.a">Not yet: the beta starts on Android. <a href="#" data-mail="ios">Send us a message</a> and we’ll tell you as soon as the iPhone version is out.</p></div></details>
         <details class="glass"><summary data-t="q5.q">Do I need a smartwatch?</summary><div class="ans"><p data-t="q5.a">No. With your permission, Health Connect adds your steps and workouts automatically. Without it, you log your workouts by hand.</p></div></details>
         <details class="glass"><summary data-t="q6.q">Is it medical advice?</summary><div class="ans"><p data-t="q6.a">No. Hylens gives estimates and general wellness guidance. For any health question, talk to a professional.</p></div></details>
@@ -572,8 +585,9 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     <div class="wrap">
       <div class="final-box glass rv">
         <div class="final-copy">
-          <h2 data-t="j.h2">Start today. <em class="glow">It’s free.</em></h2>
-          <p data-t="j.p">Hylens is free during the beta. <b>Spots are limited:</b> if the beta is full, you’ll get a discount at launch.</p>
+          <h2 data-t="j.h2">Closed beta now. <em class="glow">Founder rate at launch.</em></h2>
+          <p data-t="j.p">Hylens is free for testers today. The Play Store link only works after we add your Gmail to the closed test.</p>
+          <p class="founder-prices" data-t="j.prices">First 100 subscribers: <b>€4.99/month</b> or <b>€29.99/year</b> instead of €9.99 / €34.99 — for as long as you stay subscribed.</p>
           <p class="tease" data-t="j.tease">What you’ve seen here is only part of Hylens.</p>
         </div>
         <div class="join">
@@ -581,19 +595,30 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
             <svg aria-hidden="true"><use href="#gplay"/></svg>
             <span><small data-t="cta.getiton">Get it on</small><b>Google Play</b></span>
           </a>
-          <div class="if-beta join">
-            <ol>
-              <li data-t="j.s1">Tap the button: a ready-to-send email opens.</li>
-              <li data-t="j.s2">Add the Gmail address you use on your phone, then send.</li>
-              <li data-t="j.s3">You receive your Google Play invite and download Hylens.</li>
-            </ol>
-            <a class="btn store breathe" href="#" data-mail="beta">
-              <svg aria-hidden="true"><use href="#gplay"/></svg>
-              <span><small data-t="cta.android">Android</small><b data-t="j.btn">Request my invite</b></span>
-            </a>
-            <div class="copy-row"><span data-t="j.or">Or write to</span> <code class="mail-addr"></code> <button type="button" id="copy" data-t="j.copy">Copy</button></div>
+          <div class="if-beta signup-grid" id="signupGrid">
+            <form class="signup-card" id="formTester" novalidate>
+              <h3 data-t="j.test.h">Become a tester</h3>
+              <p data-t="j.test.p" id="testerBlurb">3 spots left on our closed test list. Leave the Gmail address on your Android phone.</p>
+              <div class="field">
+                <label for="gmailTester" data-t="j.test.label">Gmail address</label>
+                <input type="email" id="gmailTester" name="gmail" inputmode="email" autocomplete="email" required placeholder="you@gmail.com" data-ph="j.test.ph" data-ta="j.test.label">
+              </div>
+              <button class="btn store breathe" type="submit" data-t="j.test.btn">Send my request</button>
+              <p class="form-msg" id="testerMsg" aria-live="polite"></p>
+            </form>
+            <form class="signup-card" id="formFounder" novalidate>
+              <h3 data-t="j.found.h">Reserve the founder rate</h3>
+              <p data-t="j.found.p">Not a tester? Join the waitlist for launch — <b>100 places</b> at the reduced Premium price.</p>
+              <div class="field">
+                <label for="emailFounder" data-t="j.found.label">Email address</label>
+                <input type="email" id="emailFounder" name="email" inputmode="email" autocomplete="email" required placeholder="you@email.com" data-ph="j.found.ph" data-ta="j.found.label">
+              </div>
+              <button class="btn ghost" type="submit" style="width:100%;justify-content:center;border-color:var(--line)" data-t="j.found.btn">Join the waitlist</button>
+              <p class="form-msg" id="founderMsg" aria-live="polite"></p>
+            </form>
           </div>
-          <a class="btn ghost" href="#" data-mail="ios"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">On iPhone? Get notified</span></a>
+          <a class="btn ghost if-beta" href="#" data-mail="ios"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">On iPhone? Get notified</span></a>
+          <div class="copy-row if-beta"><span data-t="j.or">Questions?</span> <code class="mail-addr"></code> <button type="button" id="copy" data-t="j.copy">Copy</button></div>
         </div>
       </div>
     </div>
@@ -637,7 +662,7 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     </div>
   </div>
 </footer>
-<div class="dock" id="dock"><a class="btn store" href="#join" data-cta><svg aria-hidden="true"><use href="#gplay"/></svg><span class="if-beta"><b data-t="cta.beta">Join the free beta</b></span><span class="if-play"><b data-t="cta.download">Download</b></span></a></div>
+<div class="dock" id="dock"><a class="btn store" href="#join" data-cta><svg aria-hidden="true"><use href="#gplay"/></svg><span class="if-beta"><b data-t="cta.beta">Request a tester spot</b></span><span class="if-play"><b data-t="cta.download">Download</b></span></a></div>
 
 <script>
 (function () {
@@ -645,6 +670,11 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
   // directement au Play Store et la demande d'invitation par e-mail disparaît.
   var PLAY_URL = "";
   var CONTACT = "contact@hectorone.fr";
+  /** Places restantes sur la liste testeurs Google Play (12 max). Mettez 0 quand la liste est pleine. */
+  var TESTER_SLOTS = 3;
+  /** Formulaires Google (optionnel) : action = URL …/formResponse, entry = id du champ (entry.123456). */
+  var FORM_TESTER = { action: "", entry: "" };
+  var FORM_FOUNDER = { action: "", entry: "" };
 
   // Avis RÉELS de bêta-testeurs, avec leur accord écrit. Vide = section cachée.
   // Exemple : { prenom: "Camille", detail: "Bêta-testeuse depuis octobre", texte: "…" }
@@ -655,21 +685,21 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
 
   var FR = {
     "meta.title": "Hylens IA · L’hydratation de précision, calculée sur vos repas",
-    "meta.desc": "Prenez votre repas en photo : Hylens mesure le sel, le potassium et les calories, puis ajuste votre objectif d’eau à votre sport et à la chaleur. Gratuit pendant la bêta Android.",
+    "meta.desc": "Bêta fermée Android : laissez votre Gmail pour être invité. Au lancement, tarif fondateur pour les 100 premiers abonnés (4,99 €/mois ou 29,99 €/an).",
     "nav.how": "Fonctionnement",
     "nav.fuel": "Calories",
     "nav.faq": "Questions",
-    "cta.short": "Essayer gratuitement",
+    "cta.short": "Rejoindre",
     "cta.download": "Télécharger",
     "cta.getiton": "Disponible sur",
     "cta.android": "Android",
-    "cta.beta": "Rejoindre la bêta gratuite",
+    "cta.beta": "Demander une place testeur",
     "cta.ios": "Sur iPhone ? Être prévenu",
-    "hero.proof": "<b>Bêta Android gratuite</b> · Sans publicité",
+    "hero.proof": "<b>Bêta fermée</b> · {n} places testeur",
     "hero.h1a": "Votre corps est à 60 % d’eau.",
     "hero.h1b": "Hylens vous aide à <em class=\"glow\">mieux le comprendre.</em>",
     "hero.lede": "Prenez votre repas en photo : Hylens mesure son sel, son potassium et ses calories, puis ajuste votre objectif d’eau à votre sport et à la chaleur du jour.",
-    "hero.note": "Gratuit pendant la bêta · Sans carte bancaire",
+    "hero.note": "Gratuit pour les testeurs · Gmail obligatoire pour l’invitation",
     "hyd.label": "Démo interactive : l’eau, le sel et le potassium du jour",
     "hyd.water": "Eau",
     "hyd.salt": "Sel",
@@ -763,20 +793,32 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     "q2.q": "Que deviennent mes photos ?",
     "q2.a": "La photo est envoyée à notre service d’analyse le temps du calcul, puis Hylens ne la conserve pas. Vos repas et votre historique restent sur votre téléphone. Tous les détails dans notre <a href=\"https://api.hectorone.fr/privacy\">politique de confidentialité</a>.",
     "q3.q": "Combien ça coûte ?",
-    "q3.a": "Rien pendant la bêta, et sans carte bancaire.",
+    "q3.a": "Rien pendant la bêta fermée. Au lancement, Hylens Premium est à 9,99 €/mois ou 34,99 €/an. Les 100 premiers abonnés gardent 4,99 €/mois ou 29,99 €/an tant que leur abonnement reste actif.",
     "q4.q": "Et sur iPhone ?",
     "q4.a": "Pas encore : la bêta commence sur Android. <a href=\"#\" data-mail=\"ios\">Écrivez-nous</a> et nous vous prévenons dès la sortie sur iPhone.",
     "q5.q": "Faut-il une montre connectée ?",
     "q5.a": "Non. Avec votre accord, Health Connect ajoute vos pas et vos séances tout seul. Sans lui, vous notez vos séances à la main.",
     "q6.q": "Est-ce un avis médical ?",
     "q6.a": "Non. Hylens donne des estimations et des repères de bien-être. Pour toute question de santé, parlez-en à un professionnel.",
-    "j.h2": "Commencez aujourd’hui, <em class=\"glow\">c’est gratuit.</em>",
-    "j.p": "Hylens est gratuit pendant la bêta. <b>Places limitées :</b> si la bêta est complète, vous recevez une réduction au lancement.",
-    "j.s1": "Touchez le bouton : un e-mail prêt à envoyer s’ouvre.",
-    "j.s2": "Ajoutez l’adresse Gmail de votre téléphone, puis envoyez.",
-    "j.s3": "Vous recevez votre invitation Google Play et téléchargez Hylens.",
-    "j.btn": "Demander mon invitation",
-    "j.or": "Ou écrivez à",
+    "j.h2": "Bêta fermée aujourd’hui. <em class=\"glow\">Tarif fondateur au lancement.</em>",
+    "j.p": "Hylens est gratuit pour les testeurs. Le lien Play Store ne fonctionne qu’après ajout de votre Gmail à la liste fermée.",
+    "j.prices": "100 premiers abonnés : <b>4,99 €/mois</b> ou <b>29,99 €/an</b> au lieu de 9,99 € / 34,99 € — tant que l’abonnement reste actif.",
+    "j.test.h": "Devenir testeur",
+    "j.test.p": "<b>{n} places</b> sur la liste Google Play. Indiquez le Gmail de votre téléphone Android.",
+    "j.test.label": "Adresse Gmail",
+    "j.test.ph": "vous@gmail.com",
+    "j.test.btn": "Envoyer ma demande",
+    "j.test.bad": "Indiquez une adresse Gmail valide.",
+    "j.test.full": "Liste testeurs complète. Réservez le tarif fondateur →",
+    "j.found.h": "Réserver le tarif fondateur",
+    "j.found.p": "Pas testeur ? Liste d’attente pour le lancement — <b>100 places</b> au tarif Premium réduit.",
+    "j.found.label": "Adresse e-mail",
+    "j.found.ph": "vous@email.com",
+    "j.found.btn": "Rejoindre la liste d’attente",
+    "j.found.bad": "Indiquez une adresse e-mail valide.",
+    "j.sent": "Merci, c’est enregistré.",
+    "j.mailHint": "Votre messagerie s’ouvre : envoyez le message pour confirmer.",
+    "j.or": "Une question ?",
     "j.copy": "Copier",
     "ft.p": "Hydratation, sel, potassium et calories de vos repas, en une photo. Informations de bien-être générales, pas un avis médical.",
     "ft.app": "Application",
@@ -1122,6 +1164,88 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
       mailLink(a, m[0], m[1]);
     });
   }
+  function slotText(tpl, n) { return tpl.replace("{n}", String(n)); }
+  function renderSlots() {
+    var d = lang === "fr" ? FR : EN;
+    var hp = $("heroProof");
+    if (hp && d["hero.proof"]) hp.innerHTML = slotText(d["hero.proof"], TESTER_SLOTS);
+    var bl = $("testerBlurb");
+    if (bl && d["j.test.p"]) bl.innerHTML = slotText(d["j.test.p"], TESTER_SLOTS);
+    var card = $("formTester");
+    if (!card) return;
+    if (TESTER_SLOTS <= 0) {
+      card.classList.add("is-full");
+      $("testerMsg").className = "form-msg hint";
+      $("testerMsg").textContent = d["j.test.full"];
+    } else if (!$("testerMsg").classList.contains("ok")) {
+      card.classList.remove("is-full");
+      $("testerMsg").textContent = "";
+      $("testerMsg").className = "form-msg";
+    }
+  }
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function postGoogleForm(cfg, value) {
+    if (!cfg.action || !cfg.entry) return Promise.resolve(false);
+    var body = new URLSearchParams();
+    body.append(cfg.entry, value);
+    return fetch(cfg.action, { method: "POST", mode: "no-cors", body: body }).then(function () { return true; }).catch(function () { return false; });
+  }
+  function openCompose(subject, body) {
+    var url = DESKTOP
+      ? "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(CONTACT) + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body)
+      : "mailto:" + CONTACT + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    if (DESKTOP) window.open(url, "_blank", "noopener");
+    else location.href = url;
+  }
+  $("formTester").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (TESTER_SLOTS <= 0) return;
+    var d = lang === "fr" ? FR : EN;
+    var gmail = $("gmailTester").value.trim();
+    if (!validEmail(gmail)) {
+      $("testerMsg").className = "form-msg hint";
+      $("testerMsg").textContent = d["j.test.bad"];
+      return;
+    }
+    postGoogleForm(FORM_TESTER, gmail).then(function (ok) {
+      if (ok) {
+        $("testerMsg").className = "form-msg ok";
+        $("testerMsg").textContent = d["j.sent"];
+        $("formTester").reset();
+      } else {
+        openCompose(
+          lang === "fr" ? "Testeur bêta Hylens" : "Hylens beta tester",
+          (lang === "fr" ? "Bonjour,\n\nGmail pour la bêta fermée Android :\n" : "Hi,\n\nGmail for the Android closed beta:\n") + gmail + "\n"
+        );
+        $("testerMsg").className = "form-msg hint";
+        $("testerMsg").textContent = d["j.mailHint"];
+      }
+    });
+  });
+  $("formFounder").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = lang === "fr" ? FR : EN;
+    var email = $("emailFounder").value.trim();
+    if (!validEmail(email)) {
+      $("founderMsg").className = "form-msg hint";
+      $("founderMsg").textContent = d["j.found.bad"];
+      return;
+    }
+    postGoogleForm(FORM_FOUNDER, email).then(function (ok) {
+      if (ok) {
+        $("founderMsg").className = "form-msg ok";
+        $("founderMsg").textContent = d["j.sent"];
+        $("formFounder").reset();
+      } else {
+        openCompose(
+          lang === "fr" ? "Liste d’attente fondateur Hylens" : "Hylens founder waitlist",
+          (lang === "fr" ? "Bonjour,\n\nJe souhaite réserver le tarif fondateur au lancement.\nE-mail :\n" : "Hi,\n\nI'd like the founder rate at launch.\nEmail:\n") + email + "\n"
+        );
+        $("founderMsg").className = "form-msg hint";
+        $("founderMsg").textContent = d["j.mailHint"];
+      }
+    });
+  });
   function apply(l) {
     lang = l;
     var d = l === "fr" ? FR : EN;
@@ -1130,9 +1254,10 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     document.querySelector('meta[name="description"]').content = d["meta.desc"];
     document.querySelectorAll("[data-t]").forEach(function (el) { if (d[el.dataset.t] != null) el.innerHTML = d[el.dataset.t]; });
     document.querySelectorAll("[data-ta]").forEach(function (el) { el.setAttribute("aria-label", d[el.dataset.ta]); });
+    document.querySelectorAll("[data-ph]").forEach(function (el) { if (d[el.dataset.ph] != null) el.placeholder = d[el.dataset.ph]; });
     $("lang").textContent = l === "fr" ? "EN" : "FR";
     if (HYD.w >= HYD.goal) { hint.textContent = DYN[l].done; $("drinkLabel").textContent = DYN[l].reset; }
-    renderDate(); renderHyd(); renderFuel(); wireMail();
+    renderDate(); renderHyd(); renderFuel(); wireMail(); renderSlots();
     if (scan.dataset.phase === "2") counts(true);
   }
   var saved = null;
