@@ -3,945 +3,855 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Hylens IA · Precision hydration, calculated from your meals</title>
-<meta name="description" content="Android closed beta (Gmail). iPhone waitlist. Founder rate: 100 spots per store (€4.99/mo or €29.99/yr).">
-<meta property="og:title" content="Hylens IA · Precision hydration, calculated from your meals">
-<meta property="og:description" content="Your body is 60% water. Hylens helps you understand it better. Free during the Android beta.">
+<meta name="description" content="Lose weight, gain muscle, eat better. Scan your meals, follow your training, muscles and sleep. Free during the Android beta.">
+<meta property="og:title" content="Hylens IA · Lose weight, gain muscle, eat better">
+<meta property="og:description" content="One photo of your meal, all your numbers. Hylens is for you.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.hylensia.fr/">
-<meta property="og:image" content="https://www.hylensia.fr/assets/og.png">
+<meta property="og:image" content="https://www.hylensia.fr/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#030D18">
 <link rel="canonical" href="https://www.hylensia.fr/">
-<link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="preload" as="image" href="assets/koi-poster.jpg" fetchpriority="high">
+<meta name="theme-color" content="#030C18">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<title>Hylens IA · Lose weight, gain muscle, eat better</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
 <style>
+/* L'étang de nuit : la vidéo des carpes ouvre la page, puis on plonge dans un fond où les carpes suivent le défilement. Le contenu flotte sur des plaques de verre sombre. */
 :root {
-  --bg: #030D18;
-  --deep: #061A2E;
-  --ink: #EAF4FB;
-  --muted: #A8C1D8;
-  --faint: #7491AD;
-  --line: rgba(130, 200, 240, 0.16);
-  --aqua: #3DD6D0;
-  --water: #4FC3F7;
-  --salt: #FF6B8A;
-  --k: #7ED38A;
-  --kcal: #F5B301;
-  --prot: #FF8A4C;
-  --sport: #9B8CFF;
-  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --wrap: 1160px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  color-scheme: dark;
+  --deep: #030C18; --glass: rgba(9, 25, 45, 0.6); --glass-solid: rgba(10, 28, 51, 0.82); --line: rgba(150, 205, 235, 0.17);
+  --ink: #EFF7FC; --soft: #BCD0E0; --faint: #8DA6BB;
+  --aqua: #3DD6D0; --violet: #B9A4FF; --coral: #FF8A7D; --gold: #FFD66B; --warm: #F2B45A; --mint: #3DD6B0;
+  --heat-none: #3A4A5E; --heat-low: #5B4BFF; --heat-mid: #9B6BFF; --heat-high: #E05BC8; --heat-max: #FF4F8B;
+  --mannequin: #07081C; --on-accent: #04302F;
+  --display: "Manrope", "Segoe UI", system-ui, sans-serif; --body: "Figtree", "Segoe UI", system-ui, sans-serif; --mono: "DM Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+  --wrap: 1140px; --ease: cubic-bezier(0.22, 1, 0.36, 1); color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; background: var(--bg); }
-body { margin: 0; color: var(--ink); font: 400 17px/1.6 var(--font); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-.abyss { position: fixed; inset: 0; z-index: -2; background: radial-gradient(120% 75% at 50% -12%, #0D3A5C 0%, #072440 38%, #041526 68%, var(--bg) 100%); }
-#sea { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
-.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-a { color: inherit; }
-a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--aqua); outline-offset: 3px; border-radius: 12px; }
-h1, h2, h3 { margin: 0; letter-spacing: -0.03em; text-wrap: balance; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; background: var(--deep); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .rise { transition: none; } }
+body.still .phone-screen, body.still .mannequin path.on, body.still .defi *, body.still .wear-empty svg { animation-play-state: paused; }
+body { margin: 0; background: var(--deep); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--deep); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--aqua); }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, path:focus-visible { outline: 2px solid var(--aqua); outline-offset: 3px; border-radius: 10px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.035em; font-weight: 800; color: var(--ink); }
 p { margin: 0; }
-img { display: block; max-width: 100%; height: auto; }
-svg text { font-family: var(--font); }
-section { padding-block: 110px; position: relative; }
-.label { font: 600 12px/1 var(--font); letter-spacing: 0.16em; text-transform: uppercase; color: var(--aqua); }
-.head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; max-width: 760px; margin: 0 auto 60px; }
-.head h2 { font-size: clamp(32px, 4.4vw, 54px); line-height: 1.08; font-weight: 800; }
-.head p { color: var(--muted); font-size: 19px; }
-.glow { background: linear-gradient(90deg, var(--aqua), var(--water), var(--sport), var(--aqua)); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 9s linear infinite; font-style: normal; }
-@keyframes shimmer { to { background-position: 300% 0; } }
-.glass { background: linear-gradient(180deg, rgba(22, 60, 96, 0.5), rgba(8, 30, 52, 0.55)); border: 1px solid var(--line); border-radius: 28px; backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; color: inherit; }
+.eyebrow { font: 600 13px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--aqua); }
 
-/* Apparition au défilement */
-.js .rv { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
-.js .rv.in { opacity: 1; transform: none; }
+/* Les trois plans du fond */
+#pond { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0; background: radial-gradient(90% 70% at 50% 0%, #0D3550 0%, #06182B 48%, var(--deep) 100%); }
+.film { position: fixed; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; background: #020810; will-change: opacity; }
+.film video, .film img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+.film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(3, 12, 24, 0.5), rgba(3, 12, 24, 0.14) 44%, rgba(3, 12, 24, 0.42)); }
+/* Zone sombre : la vidéo reprend à gauche, avec le mannequin et les défis. */
+.dusk { position: fixed; inset: 0; z-index: 1; background: var(--mannequin); opacity: 0; visibility: hidden; pointer-events: none; will-change: opacity; }
+.dusk video { position: absolute; left: 0; top: 0; height: 100%; width: 42vw; object-fit: cover; object-position: 86% 50%; -webkit-mask-image: linear-gradient(90deg, #000 62%, transparent); mask-image: linear-gradient(90deg, #000 62%, transparent); }
+.nuit-wrap { margin-left: 42vw; padding-right: max(24px, 3vw); padding-left: 12px; }
+.nuit-wrap .head { margin-bottom: 26px; }
+#nuit { margin-bottom: 130vh; }
+@media (max-width: 820px) { #nuit { margin-bottom: 95vh; } }
+@media (max-width: 960px) {
+  .dusk video { width: 100%; object-position: 76% 50%; opacity: .42; -webkit-mask-image: none; mask-image: none; }
+  .nuit-wrap { margin-left: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+}
+.page { position: relative; z-index: 2; }
+section { padding-block: 76px; }
+.head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 13px; max-width: 760px; margin: 0 auto 38px; }
+.head h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.03; }
+.head p { color: var(--soft); max-width: 50ch; font-size: 19px; }
+.pre { opacity: .25; transform: translateY(46px) scale(.985); }
+.rise { transition: opacity .9s var(--ease), transform .9s var(--ease); }
 
-/* Boutons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 16px; border: 0; background: #FFFFFF; color: #04192B; font: 600 16px/1 var(--font); text-decoration: none; cursor: pointer; white-space: nowrap; box-shadow: 0 0 0 0 rgba(61, 214, 208, 0); transition: transform .25s var(--ease), box-shadow .35s var(--ease); }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 0 0 6px rgba(61, 214, 208, 0.14), 0 18px 40px -16px rgba(61, 214, 208, 0.6); }
-.btn svg { width: 22px; height: 22px; flex: none; }
-.btn.ghost { background: rgba(255, 255, 255, 0.04); color: var(--ink); border: 1px solid var(--line); }
-.btn.ghost:hover { border-color: rgba(61, 214, 208, 0.5); box-shadow: none; }
-.btn.small { min-height: 42px; padding: 0 18px; border-radius: 12px; font-size: 15px; }
-.store { min-height: 60px; padding: 0 24px 0 18px; gap: 12px; }
-.store span { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; line-height: 1; }
-.store small { font: 600 11px/1 var(--font); letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
-.store b { font: 700 19px/1 var(--font); letter-spacing: -0.01em; }
-.store svg { width: 26px; height: 26px; }
-.breathe { animation: breathe 3.6s ease-in-out infinite; }
-@keyframes breathe { 0%, 100% { box-shadow: 0 0 0 0 rgba(61, 214, 208, 0.0), 0 0 30px -6px rgba(61, 214, 208, 0.35); } 50% { box-shadow: 0 0 0 8px rgba(61, 214, 208, 0.08), 0 0 50px -4px rgba(61, 214, 208, 0.55); } }
-body.has-play .if-beta, body:not(.has-play) .if-play { display: none !important; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 0; background: var(--aqua); color: var(--on-accent); font: 700 16px/1 var(--body); text-decoration: none; cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -12px rgba(61, 214, 208, 0.7); }
+.btn:disabled { opacity: .6; cursor: wait; transform: none; box-shadow: none; }
+.btn.small { min-height: 42px; padding: 0 20px; font-size: 15px; }
+.btn.ghost { background: rgba(255, 255, 255, 0.06); color: var(--ink); border: 1.5px solid rgba(255, 255, 255, 0.28); }
+.btn.ghost:hover { border-color: var(--ink); box-shadow: none; }
+.btn svg { width: 20px; height: 20px; flex: none; }
 
-/* En-tête */
-.top { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s; }
-.top.scrolled { background: rgba(3, 13, 24, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: var(--line); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 800 20px/1 var(--font); letter-spacing: -0.02em; white-space: nowrap; }
-.brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 0 24px -4px rgba(61, 214, 208, 0.6); }
-.nav { display: flex; align-items: center; gap: 28px; }
-.nav a.link { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 15px; }
+.top { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); z-index: 20; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s; }
+.top.on { background: rgba(3, 12, 24, 0.82); border-bottom-color: var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 800 20px/1 var(--display); letter-spacing: -0.02em; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a.link { color: var(--soft); text-decoration: none; font-weight: 600; font-size: 15px; }
 .nav a.link:hover { color: var(--ink); }
-.lang { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font: 600 13px/1 var(--font); color: var(--ink); cursor: pointer; }
-.lang:hover { border-color: rgba(61, 214, 208, 0.5); }
-@media (max-width: 860px) { .nav { gap: 10px; } .nav a.link { display: none; } }
-@media (max-width: 420px) { .nav .btn.small { display: none; } }
+.lang { min-width: 42px; min-height: 42px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.06); font: 700 13px/1 var(--body); cursor: pointer; }
+.lang:hover { border-color: var(--ink); }
+@media (max-width: 820px) { .nav a.link { display: none; } }
 
-/* Ouverture */
-.hero { padding-block: 48px 90px; }
-.hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
-.hero-text { display: flex; flex-direction: column; gap: 26px; min-width: 0; text-shadow: 0 2px 18px rgba(3, 13, 24, 0.9); }
-.proof { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03); font: 500 14px/1 var(--font); color: var(--muted); }
-.proof img { width: 28px; height: 28px; border-radius: 50%; }
-.proof b { color: var(--ink); font-weight: 600; }
-.hero h1 { font-size: clamp(40px, 5.4vw, 68px); line-height: 1.05; font-weight: 800; }
-.hero h1 span { display: block; }
-.hero h1 span + span { margin-top: 10px; font-size: 0.62em; line-height: 1.15; font-weight: 600; color: var(--muted); letter-spacing: -0.02em; }
-.hero h1 em { font-weight: 700; }
-.lede { font-size: clamp(17px, 1.6vw, 19px); color: var(--muted); max-width: 44ch; }
-.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.note { font-size: 14px; color: var(--faint); }
-@media (max-width: 900px) { .hero { padding-block: 24px 70px; } .hero .wrap { grid-template-columns: 1fr; gap: 48px; } }
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-start; padding-block: clamp(92px, 12vh, 124px) 150px; }
+.hero .wrap { width: 100%; }
+.hero-text { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; will-change: transform, opacity; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); font: 600 14px/1 var(--body); }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 4px rgba(61, 214, 208, 0.25); }
+.hero h1 { display: flex; flex-direction: column; gap: 10px; line-height: 1; text-shadow: 0 8px 50px rgba(3, 12, 24, 0.75); }
+.hero h1 .h-q { font-size: clamp(27px, 3.5vw, 50px); line-height: 1.1; max-width: 22ch; margin-inline: auto; }
+.hero h1 em { font-style: normal; font-size: clamp(46px, 7.6vw, 108px); line-height: .98; color: var(--aqua); }
+.lede { font-size: clamp(18px, 1.9vw, 22px); color: var(--ink); max-width: 36ch; text-shadow: 0 2px 20px rgba(3, 12, 24, 0.85); }
+.cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+@keyframes bob { 50% { transform: translateY(7px); } }
 
-/* Widget hydratation (comme dans l'appli) */
-.app { width: 100%; max-width: 440px; justify-self: center; padding: 22px 22px 24px; position: relative; transition: transform .5s var(--ease); }
-.app.pulse { transform: scale(1.015); }
-.app-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
-.drops { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; background: rgba(79, 195, 247, 0.12); font: 700 14px/1 var(--font); color: var(--water); }
-.drops svg { width: 14px; height: 14px; }
-.app-date { font: 700 16px/1.2 var(--font); text-align: center; flex: 1; }
-.avatar { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; color: var(--muted); }
-.avatar svg { width: 16px; height: 16px; }
-.rings { width: 100%; height: auto; display: block; overflow: visible; }
-.trk { fill: none; stroke: rgba(255, 255, 255, 0.08); }
-.arc { fill: none; stroke: currentColor; stroke-linecap: round; stroke-dasharray: 0 100; transition: stroke-dasharray 1.3s var(--ease), stroke-dashoffset 1.3s var(--ease); filter: drop-shadow(0 0 6px currentColor); }
-.lvl { transition: transform 1.3s var(--ease); }
-.rv-big { font: 800 40px/1 var(--font); fill: #FFFFFF; letter-spacing: -0.03em; }
-.rv-mid { font: 800 24px/1 var(--font); fill: #FFFFFF; }
-.rv-sm { font: 500 13px/1 var(--font); fill: var(--muted); }
-.legend { display: flex; justify-content: center; gap: 18px; margin: 4px 0 18px; font-size: 13px; color: var(--muted); }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.legend i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
-.drink-row { display: flex; align-items: center; gap: 14px; }
-.drink { flex: none; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; border: 0; cursor: pointer; background: linear-gradient(135deg, var(--aqua), var(--water)); color: #03222B; font: 700 16px/1 var(--font); transition: transform .2s var(--ease); }
-.drink:active { transform: scale(0.95); }
-.drink svg { width: 16px; height: 16px; }
-.hint { font-size: 14px; color: var(--muted); }
+.plate { background: var(--glass); border: 1px solid var(--line); border-radius: 30px; box-shadow: 0 50px 90px -56px #000; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+@media (max-width: 820px) { .plate { background: var(--glass-solid); backdrop-filter: none; -webkit-backdrop-filter: none; } }
 
-/* Bandeau */
-.strip { padding-block: 0; }
-.strip ul { margin: 0; padding: 26px 28px; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.strip li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; min-width: 0; }
-.strip b { font: 700 19px/1.2 var(--font); letter-spacing: -0.01em; }
-.strip span { font-size: 14px; color: var(--muted); }
-@media (max-width: 760px) { .strip ul { grid-template-columns: repeat(2, 1fr); row-gap: 24px; padding: 24px 18px; } }
+/* Scan : la vidéo au centre, le résumé dessous */
+.scan-solo { display: flex; flex-direction: column; align-items: center; gap: clamp(26px, 4vw, 42px); }
+.scan-film { height: min(82vh, 720px); height: min(82svh, 720px); aspect-ratio: 9 / 16; max-width: 100%; border-radius: 30px; overflow: hidden; background: #030C18; border: 1px solid rgba(150, 205, 235, 0.28); box-shadow: 0 0 70px -14px rgba(61, 214, 208, 0.55), 0 40px 80px -40px #000; }
+.scan-film video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.scan-sum { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 13px; max-width: 680px; }
+.scan-sum h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.03; }
+.scan-sum p { color: var(--soft); font-size: clamp(18px, 1.7vw, 21px); max-width: 44ch; }
+@media (max-width: 820px) { .scan-film { height: auto; width: min(76vw, 340px); border-radius: 24px; } }
+/* Page d'essai : 3 aliments, 3 anneaux */
+.try-btn { min-width: 220px; min-height: 58px; font-size: 18px; box-shadow: 0 0 34px -6px rgba(61, 214, 208, 0.8); }
+.try-page { position: fixed; inset: 0; z-index: 40; overflow-y: auto; background: radial-gradient(90% 70% at 50% 0%, #0D3550, #06182B 50%, var(--deep)); }
+.try-in { min-height: 100%; max-width: 1040px; margin: 0 auto; padding: calc(24px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(32px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; justify-content: center; gap: 26px; }
+.try-close { position: fixed; top: calc(14px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: rgba(3, 12, 24, 0.82); font-size: 24px; line-height: 1; cursor: pointer; }
+.try-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+.try-head h2 { font-size: clamp(34px, 5vw, 58px); line-height: 1.03; }
+.try-head p { color: var(--soft); font-size: 18px; }
+.try-box { padding: clamp(18px, 3vw, 34px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(22px, 4vw, 48px); align-items: center; }
+.try-left { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.try-form { display: flex; gap: 10px; }
+.try-form input { flex: 1; min-width: 0; min-height: 58px; padding: 0 18px; border-radius: 16px; border: 1.5px solid rgba(61, 214, 208, 0.45); background: rgba(255, 255, 255, 0.06); font: 600 18px var(--body); color: var(--ink); }
+.try-form input::placeholder { color: var(--faint); font-weight: 500; }
+.try-form input:disabled { opacity: .55; }
+.try-form .btn { min-height: 58px; border-radius: 16px; padding: 0 24px; }
+.try-form .btn:disabled { cursor: not-allowed; }
+.try-note { min-height: 1.4em; font-size: 15px; font-weight: 600; color: var(--soft); }
+.try-count { font: 500 14px var(--mono); color: var(--soft); }
+.items { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.items li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.items .n { font-weight: 600; font-size: 15px; line-height: 1.25; overflow-wrap: anywhere; }
+.empty-plate { display: block !important; padding: 16px 0 !important; color: var(--soft); font-size: 15px; }
+.stepper { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; }
+.stepper button { width: 36px; height: 36px; border: 0; background: none; font-size: 18px; cursor: pointer; border-radius: 50%; }
+.stepper input { width: 46px; border: 0; background: none; text-align: right; font: 500 15px var(--mono); color: var(--ink); -moz-appearance: textfield; appearance: textfield; }
+.stepper input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.stepper span { font: 500 14px var(--mono); color: var(--faint); padding-right: 2px; }
+.rm { width: 36px; height: 36px; border: 0; background: none; color: var(--faint); font-size: 20px; cursor: pointer; border-radius: 50%; }
+.rings { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.ring { display: flex; align-items: center; gap: 18px; width: 100%; max-width: 270px; }
+.ring .dial { position: relative; flex: none; width: clamp(96px, 11vw, 124px); aspect-ratio: 1; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); display: block; }
+.ring circle { fill: none; stroke-width: 9; }
+.ring .track { stroke: rgba(255, 255, 255, 0.1); }
+.ring .fill { stroke-linecap: round; stroke-dasharray: 264; stroke-dashoffset: 264; transition: stroke-dashoffset .7s var(--ease); }
+.ring .mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ring .mid b { font: 500 25px/1 var(--mono); font-variant-numeric: tabular-nums; }
+.ring .mid small { font: 500 12px/1 var(--mono); color: var(--soft); margin-top: 4px; }
+.ring > span { font: 700 18px/1 var(--display); }
+@media (max-width: 760px) {
+  .try-box { grid-template-columns: minmax(0, 1fr); }
+  .try-in { justify-content: flex-start; padding-top: calc(66px + env(safe-area-inset-top, 0px)); }
+  .try-form .btn { padding: 0 18px; }
+  .items li { grid-template-columns: minmax(0, 1fr) auto; }
+  .items .n { grid-column: 1 / -1; }
+  .rings { flex-direction: row; justify-content: space-between; gap: 8px; }
+  .ring { flex-direction: column; gap: 8px; width: 31%; }
+  .ring .dial { width: 100%; }
+  .ring > span { font-size: 14px; }
+  .ring .mid b { font-size: 20px; }
+}
 
-/* Démo d'analyse d'un repas */
-.how { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: center; }
-.scan { position: relative; width: 100%; max-width: 420px; justify-self: center; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 34px; padding: 0; }
-.scan-photo { position: absolute; inset: 0 0 auto 0; height: 66%; }
-.scan-photo img { width: 100%; height: 100%; object-fit: cover; }
-.scan-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3, 13, 24, 0) 55%, rgba(6, 26, 46, 0.95)); }
-.frame { position: absolute; left: 12%; right: 12%; top: 10%; height: 70%; z-index: 1; }
-.frame i { position: absolute; width: 16%; aspect-ratio: 1; border: 3px solid #FFFFFF; }
-.frame i:nth-child(1) { left: 0; top: 0; border-right: 0; border-bottom: 0; border-radius: 14px 0 0 0; }
-.frame i:nth-child(2) { right: 0; top: 0; border-left: 0; border-bottom: 0; border-radius: 0 14px 0 0; }
-.frame i:nth-child(3) { left: 0; bottom: 0; border-right: 0; border-top: 0; border-radius: 0 0 0 14px; }
-.frame i:nth-child(4) { right: 0; bottom: 0; border-left: 0; border-top: 0; border-radius: 0 0 14px 0; }
-.laser { position: absolute; left: 3%; right: 3%; height: 2px; top: 50%; background: var(--aqua); box-shadow: 0 0 18px 4px rgba(61, 214, 208, 0.7); animation: laser 1.8s ease-in-out infinite; transition: opacity .4s; }
-@keyframes laser { 0%, 100% { top: 4%; } 50% { top: 94%; } }
-.scan:not([data-phase="0"]) .laser { opacity: 0; }
-.tag { position: absolute; z-index: 2; font: 600 13px/1 var(--font); padding: 8px 12px; border-radius: 999px; background: rgba(3, 13, 24, 0.78); border: 1px solid rgba(61, 214, 208, 0.6); color: var(--ink); white-space: nowrap; box-shadow: 0 0 20px -4px rgba(61, 214, 208, 0.5); opacity: 0; transform: scale(0.6); transition: opacity .4s var(--ease), transform .5s var(--ease); }
-.tag.t1 { left: 44%; top: 20%; } .tag.t2 { left: 8%; top: 40%; } .tag.t3 { left: 34%; top: 58%; }
-.tag.t2 { transition-delay: .25s; } .tag.t3 { transition-delay: .5s; }
-.scan[data-phase="1"] .tag, .scan[data-phase="2"] .tag { opacity: 1; transform: none; }
-.sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 22px; border-radius: 28px 28px 0 0; background: linear-gradient(180deg, #0E2B46, #071F36); border-top: 1px solid var(--line); transform: translateY(105%); transition: transform .8s var(--ease); display: flex; flex-direction: column; gap: 12px; }
-.scan[data-phase="2"] .sheet { transform: none; }
-.sheet b.t { font: 700 18px/1.25 var(--font); }
-.vals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.vals div { padding: 10px; border-radius: 14px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.vals small { font-size: 12px; color: var(--muted); }
-.vals b { font: 700 16px/1 var(--font); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--c); }
-.steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.steps li { display: flex; gap: 18px; padding: 22px 24px; border-radius: 22px; border: 1px solid transparent; opacity: .5; transition: opacity .5s, background .5s, border-color .5s, box-shadow .5s; }
-.steps li.on { opacity: 1; background: rgba(22, 60, 96, 0.45); border-color: var(--line); box-shadow: 0 0 50px -18px rgba(61, 214, 208, 0.45); }
-.steps .n { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid rgba(61, 214, 208, 0.5); color: var(--aqua); font: 700 15px/1 var(--font); }
-.steps li.on .n { background: var(--aqua); color: #03222B; box-shadow: 0 0 20px rgba(61, 214, 208, 0.6); }
-.steps h3 { font: 700 20px/1.3 var(--font); letter-spacing: -0.015em; }
-.steps p { color: var(--muted); margin-top: 4px; }
-@media (max-width: 900px) { .how { grid-template-columns: 1fr; gap: 36px; } .vals { grid-template-columns: repeat(2, 1fr); } .scan { aspect-ratio: 4 / 5.4; } }
+/* Mannequin et usure, à droite de la vidéo */
+.body-box { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); align-items: center; gap: clamp(8px, 2vw, 28px); }
+.body-stage { padding: 0 8px; display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0; }
+.flip-row { display: flex; gap: 6px; background: rgba(255, 255, 255, 0.08); padding: 4px; border-radius: 999px; }
+.flip-row button { min-height: 38px; padding: 0 20px; border: 0; border-radius: 999px; background: none; font-weight: 600; font-size: 14px; cursor: pointer; }
+.flip-row button[aria-pressed="true"] { background: var(--ink); color: var(--mannequin); }
+.mannequin { position: relative; width: 100%; max-width: 360px; aspect-ratio: 260 / 495; }
+.mannequin img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mannequin svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mannequin path { fill: transparent; stroke: transparent; stroke-width: 2; stroke-linejoin: round; cursor: pointer; transition: fill .2s; }
+.mannequin path:hover { fill: rgba(255, 255, 255, 0.16); }
+.mannequin path.on { stroke: #FFFFFF; stroke-opacity: 1; fill-opacity: .72; animation: breathe 1.6s ease-in-out infinite; }
+@keyframes breathe { 50% { stroke-opacity: .35; } }
+.side { background: var(--glass); border: 1px solid var(--line); border-radius: 24px; padding: clamp(20px, 2.4vw, 30px); display: flex; flex-direction: column; gap: 20px; min-width: 0; justify-content: center; }
+.wear-empty { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; color: var(--soft); font-weight: 600; font-size: 18px; }
+.wear-empty svg { width: 44px; height: 44px; color: var(--aqua); animation: bob 1.8s ease-in-out infinite; }
+.wear-body { display: flex; flex-direction: column; gap: 20px; }
+.wear-top { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; min-height: 44px; }
+.wear-top h3 { font-size: clamp(28px, 3vw, 38px); line-height: 1.05; }
+.state { font: 700 13px/1 var(--body); padding: 7px 10px; border-radius: 9px; opacity: 0; transform: scale(.8); transition: opacity .3s, transform .3s var(--ease); }
+.state.in { opacity: 1; transform: none; }
+.state.recover { background: rgba(242, 180, 90, 0.18); color: var(--warm); }
+.state.ready { background: rgba(61, 214, 176, 0.16); color: var(--mint); }
+.state.low { background: rgba(255, 255, 255, 0.08); color: var(--soft); }
+.load { display: flex; flex-direction: column; gap: 9px; }
+.load-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; color: var(--soft); font-weight: 600; }
+.load-row b { font: 500 clamp(40px, 4.6vw, 62px)/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+.bar { position: relative; display: block; height: 13px; border-radius: 7px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: inherit; width: 0; }
+.bar.loading::after { content: ""; position: absolute; top: 0; bottom: 0; width: 38%; border-radius: inherit; background: linear-gradient(90deg, transparent, var(--aqua), transparent); animation: scanbar .75s linear infinite; }
+@keyframes scanbar { from { left: -40%; } to { left: 104%; } }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.tiles div { background: rgba(255, 255, 255, 0.05); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 7px; min-width: 0; opacity: 0; transform: translateY(10px); }
+.tiles.in div { opacity: 1; transform: none; transition: opacity .4s, transform .4s var(--ease); }
+.tiles.in div:nth-child(2) { transition-delay: .1s; }
+.tiles.in div:nth-child(3) { transition-delay: .2s; }
+.tiles small { font: 600 12px/1.2 var(--body); color: var(--soft); }
+.tiles b { font: 500 16px/1.15 var(--mono); }
+.sample { font-size: 13px; color: var(--faint); }
+@media (max-width: 960px) { .body-box { grid-template-columns: minmax(0, 1fr); } .body-stage { order: -1; } .mannequin { max-width: min(240px, 62vw); } }
 
-/* Carburant : calories d'un repas dans la journée */
-.fuel { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3.5vw, 44px); align-items: center; padding: clamp(24px, 4vw, 44px); }
-.plates { display: flex; flex-direction: column; gap: 10px; }
-.plates > small, .macros > small { font: 600 12px/1 var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
-.plate { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03); color: var(--ink); font: 600 15px/1.3 var(--font); text-align: left; cursor: pointer; transition: border-color .3s, background .3s, transform .3s var(--ease); }
-.plate:hover { background: rgba(255, 255, 255, 0.06); transform: translateX(3px); }
-.plate i { flex: none; width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--c) 70%, #fff), var(--c) 60%, color-mix(in srgb, var(--c) 40%, #000)); box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06); transition: box-shadow .3s; }
-.plate span { flex: 1; min-width: 0; }
-.plate em { font-style: normal; font-weight: 700; font-size: 13px; color: var(--faint); font-variant-numeric: tabular-nums; }
-.plate[aria-checked="true"] { border-color: color-mix(in srgb, var(--kcal) 55%, transparent); background: color-mix(in srgb, var(--kcal) 9%, transparent); }
-.plate[aria-checked="true"] i { box-shadow: 0 0 0 3px color-mix(in srgb, var(--kcal) 60%, transparent), 0 0 22px color-mix(in srgb, var(--c) 70%, transparent); }
-.plate[aria-checked="true"] em { color: var(--kcal); }
-.gauge { position: relative; width: min(300px, 100%); justify-self: center; }
-.gauge svg { width: 100%; height: auto; display: block; overflow: visible; }
-.seg { fill: none; stroke: currentColor; stroke-width: 18; stroke-dasharray: 0 100; transition: stroke-dasharray 1s var(--ease), stroke-dashoffset 1s var(--ease); }
-.seg.lit { filter: drop-shadow(0 0 10px currentColor); }
-.gauge-mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; }
-.gauge-mid small { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
-.gauge-mid b { font: 800 52px/1 var(--font); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
-.gauge-mid b span { font-size: 0.4em; font-weight: 600; color: var(--kcal); margin-left: 4px; }
-.gauge-mid .rest { font: 600 13px/1.2 var(--font); color: var(--faint); font-variant-numeric: tabular-nums; }
-.gauge-key { display: flex; justify-content: center; gap: 16px; margin-top: 14px; font-size: 13px; color: var(--muted); }
-.gauge-key span { display: inline-flex; align-items: center; gap: 7px; }
-.gauge-key i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
-.macros { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-.bar { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 15px; color: var(--muted); }
-.bar b { color: var(--ink); font-variant-numeric: tabular-nums; }
-.bar u { grid-column: 1 / -1; height: 8px; border-radius: 99px; background: rgba(255, 255, 255, 0.07); overflow: hidden; text-decoration: none; }
-.bar u::before { content: ""; display: block; height: 100%; width: var(--w, 0%); border-radius: inherit; background: var(--c); box-shadow: 0 0 12px var(--c); transition: width 1s var(--ease); }
-.effect { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
-.effect div { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03); }
-.effect small { display: block; font-size: 12px; color: var(--faint); }
-.effect b { font: 700 18px/1.3 var(--font); color: var(--c); font-variant-numeric: tabular-nums; }
-.fuel-note { font-size: 13px; color: var(--faint); }
-@media (max-width: 960px) { .fuel { grid-template-columns: 1fr 1fr; } .plates { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; } .plate { flex: 1 1 180px; } }
-@media (max-width: 640px) { .fuel { grid-template-columns: 1fr; } }
+/* Défilements et défis */
+.recipe-row { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: center; gap: clamp(30px, 6vw, 90px); }
+.fan { display: flex; justify-content: center; align-items: center; perspective: 1400px; padding-block: 24px; min-width: 0; }
+.phone { flex: none; width: clamp(150px, 15.5vw, 226px); aspect-ratio: 9 / 19; padding: 7px; border-radius: 34px; background: #0B1B2B; box-shadow: 0 0 0 1px rgba(150, 205, 235, 0.25), 0 34px 70px -26px rgba(61, 214, 208, 0.45); transition: transform .45s var(--ease); }
+.phone:nth-child(1) { transform: rotateY(24deg) rotateZ(-8deg) translateY(16px); margin-right: -34px; z-index: 1; }
+.phone:nth-child(2) { transform: translateY(-22px) scale(1.07); z-index: 2; }
+.phone:nth-child(3) { transform: rotateY(-24deg) rotateZ(8deg) translateY(16px); margin-left: -34px; z-index: 1; }
+.fan:hover .phone:nth-child(1) { transform: rotateY(14deg) rotateZ(-5deg) translateY(4px); }
+.fan:hover .phone:nth-child(3) { transform: rotateY(-14deg) rotateZ(5deg) translateY(4px); }
+.phone-screen { position: relative; width: 100%; height: 100%; border-radius: 27px; overflow: hidden; background: var(--mannequin); animation: floaty 7s ease-in-out infinite; }
+.phone:nth-child(2) .phone-screen { animation-delay: -2.3s; }
+.phone:nth-child(3) .phone-screen { animation-delay: -4.6s; }
+.phone-screen img { width: 100%; height: 66%; object-fit: cover; display: block; }
+.phone-screen div { padding: 13px 12px; display: flex; flex-direction: column; gap: 6px; }
+.phone:nth-child(3) .phone-screen div { align-items: flex-end; text-align: right; }
+.phone-screen small { font: 700 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--aqua); }
+.phone-screen b { font: 800 clamp(15px, 1.5vw, 20px)/1.15 var(--display); letter-spacing: -0.02em; }
+@keyframes floaty { 50% { transform: translateY(-5px); } }
+.recipe-copy { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.recipe-copy h2 { font-size: clamp(38px, 5.2vw, 66px); line-height: 1.02; }
+.recipe-copy p { font-size: clamp(18px, 1.7vw, 21px); color: var(--soft); max-width: 40ch; }
+@media (max-width: 820px) { .recipe-row { grid-template-columns: minmax(0, 1fr); } .recipe-copy { align-items: center; text-align: center; } .phone { width: 34vw; padding: 5px; border-radius: 24px; } .phone-screen { border-radius: 19px; } .phone:nth-child(1) { margin-right: -22px; } .phone:nth-child(3) { margin-left: -22px; } .phone-screen div { padding: 9px; } .phone-screen small { font-size: 9px; } .phone-screen b { font-size: 14px; } }
+.defis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; perspective: 1100px; }
+.defi { position: relative; aspect-ratio: 3 / 4; border-radius: 26px; overflow: hidden; border: 1px solid var(--line); background: var(--mannequin); transform-style: preserve-3d; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.defi:hover { box-shadow: 0 36px 70px -32px rgba(61, 214, 208, 0.55); }
+.defi img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; object-position: 50% 28%; transform: translateY(var(--py, 0px)) scale(1.03); }
+.defi::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 42%, rgba(3, 12, 24, 0.94)); }
+.fx { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.aura { position: absolute; left: 8%; right: 8%; top: 6%; height: 72%; background: radial-gradient(closest-side, rgba(255, 228, 92, 0.5), rgba(255, 159, 28, 0.3) 45%, rgba(255, 61, 46, 0)); mix-blend-mode: screen; animation: aura 2.4s ease-in-out infinite; }
+@keyframes aura { 0%, 100% { opacity: .45; transform: scale(.94); } 50% { opacity: .9; transform: scale(1.08); } }
+.flames { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; background: linear-gradient(0deg, rgba(255, 61, 46, 0.75), rgba(255, 159, 28, 0.28) 42%, rgba(255, 159, 28, 0)); mix-blend-mode: screen; animation: flick .9s linear infinite; }
+.edge { position: absolute; inset: 0; border-radius: inherit; border: 2px solid #FF9F1C; box-shadow: inset 0 0 26px rgba(255, 140, 40, 0.55); animation: flick .9s linear infinite; }
+@keyframes flick { 0%, 100% { opacity: .55; } 30% { opacity: 1; } 60% { opacity: .65; } }
+.ember { position: absolute; bottom: 12%; border-radius: 50%; animation: ember 3.2s linear infinite; }
+@keyframes ember { 0% { opacity: 0; transform: translate(0, 0); } 15% { opacity: 1; } 50% { transform: translate(var(--dx), -170px); } 80% { opacity: .6; } 100% { opacity: 0; transform: translate(0, -340px); } }
+.sweep { position: absolute; top: -30%; bottom: -30%; left: 0; width: 22%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); transform: translateX(-200%) rotate(20deg); animation: sweep 3.6s linear infinite; mix-blend-mode: screen; }
+@keyframes sweep { 0% { transform: translateX(-200%) rotate(20deg); } 55%, 100% { transform: translateX(560%) rotate(20deg); } }
+.spark { position: absolute; fill: #FFF6C9; filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)); animation: spark 3.6s linear infinite; }
+@keyframes spark { 0%, 25%, 100% { opacity: 0; transform: scale(.3); } 10% { opacity: 1; transform: scale(1.1); } }
+.defi div { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2; display: flex; flex-direction: column; gap: 7px; }
+.defi h3 { font-size: clamp(21px, 1.9vw, 27px); line-height: 1.08; }
+.defi p { font-size: 15px; line-height: 1.4; color: var(--soft); }
+@media (max-width: 960px) { .defis { grid-template-columns: minmax(0, 1fr); gap: 18px; } .defi { aspect-ratio: 4 / 3.4; } }
+.climb { padding: clamp(18px, 3vw, 34px); display: flex; flex-direction: column; gap: 24px; }
+.chart { padding-top: 34px; }
+.plot { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .goal { stroke: var(--gold); stroke-width: 2; stroke-dasharray: 3 9; stroke-linecap: round; fill: none; vector-effect: non-scaling-stroke; }
+.chart .base { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.chart .line { fill: none; stroke: url(#climbGrad); stroke-width: 4; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.chart .node { fill: var(--deep); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; vector-effect: non-scaling-stroke; }
+.chart .node.on { opacity: 1; animation: pop .55s var(--ease); }
+@keyframes pop { 0% { transform: scale(.2); } 60% { transform: scale(1.5); } 100% { transform: scale(1); } }
+.chart .head { fill: #FFFFFF; filter: drop-shadow(0 0 7px var(--aqua)); }
+.c-label { position: absolute; font: 700 clamp(12px, 1.3vw, 15px)/1 var(--body); color: var(--soft); }
+.c-goal { right: 10%; top: 0; color: var(--ink); }
+.c-start { left: 0; bottom: -2px; }
+.c-time { transform: translate(-50%, 16px); padding: 5px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); color: var(--faint); white-space: nowrap; transition: color .4s, background .4s; }
+.c-time.on { color: var(--ink); background: rgba(61, 214, 208, 0.18); }
+.cup { position: absolute; left: 96%; top: 11.5%; width: clamp(38px, 5.4vw, 66px); transform: translate(-50%, -62%) scale(.55); opacity: .4; color: var(--gold); transition: transform .6s cubic-bezier(.3, 1.8, .5, 1), opacity .4s; filter: drop-shadow(0 0 14px rgba(255, 214, 107, 0.65)); }
+.cup svg { display: block; width: 100%; height: auto; fill: currentColor; }
+.chart.done .cup { transform: translate(-50%, -62%) scale(1); opacity: 1; }
+.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.steps3 div { display: flex; flex-direction: column; gap: 7px; padding: 18px; border-radius: 18px; background: rgba(255, 255, 255, 0.05); border-top: 3px solid var(--tone); opacity: .38; transform: translateY(12px); transition: opacity .5s, transform .5s var(--ease); min-width: 0; }
+.steps3 div.on { opacity: 1; transform: none; }
+.steps3 .eyebrow { color: var(--ink); }
+.steps3 h3 { font-size: clamp(20px, 2vw, 25px); line-height: 1.12; }
+.steps3 p { color: var(--soft); font-size: 16px; }
+@media (max-width: 760px) { .steps3 { grid-template-columns: minmax(0, 1fr); } .c-start { display: none; } .c-goal { top: -18px; right: 14%; } }
 
-/* Le reste est dans l'appli */
-.more { display: flex; align-items: center; gap: 22px; margin-top: 16px; padding: 22px 26px; border-radius: 24px; overflow: hidden; }
-.more .lock { flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: var(--aqua); background: rgba(61, 214, 208, 0.1); box-shadow: 0 0 30px -6px rgba(61, 214, 208, 0.5); }
-.more .lock svg { width: 22px; height: 22px; }
-.more p { flex: 1; min-width: 200px; color: var(--muted); }
-.more p b { color: var(--ink); }
-.ghosts { display: flex; gap: 10px; filter: blur(3.5px); opacity: .85; pointer-events: none; user-select: none; }
-.ghosts span { padding: 12px 18px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); background: color-mix(in srgb, var(--c) 12%, transparent); font: 700 15px/1 var(--font); white-space: nowrap; color: var(--c); }
-@media (max-width: 760px) { .more { flex-wrap: wrap; } .ghosts { width: 100%; overflow: hidden; } }
-.final-copy .tease { margin-top: 14px; color: var(--aqua); font-weight: 600; }
-
-/* Ce que Hylens suit */
-.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.tile { display: flex; gap: 18px; align-items: center; padding: 22px; border-radius: 24px; transition: transform .4s var(--ease), border-color .4s; }
-.tile:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c) 45%, transparent); }
-.tile svg { flex: none; width: 64px; height: 64px; color: var(--c); overflow: visible; }
-.tile .trk { stroke: color-mix(in srgb, var(--c) 16%, transparent); }
-.tile .arc { stroke-width: 6; filter: drop-shadow(0 0 4px color-mix(in srgb, var(--c) 60%, transparent)); }
-.tile .pct { font: 700 14px/1 var(--font); fill: var(--ink); text-anchor: middle; dominant-baseline: central; font-variant-numeric: tabular-nums; }
-.tile h3 { font: 700 18px/1.25 var(--font); display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-.tile h3 small { font: 600 13px/1 var(--font); color: var(--c); font-variant-numeric: tabular-nums; }
-.tile p { color: var(--muted); font-size: 15px; margin-top: 4px; }
-.tile > div { min-width: 0; flex: 1; }
-@media (max-width: 960px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 620px) { .tiles { grid-template-columns: 1fr; } }
-
-/* Pourquoi */
-.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.why-grid > div { padding: 32px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.why-grid svg { width: 44px; height: 44px; flex: none; margin-bottom: 6px; color: var(--aqua); }
-.why-grid h3 { font: 700 22px/1.25 var(--font); letter-spacing: -0.02em; }
-.why-grid p { color: var(--muted); max-width: 48ch; }
-@media (max-width: 760px) { .why-grid { grid-template-columns: 1fr; } .why-grid > div { padding: 26px; } }
-
-/* Avis (section cachée tant que AVIS est vide) */
-.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0; padding: 0; list-style: none; }
-.quotes li { padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-.quotes .stars { color: var(--kcal); letter-spacing: 2px; }
-.quotes blockquote { margin: 0; font: 500 18px/1.5 var(--font); }
-.quotes .who { margin-top: auto; font-weight: 600; font-size: 15px; }
-.quotes .who small { display: block; font-weight: 400; color: var(--faint); }
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.quotes li { padding: 26px; display: flex; flex-direction: column; gap: 16px; }
+.quotes blockquote { margin: 0; font: 600 18px/1.45 var(--body); }
+.quotes small { color: var(--faint); }
 @media (max-width: 860px) { .quotes { grid-template-columns: 1fr; } }
 
-/* Questions */
-.faq { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin: 0 auto; }
-.faq details { border-radius: 18px; padding: 0 24px; }
-.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0; font: 600 18px/1.4 var(--font); }
+.faq { display: flex; flex-direction: column; max-width: 820px; margin: 0 auto; padding: 8px 26px; }
+.faq details + details { border-top: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font: 700 18px/1.35 var(--display); letter-spacing: -0.01em; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font: 300 28px/1 var(--font); color: var(--aqua); flex: none; transition: transform .3s var(--ease); }
-.faq details[open] summary::after { transform: rotate(45deg); }
-.faq .ans { display: flex; flex-direction: column; gap: 12px; padding-bottom: 22px; color: var(--muted); max-width: 66ch; }
-.faq .tip { font-size: 15px; padding: 12px 16px; border-radius: 12px; background: rgba(61, 214, 208, 0.08); border: 1px solid rgba(61, 214, 208, 0.25); color: var(--ink); }
-.faq a { color: var(--aqua); }
+.faq summary::after { content: "+"; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, 0.08); font: 600 20px/1 var(--body); flex: none; }
+.faq details[open] summary::after { content: "−"; background: var(--ink); color: var(--deep); }
+.faq details p { padding: 0 0 20px; color: var(--soft); max-width: 64ch; }
 
-/* Appel final */
-.final { padding-block: 30px 110px; }
-.final-box { position: relative; overflow: hidden; border-radius: 36px; padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 28px; }
-.final-box > * { position: relative; z-index: 1; min-width: 0; }
-.final-box::before { content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(61, 214, 208, 0.35), transparent 65%); animation: drift 12s ease-in-out infinite alternate; pointer-events: none; }
-@keyframes drift { to { transform: translate(-80px, 60px) scale(1.1); } }
-.final-box h2 { font-size: clamp(28px, 3.8vw, 44px); line-height: 1.08; font-weight: 800; }
-.final-copy { display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; margin: 0 auto; max-width: 640px; }
-.final-copy .label { margin-bottom: 2px; }
-.price-chip { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 0 auto; padding: 8px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--aqua) 28%, transparent); background: rgba(61, 214, 208, 0.08); color: var(--muted); font-size: 13px; line-height: 1.35; }
+.beta { padding-block: 30px 88px; }
+.beta-box { border-radius: 34px; padding: clamp(24px, 4.4vw, 52px); display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.beta-box h2 { font-size: clamp(34px, 4.8vw, 58px); line-height: 1.02; }
+.beta-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+.price-chip { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(61, 214, 208, 0.28); background: rgba(61, 214, 208, 0.08); color: var(--soft); font-size: 14px; font-weight: 500; }
 .price-chip b { color: var(--aqua); font-weight: 700; }
-.join { display: flex; flex-direction: column; gap: 16px; min-width: 0; width: 100%; align-items: center; }
-.join .btn { align-self: center; }
-.copy-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--faint); }
-.copy-row code { font: 500 13px/1 var(--font); color: var(--muted); overflow-wrap: anywhere; max-width: 100%; }
-.copy-row button { background: none; border: 0; padding: 0; color: var(--aqua); font: 600 13px/1 var(--font); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .signup-stack { width: 100%; max-width: 980px; display: flex; flex-direction: column; gap: 10px; }
 .join-hints { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0 4px; }
 .join-hints span { font-size: 12px; line-height: 1.35; color: var(--faint); text-align: center; }
 .signup-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; align-items: stretch; }
 .signup-card { --accent: var(--aqua); position: relative; padding: 16px 14px 14px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.035); display: flex; flex-direction: column; gap: 10px; min-width: 0; height: 100%; overflow: hidden; }
-.signup-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0.85; }
-.signup-card#formFounder { --accent: var(--water); }
-.signup-card.ios { --accent: var(--sport); border-color: color-mix(in srgb, var(--sport) 18%, var(--line)); }
+.signup-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); opacity: .85; }
+.signup-card#formFounder { --accent: #4FC3F7; }
+.signup-card.ios { --accent: #9B8CFF; }
 .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; min-height: 40px; }
 .card-title { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
-.signup-card h3 { font: 700 16px/1.2 var(--font); margin: 0; letter-spacing: -0.02em; color: var(--ink); }
-.card-tag { font: 500 11px/1.3 var(--font); letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); }
+.signup-card h3 { font: 700 16px/1.2 var(--body); letter-spacing: -0.02em; }
+.card-tag { font: 500 11px/1.3 var(--body); letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
 .signup-card .field { min-width: 0; margin-top: 2px; }
 .signup-card .field label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.signup-card .field input { width: 100%; box-sizing: border-box; padding: 11px 12px; border-radius: 11px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.32); color: var(--ink); font: 500 15px/1.2 var(--font); }
-.signup-card .field input::placeholder { color: color-mix(in srgb, var(--faint) 85%, transparent); }
-.signup-card .field input:focus { outline: none; border-color: color-mix(in srgb, var(--accent) 55%, transparent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
-.signup-card .btn { width: 100%; max-width: 100%; justify-content: center; margin-top: auto; white-space: nowrap; text-align: center; line-height: 1.2; min-height: 44px; height: auto; padding: 10px 12px; border-radius: 11px; font-size: 14px; font-weight: 600; }
-.signup-card .btn.store { min-height: 44px; padding: 10px 12px; }
+.signup-card .field input { width: 100%; padding: 11px 12px; border-radius: 11px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.32); color: var(--ink); font: 500 16px/1.2 var(--body); }
+.signup-card .field input::placeholder { color: var(--faint); }
+.signup-card .btn { width: 100%; margin-top: auto; min-height: 44px; padding: 10px 12px; border-radius: 11px; font-size: 14px; font-weight: 600; white-space: nowrap; }
 .signup-card .form-feedback { display: none; margin-top: 4px; padding: 7px 10px; border-radius: 9px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.22); }
 .signup-card .form-feedback:not(.is-empty) { display: flex; align-items: center; }
-.signup-card .form-feedback.is-ok { border-color: color-mix(in srgb, var(--k) 35%, transparent); background: color-mix(in srgb, var(--k) 8%, transparent); }
-.signup-card .form-msg { font-size: 12px; line-height: 1.35; margin: 0; overflow-wrap: anywhere; word-break: break-word; width: 100%; }
+.signup-card .form-feedback.is-ok { border-color: rgba(61, 214, 176, 0.35); background: rgba(61, 214, 176, 0.08); }
+.signup-card .form-msg { font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; width: 100%; }
 .signup-card .form-msg.ok { color: #B8E8C4; font-weight: 600; }
-.signup-card .form-msg.hint { color: var(--muted); font-weight: 500; }
-.signup-card.is-full { opacity: 0.5; pointer-events: none; filter: grayscale(0.25); }
-.slot-pill { display: inline-flex; align-items: center; flex: none; font: 700 10px/1.2 var(--font); letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--aqua) 35%, transparent); background: rgba(61, 214, 208, 0.1); color: #9AECE8; margin: 0; white-space: nowrap; }
-.signup-card.ios .slot-pill { border-color: color-mix(in srgb, var(--sport) 40%, transparent); background: rgba(155, 140, 255, 0.12); color: #C4B5FF; }
-.slot-pill.is-low { border-color: color-mix(in srgb, var(--kcal) 45%, transparent); background: rgba(245, 179, 1, 0.1); color: var(--kcal); }
+.signup-card .form-msg.hint { color: var(--soft); font-weight: 500; }
+.signup-card.is-full { opacity: .5; pointer-events: none; }
+.slot-pill { display: inline-flex; align-items: center; flex: none; font: 700 10px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; border: 1px solid rgba(61, 214, 208, 0.35); background: rgba(61, 214, 208, 0.1); color: var(--aqua); white-space: nowrap; }
+.signup-card.ios .slot-pill { border-color: rgba(155, 140, 255, 0.4); background: rgba(155, 140, 255, 0.12); color: #C4B5FF; }
+.slot-pill.is-low { border-color: rgba(245, 179, 1, 0.45); background: rgba(245, 179, 1, 0.1); color: #F5B301; }
 .slot-pill.is-full { border-color: var(--line); background: rgba(255, 255, 255, 0.04); color: var(--faint); font-weight: 600; }
-@media (max-width: 960px) {
-  .signup-stack { max-width: 420px; margin: 0 auto; }
-  .join-hints { display: none; }
-  .signup-grid { grid-template-columns: 1fr; }
-  .signup-card .card-tag { display: block; }
-}
+.copy-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--faint); }
+.copy-row code { font: 500 13px/1 var(--body); color: var(--soft); overflow-wrap: anywhere; max-width: 100%; }
+.copy-row button { background: none; border: 0; padding: 0; color: var(--aqua); font: 600 13px/1 var(--body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.copied { font-size: 13px; color: var(--aqua); }
+@media (max-width: 860px) { .signup-stack { max-width: 420px; margin: 0 auto; } .join-hints { display: none; } .signup-grid { grid-template-columns: minmax(0, 1fr); } }
 
-/* Pied de page */
-footer { border-top: 1px solid var(--line); padding-block: 48px; font-size: 14px; color: var(--faint); background: rgba(3, 13, 24, 0.6); }
+footer { border-top: 1px solid var(--line); padding-block: 40px 48px; background: rgba(3, 12, 24, 0.88); font-size: 14px; color: var(--faint); }
 footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
-footer h4 { margin: 0 0 14px; font: 600 14px/1 var(--font); color: var(--ink); }
-footer ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
-footer a { color: var(--muted); text-decoration: none; }
+footer h4 { margin: 0 0 12px; font: 700 13px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+footer ul { display: flex; flex-direction: column; gap: 9px; }
+footer a { color: var(--soft); text-decoration: none; }
 footer a:hover { color: var(--ink); }
-footer .cols p { color: var(--muted); margin-top: 14px; max-width: 40ch; }
-footer .legal { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
-footer details summary { cursor: pointer; color: var(--muted); font-weight: 600; }
-footer details div { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; max-width: 72ch; }
+footer .cols p { color: var(--soft); }
+footer .legal { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+footer details summary { cursor: pointer; color: var(--soft); font-weight: 600; }
+footer details div { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; max-width: 70ch; }
 @media (max-width: 760px) { footer .cols { grid-template-columns: 1fr; } }
-
-/* Barre d'appel fixe sur téléphone */
+.motion { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 24; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: rgba(3, 12, 24, 0.82); cursor: pointer; }
+.motion svg { width: 18px; height: 18px; fill: var(--ink); }
+@media (max-width: 760px) { .motion { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); } }
+@media (max-width: 820px) {
+  section { padding-block: 54px; }
+  .head { margin-bottom: 26px; }
+  .head h2 { font-size: clamp(31px, 8.6vw, 40px); }
+  .head p { font-size: 17px; }
+  .hero { padding-block: 104px 150px; }
+  .hero .pill { display: none; }
+  .hero-text { max-width: none; width: 100%; align-items: center; text-align: center; gap: 14px; }
+  .cta-row { justify-content: center; gap: 10px; flex-wrap: nowrap; width: 100%; }
+  .cta-row .btn { flex: 1 1 0; min-width: 0; padding: 0 10px; font-size: 15px; white-space: nowrap; }
+  .plate { border-radius: 24px; }
+  .side { padding: 20px 18px; }
+  .body-stage { background: var(--mannequin); border-radius: 24px; padding: 16px; }
+  .wear-empty { padding-block: 10px; font-size: 17px; }
+  .defi { aspect-ratio: 4 / 3.6; }
+  .defi h3 { font-size: 24px; }
+    .faq { padding: 4px 18px; }
+  .faq summary { font-size: 17px; padding: 17px 0; }
+  .beta-box { border-radius: 26px; }
+  .nav .btn.small { min-height: 38px; padding: 0 14px; font-size: 14px; }
+}
 .dock { display: none; }
 @media (max-width: 760px) {
-  .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 12px max(16px, env(safe-area-inset-left, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)); background: rgba(3, 13, 24, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .35s var(--ease); }
+  .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(3, 12, 24, 0.92); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .35s var(--ease); }
   .dock.on { transform: none; }
   .dock .btn { width: 100%; }
-  footer { padding-bottom: 120px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .js .rv { transform: none; }
+  footer { padding-bottom: 110px; }
 }
 </style>
+
 </head>
 <body>
-<div class="abyss" aria-hidden="true"></div>
-<canvas id="sea" aria-hidden="true"></canvas>
-<svg width="0" height="0" style="position: absolute" aria-hidden="true">
-  <symbol id="gplay" viewBox="0 0 24 24"><path d="M3.6 1.8 13.3 12l-9.7 10.2c-.3-.3-.4-.7-.4-1.2V3c0-.5.1-.9.4-1.2z" fill="#00A0FF"/><path d="M3.6 1.8c.4-.1.9 0 1.4.3l11.4 6.8-3.1 3.1z" fill="#00D26A"/><path d="m3.6 22.2 9.7-10.2 3.1 3.1L5 21.9c-.5.3-1 .4-1.4.3z" fill="#FF3A44"/><path d="m16.4 8.9 3.7 2.1c.9.5.9 1.5 0 2l-3.7 2.1-3.1-3.1z" fill="#FFC400"/></symbol>
-  <symbol id="bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="drop" viewBox="0 0 24 24"><path d="M12 2.5s-7 7.6-7 12.5a7 7 0 0 0 14 0c0-4.9-7-12.5-7-12.5z" fill="currentColor"/></symbol>
-</svg>
+<canvas id="pond" aria-hidden="true"></canvas>
+<div class="film" id="film" aria-hidden="true">
+  <img src="assets/koi-poster.jpg" alt="">
+  <video id="filmVideo" muted loop playsinline autoplay preload="auto" poster="assets/koi-poster.jpg"></video>
+</div>
+<div class="dusk" id="dusk" aria-hidden="true"><video id="duskVideo" muted loop playsinline preload="none" src="assets/femme.mp4"></video></div>
 
-<header class="top" id="top">
-  <div class="wrap">
-    <a class="brand" href="#"><img src="assets/logo.png" alt="" width="34" height="34">Hylens IA</a>
-    <nav class="nav" aria-label="Sections">
-      <a class="link" href="#how" data-t="nav.how">How it works</a>
-      <a class="link" href="#fuel" data-t="nav.fuel">Calories</a>
-      <a class="link" href="#faq" data-t="nav.faq">FAQ</a>
-      <button class="lang" type="button" id="lang" aria-label="Changer de langue / Change language">FR</button>
-      <a class="btn small" href="#join" data-cta><span class="if-beta" data-t="cta.short">Join</span><span class="if-play" data-t="cta.download">Download</span></a>
-    </nav>
-  </div>
-</header>
+<button class="motion" id="motion" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="motionIcon" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
 
-<main>
-  <section class="hero">
+<div class="page">
+  <header class="top" id="topbar">
     <div class="wrap">
-      <div class="hero-text">
-        <span class="proof rv"><img src="assets/logo.png" alt=""><span data-t="hero.proof" id="heroProof">Closed beta · <b>3</b> testers</span></span>
-        <h1 class="rv" style="--d: .08s"><span data-t="hero.h1a">Your body is 60% water.</span><span data-t="hero.h1b">Hylens helps you <em class="glow">understand it better.</em></span></h1>
-        <p class="lede rv" style="--d: .16s" data-t="hero.lede">Photo your meal. Hylens tracks salt, potassium and calories, and adjusts your water goal.</p>
-        <div class="cta-row rv" style="--d: .24s">
-          <a class="btn store breathe" href="#join" data-cta>
-            <svg aria-hidden="true"><use href="#gplay"/></svg>
-            <span class="if-play"><small data-t="cta.getiton">Get it on</small><b>Google Play</b></span>
-            <span class="if-beta"><small data-t="cta.android">Android</small><b data-t="cta.beta">Apply</b></span>
-          </a>
-          <a class="btn ghost if-beta" href="#formIos"><svg aria-hidden="true"><use href="#bell"/></svg><span data-t="cta.ios">iPhone waitlist</span></a>
-        </div>
-        <p class="note rv" style="--d: .3s" data-t="hero.note">Gmail required for invite</p>
-      </div>
-
-      <div class="app glass rv" style="--d: .2s" id="hyd" role="group" aria-label="Live demo: today’s water, salt and potassium" data-ta="hyd.label">
-        <div class="app-top">
-          <span class="drops"><svg aria-hidden="true"><use href="#drop"/></svg><b id="glasses">5</b></span>
-          <span class="app-date" id="today">Today</span>
-          <span class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.4-3.6 4-5 7-5s5.6 1.4 7 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        </div>
-        <svg class="rings" viewBox="0 0 320 240" aria-hidden="true">
-          <defs>
-            <clipPath id="wclip"><circle cx="112" cy="125" r="80"/></clipPath>
-            <linearGradient id="wgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FC3F7" stop-opacity=".6"/><stop offset="1" stop-color="#155C93" stop-opacity=".35"/></linearGradient>
-          </defs>
-          <g clip-path="url(#wclip)">
-            <g class="lvl" id="wlvl" style="transform: translateY(160px)">
-              <path d="M-120 50 q27.5 -9 55 0 t55 0 t55 0 t55 0 t55 0 t55 0 t55 0 t55 0 V300 H-120 Z" fill="url(#wgrad)"><animateTransform attributeName="transform" type="translate" from="0 0" to="110 0" dur="3.2s" repeatCount="indefinite"/></path>
-              <path d="M-120 54 q27.5 7 55 0 t55 0 t55 0 t55 0 t55 0 t55 0 t55 0 t55 0 V300 H-120 Z" fill="#4FC3F7" opacity=".18"><animateTransform attributeName="transform" type="translate" from="0 0" to="-110 0" dur="4.6s" repeatCount="indefinite"/></path>
-              <circle cx="80" r="3" fill="#CFF2FF" opacity="0"><animate attributeName="cy" values="235;60" dur="4.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;.7;0" dur="4.4s" repeatCount="indefinite"/></circle>
-              <circle cx="122" r="2" fill="#CFF2FF" opacity="0"><animate attributeName="cy" values="235;60" dur="3.6s" begin="-1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;.7;0" dur="3.6s" begin="-1.2s" repeatCount="indefinite"/></circle>
-              <circle cx="146" r="2.6" fill="#CFF2FF" opacity="0"><animate attributeName="cy" values="235;60" dur="5.2s" begin="-2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;.7;0" dur="5.2s" begin="-2.6s" repeatCount="indefinite"/></circle>
-              <circle cx="98" r="1.6" fill="#CFF2FF" opacity="0"><animate attributeName="cy" values="235;60" dur="3.1s" begin="-0.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;.7;0" dur="3.1s" begin="-0.4s" repeatCount="indefinite"/></circle>
-            </g>
-          </g>
-          <circle class="trk" cx="112" cy="125" r="94" stroke-width="14"/>
-          <circle class="arc" id="aw" cx="112" cy="125" r="94" stroke-width="14" pathLength="100" transform="rotate(-90 112 125)" style="color: var(--water)"/>
-          <circle class="trk" cx="252" cy="70" r="46" stroke-width="11" fill="#061A2E"/>
-          <circle class="arc" id="as" cx="252" cy="70" r="46" stroke-width="11" pathLength="100" transform="rotate(-90 252 70)" style="color: var(--salt)"/>
-          <circle class="trk" cx="240" cy="184" r="40" stroke-width="10" fill="#061A2E"/>
-          <circle class="arc" id="ak" cx="240" cy="184" r="40" stroke-width="10" pathLength="100" transform="rotate(-90 240 184)" style="color: var(--k)"/>
-          <text class="rv-big" x="112" y="128" text-anchor="middle" id="wv">0</text>
-          <text class="rv-sm" x="112" y="152" text-anchor="middle" id="wg">/ 2.6 L</text>
-          <text class="rv-mid" x="252" y="72" text-anchor="middle" id="sv">0</text>
-          <text class="rv-sm" x="252" y="91" text-anchor="middle">/ 5 g</text>
-          <text class="rv-mid" x="240" y="186" text-anchor="middle" id="kv">0</text>
-          <text class="rv-sm" x="240" y="204" text-anchor="middle" id="kg">/ 3.5 g</text>
-        </svg>
-        <div class="legend">
-          <span style="--c: var(--water)"><i></i><span data-t="hyd.water">Water</span></span>
-          <span style="--c: var(--salt)"><i></i><span data-t="hyd.salt">Salt</span></span>
-          <span style="--c: var(--k)"><i></i><span data-t="hyd.k">Potassium</span></span>
-        </div>
-        <div class="drink-row">
-          <button class="drink" type="button" id="drink"><svg aria-hidden="true"><use href="#drop"/></svg><span id="drinkLabel">+ 250 ml</span></button>
-          <span class="hint" id="hint" aria-live="polite" data-t="hyd.hint">Tap to log a glass</span>
-        </div>
-      </div>
+      <a class="brand" href="#top"><img src="assets/logo.png" alt="" width="34" height="34" decoding="async">Hylens IA</a>
+      <nav class="nav" aria-label="Sections">
+        <a class="link" href="#scan">Scan</a>
+        <a class="link" href="#muscles">Muscles</a>
+        <a class="link" href="#fonctions">Recipes</a>
+        <a class="link" href="#questions">FAQ</a>
+        <button class="lang" id="lang" type="button" aria-label="Passer en français">FR</button>
+        <a class="btn small" href="#beta" data-beta>Become a tester</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section class="strip" aria-label="Hylens in brief" data-ta="strip.label">
-    <div class="wrap">
-      <ul class="glass rv">
-        <li><b data-t="s1.b">A few seconds</b><span data-t="s1.s">to analyse a meal</span></li>
-        <li><b data-t="s2.b">Water · salt · potassium</b><span data-t="s2.s">tracked together</span></li>
-        <li><b data-t="s3.b">0 ads</b><span data-t="s3.s">and no data resale</span></li>
-        <li><b data-t="s4.b">On your phone</b><span data-t="s4.s">your data stays with you</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="how">
-    <div class="wrap">
-      <div class="head rv">
-        <span class="label" data-t="how.k">How it works</span>
-        <h2 data-t="how.h2">One photo. Everything else is calculated.</h2>
-        <p data-t="how.p">From the photo to your water goal, in a few seconds.</p>
-      </div>
-      <div class="how">
-        <div class="scan glass rv" id="scan" data-phase="0" role="img" aria-label="Animated demo of a meal being analysed" data-ta="sc.alt">
-          <div class="scan-photo">
-            <img src="assets/meal.jpg" alt="" width="520" height="520">
-            <div class="frame"><i></i><i></i><i></i><i></i><span class="laser"></span></div>
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="wrap">
+        <div class="hero-text" id="heroText">
+          <span class="pill"><i></i>Android beta · free · limited spots</span>
+          <h1><span class="h-q">Lose weight, gain muscle, eat better?</span> <em>Hylens is for you.</em></h1>
+          <p class="lede">Meals, training, muscles and sleep, all in one place.</p>
+          <div class="cta-row">
+            <a class="btn" href="#scan">See the scan</a>
+            <a class="btn ghost" href="#beta" data-beta>Become a tester</a>
           </div>
-          <span class="tag t1" data-t="sc.tag1">Chicken · 150 g</span>
-          <span class="tag t2" data-t="sc.tag2">Broccoli · 200 g</span>
-          <span class="tag t3" data-t="sc.tag3">Brown rice · 120 g</span>
-          <div class="sheet">
-            <span class="label" data-t="sc.k">Lunch · 12:42</span>
-            <b class="t" data-t="sc.t">Chicken, broccoli and brown rice</b>
-            <div class="vals">
-              <div style="--c: var(--kcal)"><small data-t="m.kcal">Energy</small><b><span data-count="521" data-dec="0">0</span> kcal</b></div>
-              <div style="--c: var(--prot)"><small data-t="m.prot">Protein</small><b><span data-count="57" data-dec="0">0</span> g</b></div>
-              <div style="--c: var(--salt)"><small data-t="m.salt">Salt</small><b><span data-count="0.3" data-dec="1">0</span> g</b></div>
-              <div style="--c: var(--water)"><small data-t="m.water">Water</small><b>+<span data-count="0.2" data-dec="1">0</span> L</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scan">
+      <div class="wrap scan-solo">
+        <div class="scan-film rise"><video id="scanVideo" muted loop playsinline preload="metadata" poster="assets/scan-poster.jpg" src="assets/scan.mp4" aria-label="A woman photographs her plate and Hylens shows the calories and macros"></video></div>
+        <button class="btn try-btn rise" type="button" id="tryOpen">Try it</button>
+        <div class="scan-sum rise">
+          <span class="eyebrow">Meal scan</span>
+          <h2>One photo. All your numbers.</h2>
+          <p>Hylens recognizes what’s on your plate and calculates calories and macros in seconds.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="avis" hidden>
+      <div class="wrap">
+        <div class="head"><span class="eyebrow">Beta testers</span><h2>They’re testing Hylens.</h2></div>
+        <ul class="quotes" id="quotes"></ul>
+      </div>
+    </section>
+
+    <div id="nuit">
+    <section id="defis">
+      <div class="nuit-wrap">
+        <div class="head rise"><span class="eyebrow">Challenges</span><h2>Workouts to lose weight.</h2><p>And to get stronger, at home, at your own pace.</p></div>
+        <div class="defis">
+          <article class="defi rise"><img loading="lazy" src="assets/defi-burn.jpg" alt=""><span class="fx" data-fx="fire"><i class="aura"></i><i class="flames"></i><i class="edge"></i></span><div><h3>Big fat burn</h3><p>Circuits that raise your calorie burn.</p></div></article>
+          <article class="defi rise"><img loading="lazy" src="assets/defi-abs.jpg" alt=""><span class="fx" data-fx="shine"><i class="sweep"></i></span><div><h3>Steel abs</h3><p>Your core, week after week.</p></div></article>
+          <article class="defi rise"><img loading="lazy" src="assets/defi-full.jpg" alt=""><span class="fx" data-fx="shine"><i class="sweep"></i></span><div><h3>Full-body challenge</h3><p>Your whole body, in alternating sessions.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="muscles">
+      <div class="nuit-wrap">
+        <div class="head rise"><span class="eyebrow">Try it</span><h2>Tap a muscle.</h2><p>See what your week asked of it.</p></div>
+        <div class="body-box rise">
+          <div class="body-stage">
+            <div class="flip-row" role="group" aria-label="Mannequin view">
+              <button type="button" id="front" aria-pressed="true">Front</button>
+              <button type="button" id="back" aria-pressed="false">Back</button>
+            </div>
+            <div class="mannequin">
+              <img id="mann" alt="Anatomical mannequin">
+              <svg id="zones" viewBox="0 0 260 495" role="group" aria-label="Muscle zones"></svg>
             </div>
           </div>
+          <div class="side wear-col" aria-live="polite">
+            <div class="wear-empty" id="wearEmpty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a2 2 0 0 1 4 0v6M13 10a2 2 0 0 1 4 0v2M17 11a2 2 0 0 1 4 0v4a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L4.5 14.5a2 2 0 0 1 3-2.6L9 13.5"/></svg>Tap a muscle</div>
+            <div class="wear-body" id="wearBody" hidden>
+              <div class="wear-top"><h3 id="mName"></h3><span class="state" id="mState"></span></div>
+              <div class="load">
+                <div class="load-row"><span id="mLabel">Load · 7 days</span><b id="mPct"></b></div>
+                <span class="bar" id="mTrack"><i id="mBar"></i></span>
+              </div>
+              <div class="tiles" id="mTiles">
+                <div><small>Workouts</small><b id="mSessions"></b></div>
+                <div><small>Hard sets</small><b id="mHard"></b></div>
+                <div><small>Last</small><b id="mLast"></b></div>
+              </div>
+            </div>
+            <p class="sample">Sample week. In the app, your own workouts.</p>
+          </div>
         </div>
-        <ol class="steps" id="steps">
-          <li class="on rv"><span class="n">1</span><div><h3 data-t="st1.t">Snap your meal</h3><p data-t="st1.p">Your plate, a product, or a photo from your gallery.</p></div></li>
-          <li class="rv" style="--d: .1s"><span class="n">2</span><div><h3 data-t="st2.t">Hylens analyses it</h3><p data-t="st2.p">Each food is recognised and its portion estimated. You can fix anything in two taps.</p></div></li>
-          <li class="rv" style="--d: .2s"><span class="n">3</span><div><h3 data-t="st3.t">Your day adjusts</h3><p data-t="st3.p">Calories, salt, potassium, and the water you still need today.</p></div></li>
-        </ol>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="fuel">
-    <div class="wrap">
-      <div class="head rv">
-        <span class="label" data-t="fu.k">Calories</span>
-        <h2 data-t="fu.h2">Two plates. Not the same fuel.</h2>
-        <p data-t="fu.p">Pick a lunch and see what it changes in your day, from calories all the way to water.</p>
-      </div>
-      <div class="fuel glass rv" id="fuelBox">
-        <div class="plates" role="radiogroup" aria-label="Lunch" data-ta="fu.pick">
-          <small data-t="fu.lunch">Today’s lunch</small>
-          <button class="plate" type="button" role="radio" aria-checked="true" style="--c: #7ED38A"><i></i><span data-t="fu.p1">Chicken &amp; rice bowl</span><em></em></button>
-          <button class="plate" type="button" role="radio" aria-checked="false" style="--c: #E0A24A"><i></i><span data-t="fu.p2">Burger &amp; fries</span><em></em></button>
-          <button class="plate" type="button" role="radio" aria-checked="false" style="--c: #F2E2B0"><i></i><span data-t="fu.p3">Pasta carbonara</span><em></em></button>
+    </div>
+
+    <section id="fonctions">
+      <div class="wrap recipe-row">
+        <div class="fan rise">
+          <div class="phone"><div class="phone-screen"><img loading="lazy" src="assets/f/pancakes.jpg" alt="Blueberry pancakes"><div><small>Breakfast</small><b>Pancakes</b></div></div></div>
+          <div class="phone"><div class="phone-screen"><img loading="lazy" src="assets/f/poke.jpg" alt="Salmon poke bowl"><div><small>Lunch</small><b>Poke bowl</b></div></div></div>
+          <div class="phone"><div class="phone-screen"><img loading="lazy" src="assets/f/curry.jpg" alt="Chicken curry with rice"><div><small>Dinner</small><b>Chicken curry</b></div></div></div>
         </div>
-        <div>
-          <div class="gauge">
-            <svg viewBox="0 0 240 240" aria-hidden="true">
-              <circle class="trk" cx="120" cy="120" r="100" stroke-width="18"/>
-              <g transform="rotate(-90 120 120)">
-                <circle class="seg" cx="120" cy="120" r="100" pathLength="100" style="color: #3E5C7A"/>
-                <circle class="seg lit" cx="120" cy="120" r="100" pathLength="100" style="color: var(--kcal)"/>
-              </g>
+        <div class="recipe-copy rise">
+          <span class="eyebrow">Recipes</span>
+          <h2>Recipes for you</h2>
+          <p>A large catalog of meals and drinks, with their nutrition values, for every moment of the day.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="plus">
+      <div class="wrap">
+        <div class="head rise"><span class="eyebrow">Your progress</span><h2>Your goal, a little closer every day.</h2></div>
+        <div class="climb plate rise">
+          <div class="chart" id="climb" role="img" aria-label="Illustration: a curve rising from today to your goal, with markers at 1 week, 1 month and 3 months, then a trophy">
+            <div class="plot">
+            <svg viewBox="0 0 1000 380" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs><linearGradient id="climbGrad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#4FC3F7"/><stop offset=".55" stop-color="#3DD6D0"/><stop offset="1" stop-color="#FFD66B"/></linearGradient></defs>
+              <line class="base" x1="0" y1="350" x2="1000" y2="350"/>
+              <line class="goal" x1="0" y1="40" x2="1000" y2="40"/>
+              <path class="line" id="climbLine" d="M10 340 C 130 335, 190 300, 300 270 S 470 235, 560 180 S 790 70, 960 44"/>
+              <circle class="node" r="9" style="stroke:#4FC3F7"/><circle class="node" r="9" style="stroke:#3DD6D0"/><circle class="node" r="9" style="stroke:#B9A4FF"/>
+              <circle class="head" id="climbHead" r="8"/>
             </svg>
-            <div class="gauge-mid"><small data-t="fu.meal">This meal</small><b><em id="fkcal" style="font-style: normal">0</em><span>kcal</span></b><span class="rest" id="frest"></span></div>
-          </div>
-          <div class="gauge-key"><span style="--c: #3E5C7A"><i></i><span data-t="fu.bk">Breakfast</span></span><span style="--c: var(--kcal)"><i></i><span data-t="fu.lu">Lunch</span></span></div>
-        </div>
-        <div class="macros">
-          <small data-t="fu.in">Inside</small>
-          <div class="bar" style="--c: var(--prot)"><span data-t="m.prot">Protein</span><b id="fp"></b><u id="fpb"></u></div>
-          <div class="bar" style="--c: var(--water)"><span data-t="fu.carb">Carbs</span><b id="fc"></b><u id="fcb"></u></div>
-          <div class="bar" style="--c: var(--kcal)"><span data-t="fu.fat">Fat</span><b id="ff"></b><u id="ffb"></u></div>
-          <div class="effect">
-            <div style="--c: var(--salt)"><small data-t="m.salt">Salt</small><b id="fs"></b></div>
-            <div style="--c: var(--aqua)"><small data-t="fu.wat">Water to add</small><b id="fw"></b></div>
-          </div>
-          <p class="fuel-note" data-t="fu.note">Estimates for an adult. In the app, every meal gets its full breakdown.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="tracks">
-    <div class="wrap">
-      <div class="head rv">
-        <span class="label" data-t="mt.k">In the app</span>
-        <h2 data-t="mt.h2">Everything that affects your hydration, in one place.</h2>
-        <p data-t="mt.p">This is just a glimpse. The rest is waiting inside the app.</p>
-      </div>
-      <div class="tiles">
-        <div class="tile glass rv" style="--c: var(--water)"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26" stroke-width="6"/><circle class="arc" cx="32" cy="32" r="26" pathLength="100" transform="rotate(-90 32 32)" data-p="69"/></svg><div><h3><span data-t="t1.t">Water</span><small data-t="t1.v">1.8 / 2.6 L</small></h3><p data-t="t1.p">Your daily goal, glass after glass.</p></div></div>
-        <div class="tile glass rv" style="--c: var(--salt); --d: .08s"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26" stroke-width="6"/><circle class="arc" cx="32" cy="32" r="26" pathLength="100" transform="rotate(-90 32 32)" data-p="62"/></svg><div><h3><span data-t="t2.t">Salt</span><small data-t="t2.v">3.1 / 5 g</small></h3><p data-t="t2.p">The hidden salt in your meals, day after day.</p></div></div>
-        <div class="tile glass rv" style="--c: var(--k); --d: .16s"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26" stroke-width="6"/><circle class="arc" cx="32" cy="32" r="26" pathLength="100" transform="rotate(-90 32 32)" data-p="68"/></svg><div><h3><span data-t="t3.t">Potassium</span><small data-t="t3.v">2.4 / 3.5 g</small></h3><p data-t="t3.p">The balance with salt, meal after meal.</p></div></div>
-        <div class="tile glass rv" style="--c: var(--kcal)"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26" stroke-width="6"/><circle class="arc" cx="32" cy="32" r="26" pathLength="100" transform="rotate(-90 32 32)" data-p="72"/></svg><div><h3><span data-t="t4.t">Calories</span><small data-t="t4.v">1,480 kcal</small></h3><p data-t="t4.p">The energy of each meal.</p></div></div>
-        <div class="tile glass rv" style="--c: var(--prot); --d: .08s"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26" stroke-width="6"/><circle class="arc" cx="32" cy="32" r="26" pathLength="100" transform="rotate(-90 32 32)" data-p="64"/></svg><div><h3><span data-t="t5.t">Protein</span><small data-t="t5.v">58 / 90 g</small></h3><p data-t="t5.p">Per meal and across the whole day.</p></div></div>
-        <div class="tile glass rv" style="--c: var(--sport); --d: .16s"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26" stroke-width="6"/><circle class="arc" cx="32" cy="32" r="26" pathLength="100" transform="rotate(-90 32 32)" data-p="75"/></svg><div><h3><span data-t="t6.t">Activity</span><small data-t="t6.v">45 min</small></h3><p data-t="t6.p">Your workouts, read from Health Connect.</p></div></div>
-      </div>
-      <div class="more glass rv">
-        <span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z M12 15v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <p data-t="mt.more"><b>More in the app.</b></p>
-        <div class="ghosts" aria-hidden="true"><span style="--c: var(--water)">Rnplqe vtaso</span><span style="--c: var(--sport)">Bkrw ztpexn</span><span style="--c: var(--k)">Lmqvoed</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="why">
-    <div class="wrap">
-      <div class="head rv">
-        <span class="label" data-t="y.k">Why Hylens</span>
-        <h2 data-t="y.h2">Because the best tracker is the one you keep using.</h2>
-      </div>
-      <div class="why-grid">
-        <div class="glass rv">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="currentColor" opacity=".12"/><circle cx="22" cy="23" r="10" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M22 18v5l3.5 2.5M19 10h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-          <h3 data-t="y1.t">Save time at every meal</h3>
-          <p data-t="y1.p">No endless scrolling through food lists. One photo and your meal is logged, even on a busy day.</p>
-        </div>
-        <div class="glass rv" style="--d: .08s">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="currentColor" opacity=".12"/><path d="M22 10s-8 9-8 15a8 8 0 0 0 16 0c0-6-8-15-8-15z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>
-          <h3 data-t="y2.t">Understand your body</h3>
-          <p data-t="y2.p">See how what you eat changes what you need to drink. Hylens connects your plate, your workouts and your hydration.</p>
-        </div>
-        <div class="glass rv">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="currentColor" opacity=".12"/><circle cx="22" cy="22" r="11" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="22" cy="22" r="6" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="22" cy="22" r="1.8" fill="currentColor"/></svg>
-          <h3 data-t="y3.t">Reach your goal</h3>
-          <p data-t="y3.p">Losing weight, building muscle or simply feeling better: you see where you stand every day, so you can adjust at the right moment.</p>
-        </div>
-        <div class="glass rv" style="--d: .08s">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="currentColor" opacity=".12"/><path d="M16 20v-3a6 6 0 0 1 12 0v3M13 20h18v13H13z M22 25v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3 data-t="y4.t">Your data stays yours</h3>
-          <p data-t="y4.p">Your meals and history stay on your phone. No ads, no data resale, and you can erase everything from your profile.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="avis" hidden>
-    <div class="wrap">
-      <div class="head"><h2 data-t="a.h2">What our testers say</h2></div>
-      <ul class="quotes" id="quotes"></ul>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="wrap">
-      <div class="head rv"><span class="label" data-t="q.k">FAQ</span><h2 data-t="q.h2">Frequently asked questions</h2></div>
-      <div class="faq rv">
-        <details class="glass"><summary data-t="q1.q">How accurate is it?</summary><div class="ans"><p data-t="q1.a">Hylens recognises the foods and estimates the portions from your photo. It’s an estimate: you can correct any food or enter its exact weight in two taps and everything updates.</p><p class="tip" data-t="q1.tip"><b>Tip:</b> good light and a photo taken from above give the best results.</p></div></details>
-        <details class="glass"><summary data-t="q7.q">Why track salt and potassium?</summary><div class="ans"><p data-t="q7.a">Salt makes your body hold on to water, and potassium helps balance it. Following both at each meal helps you understand your hydration, not just count glasses.</p></div></details>
-        <details class="glass"><summary data-t="q2.q">What happens to my photos?</summary><div class="ans"><p data-t="q2.a">Your photo is sent to our analysis service for the calculation, then Hylens doesn’t keep it. Your meals and your history stay on your phone. Details in our <a href="https://api.hectorone.fr/privacy">privacy policy</a>.</p></div></details>
-        <details class="glass"><summary data-t="q3.q">How much does it cost?</summary><div class="ans"><p data-t="q3.a">Free on Android beta. Then Premium €9.99/mo or €34.99/yr. Founder rate €4.99 / €29.99 for the first 100 subscriptions on Android and iPhone (while subscribed).</p></div></details>
-        <details class="glass"><summary data-t="q4.q">Is it available on iPhone?</summary><div class="ans"><p data-t="q4.a">Android beta only for now. <a href="#formIos">iPhone waitlist</a>: 100 founder spots.</p></div></details>
-        <details class="glass"><summary data-t="q5.q">Do I need a smartwatch?</summary><div class="ans"><p data-t="q5.a">No. With your permission, Health Connect adds your steps and workouts automatically. Without it, you log your workouts by hand.</p></div></details>
-        <details class="glass"><summary data-t="q6.q">Is it medical advice?</summary><div class="ans"><p data-t="q6.a">No. Hylens gives estimates and general wellness guidance. For any health question, talk to a professional.</p></div></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="final" id="join">
-    <div class="wrap">
-      <div class="final-box glass rv">
-        <div class="final-copy">
-          <span class="label" data-t="j.k">Sign up</span>
-          <h2 data-t="j.h2">Join Hylens</h2>
-          <p class="price-chip" data-t="j.prices"><b>Founder</b> · €4.99/mo · 100 spots per store</p>
-        </div>
-        <div class="join">
-          <a class="btn store breathe if-play" href="#" data-cta>
-            <svg aria-hidden="true"><use href="#gplay"/></svg>
-            <span><small data-t="cta.getiton">Get it on</small><b>Google Play</b></span>
-          </a>
-          <div class="if-beta signup-stack" id="signupGrid">
-            <div class="join-hints" aria-hidden="true">
-              <span data-t="j.hint.test">Android beta · Gmail</span>
-              <span data-t="j.hint.found">Play launch · founder rate</span>
-              <span data-t="j.hint.ios">App Store · founder rate</span>
+            <span class="c-label c-goal">Your goal</span>
+            <span class="c-label c-start">Today</span>
+            <span class="c-label c-time">1 week</span><span class="c-label c-time">1 month</span><span class="c-label c-time">3 months</span>
+            <span class="cup" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7 2h10v2h4v4a5 5 0 0 1-5 5h-.3A5.5 5.5 0 0 1 13 15.9V18h3v2.5H8V18h3v-2.1A5.5 5.5 0 0 1 8.3 13H8a5 5 0 0 1-5-5V4h4V2zM5 6v2a3 3 0 0 0 2.2 2.9A9 9 0 0 1 7 9V6H5zm14 0h-2v3c0 .7-.1 1.3-.2 1.9A3 3 0 0 0 19 8V6z"/></svg></span>
             </div>
+          </div>
+          <div class="steps3" id="climbSteps">
+            <div style="--tone:#4FC3F7"><span class="eyebrow">1 week</span><h3>See the full picture</h3><p>Meals, water and training: your days in numbers.</p></div>
+            <div style="--tone:#3DD6D0"><span class="eyebrow">1 month</span><h3>Habits take hold</h3><p>Your charts show what’s changing.</p></div>
+            <div style="--tone:#B9A4FF"><span class="eyebrow">3 months</span><h3>Your effort, measured</h3><p>Weight, muscles and sleep: your progress at a glance.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="questions">
+      <div class="wrap">
+        <div class="head rise"><span class="eyebrow">FAQ</span><h2>Before you download.</h2></div>
+        <div class="faq plate rise">
+          <details><summary>Is it accurate?</summary><p>Values come from official food tables: Ciqual (ANSES) in France, USDA elsewhere. Portions are estimated from the photo: it’s an estimate, not a weigh-in, and you can correct every food.</p></details>
+          <details><summary>Where do photos go in the app?</summary><p>Your photo is sent to our analysis service, powered by OpenAI, and Hylens doesn’t keep it. In the app, your meals and tracking stay on your phone.</p></details>
+          <details><summary>How much does it cost?</summary><p>The beta is free, no credit card. A founder rate with limited spots will be available at launch.</p></details>
+          <details><summary>Do I need Health Connect or a watch?</summary><p>No. With your permission, Health Connect adds your steps and workouts automatically. Without it, you log workouts by hand.</p></details>
+          <details><summary>What about iPhone?</summary><p>Not yet. Hylens is in beta on Android; the iPhone version comes next.</p></details>
+          <details><summary>Is this medical advice?</summary><p>No. Hylens provides estimates and wellness guidelines. For any health question, talk to a professional.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="beta" class="beta">
+      <div class="wrap">
+        <div class="beta-box plate rise">
+          <div class="beta-head">
+            <span class="eyebrow">Access</span>
+            <h2>Join Hylens</h2>
+            <p class="price-chip"><b>Founder</b> rate · limited spots</p>
+          </div>
+          <a class="btn" id="playLink" href="#beta" hidden>Download Hylens</a>
+          <div class="signup-stack" id="signupGrid">
+            <div class="join-hints" aria-hidden="true"><span>Android beta · Gmail</span><span>Play launch · founder rate</span><span>App Store · founder rate</span></div>
             <div class="signup-grid">
-            <form class="signup-card" id="formTester" novalidate>
-              <div class="card-head">
-                <div class="card-title">
-                  <h3 data-t="j.test.h">Tester</h3>
-                  <span class="card-tag" data-t="j.test.tag">Now</span>
-                </div>
-                <p class="slot-pill" id="testerPill" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <label for="gmailTester" data-t="j.test.label">Gmail</label>
-                <input type="email" id="gmailTester" name="gmail" inputmode="email" autocomplete="email" required placeholder="you@gmail.com" data-ph="j.test.ph" data-ta="j.test.label">
-              </div>
-              <button class="btn store breathe" type="submit" data-t="j.test.btn">Apply</button>
-              <div class="form-feedback is-empty"><p class="form-msg" id="testerMsg" aria-live="polite"></p></div>
-            </form>
-            <form class="signup-card" id="formFounder" novalidate>
-              <div class="card-head">
-                <div class="card-title">
-                  <h3 data-t="j.found.h">Android</h3>
-                  <span class="card-tag" data-t="j.found.tag">Launch</span>
-                </div>
-                <p class="slot-pill" id="founderPill" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <label for="emailFounder" data-t="j.found.label">Email</label>
-                <input type="email" id="emailFounder" name="email" inputmode="email" autocomplete="email" required placeholder="you@email.com" data-ph="j.found.ph" data-ta="j.found.label">
-              </div>
-              <button class="btn ghost" type="submit" data-t="j.found.btn">Waitlist</button>
-              <div class="form-feedback is-empty"><p class="form-msg" id="founderMsg" aria-live="polite"></p></div>
-            </form>
-            <form class="signup-card ios" id="formIos" novalidate>
-              <div class="card-head">
-                <div class="card-title">
-                  <h3 data-t="j.ios.h">iPhone</h3>
-                  <span class="card-tag" data-t="j.ios.tag">Launch</span>
-                </div>
-                <p class="slot-pill ios" id="iosPill" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <label for="emailIos" data-t="j.ios.label">Email</label>
-                <input type="email" id="emailIos" name="email" inputmode="email" autocomplete="email" required placeholder="you@icloud.com" data-ph="j.ios.ph" data-ta="j.ios.label">
-              </div>
-              <button class="btn ghost" type="submit" data-t="j.ios.btn">Waitlist</button>
-              <div class="form-feedback is-empty"><p class="form-msg" id="iosMsg" aria-live="polite"></p></div>
-            </form>
+              <form class="signup-card" id="formTester" novalidate>
+                <div class="card-head"><div class="card-title"><h3>Tester</h3><span class="card-tag">Now</span></div><p class="slot-pill" id="testerPill" aria-live="polite"></p></div>
+                <div class="field"><label for="gmailTester">Gmail</label><input type="email" id="gmailTester" name="gmail" inputmode="email" autocomplete="email" required placeholder="you@gmail.com"></div>
+                <button class="btn" type="submit">Apply</button>
+                <div class="form-feedback is-empty"><p class="form-msg" id="testerMsg" aria-live="polite"></p></div>
+              </form>
+              <form class="signup-card" id="formFounder" novalidate>
+                <div class="card-head"><div class="card-title"><h3>Android</h3><span class="card-tag">Launch</span></div><p class="slot-pill" id="founderPill" aria-live="polite"></p></div>
+                <div class="field"><label for="emailFounder">Email</label><input type="email" id="emailFounder" name="email" inputmode="email" autocomplete="email" required placeholder="you@email.com"></div>
+                <button class="btn ghost" type="submit">Waitlist</button>
+                <div class="form-feedback is-empty"><p class="form-msg" id="founderMsg" aria-live="polite"></p></div>
+              </form>
+              <form class="signup-card ios" id="formIos" novalidate>
+                <div class="card-head"><div class="card-title"><h3>iPhone</h3><span class="card-tag">Launch</span></div><p class="slot-pill ios" id="iosPill" aria-live="polite"></p></div>
+                <div class="field"><label for="emailIos">Email</label><input type="email" id="emailIos" name="email" inputmode="email" autocomplete="email" required placeholder="you@icloud.com"></div>
+                <button class="btn ghost" type="submit">Waitlist</button>
+                <div class="form-feedback is-empty"><p class="form-msg" id="iosMsg" aria-live="polite"></p></div>
+              </form>
             </div>
           </div>
-          <div class="copy-row if-beta"><span data-t="j.or">Contact</span> <code class="mail-addr"></code> <button type="button" id="copy" data-t="j.copy">Copy</button></div>
+          <div class="copy-row"><span>Contact</span> <code id="mail">contact@hectorone.fr</code> <button type="button" id="copy">Copy</button> <span class="copied" id="copied" aria-live="polite"></span></div>
         </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<footer>
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <a class="brand" href="#"><img src="assets/logo.png" alt="" width="34" height="34">Hylens IA</a>
-        <p data-t="ft.p">Hydration and nutrition from a photo. Wellness info, not medical advice.</p>
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div><a class="brand" href="#top"><img src="assets/logo.png" alt="">Hylens IA</a><p style="margin-top: 12px; max-width: 40ch;">Meals, water, training and sleep. General nutrition information, not medical advice.</p></div>
+        <div><h4>App</h4><ul><li><a href="#scan">Meal scan</a></li><li><a href="#muscles">Muscles</a></li><li><a href="#questions">FAQ</a></li><li><a href="#beta">Join the beta</a></li></ul></div>
+        <div><h4>Information</h4><ul><li><a href="https://api.hectorone.fr/privacy">Privacy policy</a></li><li><a href="#mentions">Legal notice</a></li><li>contact@hectorone.fr</li></ul></div>
       </div>
-      <div>
-        <h4 data-t="ft.app">App</h4>
-        <ul>
-          <li><a href="#how" data-t="nav.how">How it works</a></li>
-          <li><a href="#faq" data-t="nav.faq">FAQ</a></li>
-          <li><a href="#join" data-t="ft.join">Join the beta</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-t="ft.info">Information</h4>
-        <ul>
-          <li><a href="https://api.hectorone.fr/privacy" data-t="ft.privacy">Privacy policy</a></li>
-          <li><a href="#mentions" data-t="ft.legal">Legal notice</a></li>
-          <li><a class="mail-addr" href="#"></a></li>
-        </ul>
+      <div class="legal">
+        <details id="mentions"><summary>Legal notice</summary><div>
+          <p>Publisher and publication director: Hectorone, contact@hectorone.fr.</p>
+          <p>Host: GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA, +1 877 448 4820.</p>
+          <p>Nutrition values: Ciqual table (ANSES) and USDA FoodData Central. Photos: Pexels.</p>
+        </div></details>
+        <span>© 2026 Hylens IA</span>
       </div>
     </div>
-    <div class="legal">
-      <details id="mentions">
-        <summary data-t="ft.legal">Legal notice</summary>
-        <div>
-          <p data-t="ft.l1">Publisher and publication director: Hectorone.</p>
-          <p data-t="ft.l2">Host: GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States, +1 877 448 4820.</p>
-          <p data-t="ft.l3">Nutrition values: Ciqual food composition table, Anses. Meal photo: Pexels.</p>
-        </div>
-      </details>
-      <span>© 2026 Hylens IA</span>
+  </footer>
+  <div class="dock" id="dock"><a class="btn" href="#beta" data-beta>Become a tester, it’s free</a></div>
+</div>
+
+<div class="try-page" id="tryPage" role="dialog" aria-modal="true" aria-labelledby="tryTitle" hidden>
+  <button class="try-close" type="button" id="tryClose" aria-label="Close">×</button>
+  <div class="try-in">
+    <div class="try-head"><span class="eyebrow">Try it</span><h2 id="tryTitle">Build your plate.</h2><p>Type up to 3 foods. Hylens does the math.</p></div>
+    <div class="try-box plate">
+      <div class="try-left">
+        <form class="try-form" id="tryForm" autocomplete="off">
+          <input id="tryInput" type="text" spellcheck="true" autocapitalize="off" enterkeyhint="done" placeholder="Type a food" aria-label="Type a food">
+          <button class="btn" type="submit" id="tryAdd">Add</button>
+        </form>
+        <p class="try-note" id="tryNote" role="status" aria-live="polite"></p>
+        <span class="try-count" id="tryCount"></span>
+        <ul class="items" id="tryItems"></ul>
+      </div>
+      <div class="rings" id="tryRings"></div>
     </div>
   </div>
-</footer>
-<div class="dock" id="dock"><a class="btn store" href="#join" data-cta><svg aria-hidden="true"><use href="#gplay"/></svg><span class="if-beta"><b data-t="cta.beta">Apply</b></span><span class="if-play"><b data-t="cta.download">Download</b></span></a></div>
+</div>
 
 <script>
 (function () {
-  // Lien Google Play d'inscription au test : une fois collé ici, tous les boutons mènent
-  // directement au Play Store et la demande d'invitation par e-mail disparaît.
+  // Lien d'inscription Google Play : une fois collé ici, les boutons y mènent et la démarche par e-mail disparaît.
   var PLAY_URL = "";
-  var CONTACT = "contact@hectorone.fr";
-  /** Places restantes sur la liste testeurs Google Play (12 max). Mettez 0 quand la liste est pleine. */
-  var TESTER_SLOTS = 3;
-  /** Formulaires Google (optionnel) : action = URL …/formResponse, entry = id du champ (entry.123456). */
-  var FORM_TESTER = { action: "", entry: "" };
-  var FORM_FOUNDER = { action: "", entry: "" };
-  var FORM_IOS = { action: "", entry: "" };
-  /** Tarif fondateur : augmentez TAKEN à chaque inscription validée (ordre = ordre d’inscription). */
-  var FOUNDER_CAP = 100;
-  var FOUNDER_TAKEN = 0;
-  var IOS_FOUNDER_CAP = 100;
-  var IOS_FOUNDER_TAKEN = 0;
-
-  // Avis RÉELS de bêta-testeurs, avec leur accord écrit. Vide = section cachée.
-  // Exemple : { prenom: "Camille", detail: "Bêta-testeuse depuis octobre", texte: "…" }
+  // Avis RÉELS de bêta-testeurs, avec leur accord écrit. Vide = section cachée. { prenom, detail, texte }
   var AVIS = [];
 
-  var CALM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var STILL = false;
+  var MUSCLES = {"zones":{"front":[{"group":"pecs","d":"M90 100L110 103L128 108L128 140L116 146L100 144L90 134L87 116Z M170 100L150 103L132 108L132 140L144 146L160 144L170 134L173 116Z"},{"group":"quads","d":"M88 214L102 226L114 240L122 262L122 300L116 332L104 342L92 332L85 300L83 256Z M172 214L158 226L146 240L138 262L138 300L144 332L156 342L168 332L175 300L177 256Z"},{"group":"obliques","d":"M91 146L103 146L104 170L108 192L112 210L100 212L94 196L89 170Z M169 146L157 146L156 170L152 192L148 210L160 212L166 196L171 170Z"},{"group":"abs","d":"M104 146L128 148L152 146L156 170L152 192L140 202L130 205L120 202L108 192L104 170Z"},{"group":"delts","d":"M66 98L78 92L90 98L88 112L80 124L68 128L63 114Z M194 98L182 92L170 98L172 112L180 124L192 128L197 114Z"},{"group":"biceps","d":"M64 130L78 126L84 140L80 160L70 170L58 166L56 148Z M196 130L182 126L176 140L180 160L190 170L202 166L204 148Z"},{"group":"forearms","d":"M56 168L72 170L66 200L56 228L46 236L42 222L48 196Z M204 168L188 170L194 200L204 228L214 236L218 222L212 196Z"},{"group":"calves","d":"M87 352L99 350L106 372L104 410L96 424L89 400L86 374Z M173 352L161 350L154 372L156 410L164 424L171 400L174 374Z"},{"group":"traps","d":"M113 74L116 90L104 99L87 97L97 88Z M147 74L144 90L156 99L173 97L163 88Z"}],"back":[{"group":"lats","d":"M88 124L108 128L122 156L122 182L108 194L96 192L90 170L86 146Z M172 124L152 128L138 156L138 182L152 194L164 192L170 170L174 146Z"},{"group":"glutes","d":"M90 206L110 204L128 212L129 250L122 266L104 266L91 252L86 230Z M170 206L150 204L132 212L131 250L138 266L156 266L169 252L174 230Z"},{"group":"hams","d":"M86 270L108 270L126 272L124 300L116 340L102 346L92 332L85 300Z M174 270L152 270L134 272L136 300L144 340L158 346L168 332L175 300Z"},{"group":"lower","d":"M116 168L130 176L144 168L150 198L130 206L110 198Z"},{"group":"traps","d":"M118 66L142 66L146 82L176 90L156 100L146 120L138 150L130 168L122 150L114 120L104 100L84 90L114 82Z"},{"group":"infra","d":"M88 98L102 101L112 118L108 126L90 124L85 112Z M172 98L158 101L148 118L152 126L170 124L175 112Z"},{"group":"delts","d":"M64 100L80 90L92 96L88 112L80 126L66 130L61 116Z M196 100L180 90L168 96L172 112L180 126L194 130L199 116Z"},{"group":"triceps","d":"M62 132L80 128L84 144L78 164L66 172L55 164L56 148Z M198 132L180 128L176 144L182 164L194 172L205 164L204 148Z"},{"group":"forearms","d":"M56 170L74 168L70 198L58 226L46 232L44 218L50 194Z M204 170L186 168L190 198L202 226L214 232L216 218L210 194Z"},{"group":"calves","d":"M86 352L102 348L118 352L116 380L108 404L96 404L87 384Z M174 352L158 348L142 352L144 380L152 404L164 404L173 384Z"}]},"groups":{"pecs":{"name":"Chest","pct":88,"level":"max","state":"recover","sessions":2,"hard":9.5,"last":"yesterday"},"quads":{"name":"Quadriceps","pct":44,"level":"mid","state":"ready","sessions":1,"hard":7,"last":"4 d ago"},"obliques":{"name":"Obliques","pct":30,"level":"low","state":"ready","sessions":1,"hard":1.5,"last":"yesterday"},"abs":{"name":"Abs","pct":54,"level":"mid","state":"recover","sessions":1,"hard":3,"last":"yesterday"},"delts":{"name":"Shoulders","pct":100,"level":"max","state":"recover","sessions":1,"hard":7,"last":"yesterday"},"biceps":{"name":"Biceps","pct":54,"level":"mid","state":"ready","sessions":1,"hard":6.5,"last":"2 d ago"},"forearms":{"name":"Forearms","pct":9,"level":"low","state":"ready","sessions":0,"hard":0,"last":"7+ d ago"},"calves":{"name":"Calves","pct":17,"level":"low","state":"ready","sessions":0,"hard":3,"last":"4 d ago"},"traps":{"name":"Traps","pct":35,"level":"mid","state":"ready","sessions":1,"hard":0,"last":"7+ d ago"},"lats":{"name":"Lats","pct":51,"level":"mid","state":"ready","sessions":1,"hard":7,"last":"2 d ago"},"glutes":{"name":"Glutes","pct":54,"level":"mid","state":"ready","sessions":1,"hard":6.5,"last":"4 d ago"},"hams":{"name":"Hamstrings","pct":30,"level":"low","state":"ready","sessions":1,"hard":1.5,"last":"4 d ago"},"lower":{"name":"Lower back","pct":0,"level":"none","state":"low","sessions":0,"hard":0,"last":"7+ d ago"},"infra":{"name":"Infraspinatus","pct":39,"level":"mid","state":"ready","sessions":1,"hard":3.5,"last":"2 d ago"},"triceps":{"name":"Triceps","pct":82,"level":"high","state":"recover","sessions":2,"hard":7,"last":"yesterday"}}};
+  var LANG = "en", FR = {"Recipes":"Recettes","Become a tester":"Devenir testeur","Android beta · free · limited spots":"Bêta Android · gratuite · places limitées","Lose weight, gain muscle, eat better?":"Perdre du poids, prendre du muscle, mieux manger ?","Hylens is for you.":"Hylens est fait pour vous.","Meals, training, muscles and sleep, all in one place.":"Repas, sport, muscles et sommeil, au même endroit.","See the scan":"Voir le scan","Try it":"Essayer","Meal scan":"Scan repas","One photo. All your numbers.":"Une photo. Tous vos chiffres.","Hylens recognizes what’s on your plate and calculates calories and macros in seconds.":"Hylens reconnaît ce qu’il y a dans votre assiette et calcule les calories et les macros en quelques secondes.","Beta testers":"Bêta-testeurs","They’re testing Hylens.":"Ils testent Hylens.","Challenges":"Défis","Workouts to lose weight.":"Des exercices pour perdre du poids.","And to get stronger, at home, at your own pace.":"Et pour se renforcer, à la maison, à votre rythme.","Big fat burn":"Brûle beaucoup de graisse","Circuits that raise your calorie burn.":"Des circuits pour augmenter la dépense.","Steel abs":"Abdos en acier","Your core, week after week.":"Le muscle du ventre, semaine après semaine.","Full-body challenge":"Défi corps complet","Your whole body, in alternating sessions.":"Tout le corps, des séances qui alternent.","Tap a muscle.":"Touchez un muscle.","See what your week asked of it.":"Voyez ce que votre semaine lui a demandé.","Front":"Face","Back":"Dos","Tap a muscle":"Touchez un muscle","Load · 7 days":"Charge · 7 jours","Calculating load…":"Calcul de la charge…","Workouts":"Séances","Hard sets":"Séries dures","Last":"Dernier","Sample week. In the app, your own workouts.":"Semaine d’exemple. Dans l’appli, vos propres séances.","Breakfast":"Petit-déjeuner","Lunch":"Déjeuner","Dinner":"Dîner","Chicken curry":"Curry de poulet","Recipes for you":"Des recettes pour vous","A large catalog of meals and drinks, with their nutrition values, for every moment of the day.":"Un large catalogue de plats et de boissons, avec leurs valeurs, pour chaque moment de la journée.","Your progress":"Votre progression","Your goal, a little closer every day.":"Votre objectif, un peu plus près chaque jour.","Your goal":"Votre objectif","Today":"Aujourd’hui","1 week":"1 semaine","1 month":"1 mois","3 months":"3 mois","See the full picture":"Vous y voyez clair","Meals, water and training: your days in numbers.":"Repas, eau et sport : vos journées en chiffres.","Habits take hold":"Vos habitudes s’installent","Your charts show what’s changing.":"Vos courbes montrent ce qui change.","Your effort, measured":"Vos efforts se mesurent","Weight, muscles and sleep: your progress at a glance.":"Poids, muscles et sommeil : vos progrès en un coup d’œil.","FAQ":"Questions","Before you download.":"Avant de télécharger.","Is it accurate?":"Est-ce précis ?","Values come from official food tables: Ciqual (ANSES) in France, USDA elsewhere. Portions are estimated from the photo: it’s an estimate, not a weigh-in, and you can correct every food.":"Les valeurs viennent de tables officielles : Ciqual de l’Anses en France, USDA ailleurs. Les portions sont estimées sur la photo : c’est une estimation, pas une pesée, et vous pouvez corriger chaque aliment.","Where do photos go in the app?":"Où vont les photos dans l’appli ?","Your photo is sent to our analysis service, powered by OpenAI, and Hylens doesn’t keep it. In the app, your meals and tracking stay on your phone.":"La photo est envoyée à notre service d’analyse, qui s’appuie sur OpenAI, puis elle n’est pas conservée par Hylens. Dans l’appli, vos repas et votre suivi restent sur votre téléphone.","How much does it cost?":"Combien ça coûte ?","The beta is free, no credit card. A founder rate with limited spots will be available at launch.":"La bêta est gratuite, sans carte bancaire. Un tarif fondateur à places limitées sera proposé au lancement.","Do I need Health Connect or a watch?":"Faut-il Health Connect ou une montre ?","No. With your permission, Health Connect adds your steps and workouts automatically. Without it, you log workouts by hand.":"Non. Avec votre accord, Health Connect ajoute vos pas et vos séances tout seul. Sans lui, vous notez vos séances à la main.","What about iPhone?":"Et sur iPhone ?","Not yet. Hylens is in beta on Android; the iPhone version comes next.":"Pas encore. Hylens est en bêta sur Android ; la version iPhone viendra ensuite.","Is this medical advice?":"Est-ce un avis médical ?","No. Hylens provides estimates and wellness guidelines. For any health question, talk to a professional.":"Non. Hylens donne des estimations et des repères de bien-être. Pour une question de santé, parlez-en à un professionnel.","Access":"Accès","Join Hylens":"Rejoindre Hylens","Founder":"Fondateur","rate · limited spots":"· places limitées","Android beta · Gmail":"Bêta Android · Gmail","Play launch · founder rate":"Sortie Play · tarif fondateur","App Store · founder rate":"App Store · tarif fondateur","Download Hylens":"Télécharger Hylens","Tester":"Testeur","Now":"Maintenant","Launch":"Lancement","Email":"E-mail","Apply":"Candidater","Waitlist":"Liste d’attente","Copy":"Copier","Meals, water, training and sleep. General nutrition information, not medical advice.":"Repas, eau, sport et sommeil. Informations nutritionnelles générales, pas un avis médical.","App":"Application","Join the beta":"Rejoindre la bêta","Information":"Informations","Privacy policy":"Politique de confidentialité","Legal notice":"Mentions légales","Publisher and publication director: Hectorone, contact@hectorone.fr.":"Éditeur du site et directeur de la publication : Hectorone, contact@hectorone.fr.","Host: GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA, +1 877 448 4820.":"Hébergeur : GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis, +1 877 448 4820.","Nutrition values: Ciqual table (ANSES) and USDA FoodData Central. Photos: Pexels.":"Valeurs nutritionnelles : table Ciqual (Anses) et USDA FoodData Central. Photos : Pexels.","Become a tester, it’s free":"Devenir testeur, c’est gratuit","Build your plate.":"Composez votre assiette.","Type up to 3 foods. Hylens does the math.":"Écrivez jusqu’à 3 aliments. Hylens fait le calcul.","Add":"Ajouter","Protein":"Protéines","Fat":"Lipides","Type a food":"Écrivez un aliment","3 foods max. Remove one to add another.":"3 aliments maximum. Retirez-en un pour en ajouter.","foods":"aliments","Your plate is empty.":"Votre assiette est vide.","No food found. Check the spelling.":"Aucun aliment trouvé. Vérifiez l’orthographe.","Loading…":"Chargement…","Foods unavailable. Reload the page.":"Aliments indisponibles. Rechargez la page.","Corrected to":"Corrigé en","Close":"Fermer","Pause animations":"Mettre les animations en pause","Resume animations":"Relancer les animations","Mannequin view":"Vue du mannequin","Muscle zones":"Zones musculaires","Anatomical mannequin":"Mannequin anatomique","Anatomical mannequin, front view":"Mannequin anatomique, de face","Anatomical mannequin, back view":"Mannequin anatomique, de dos","A woman photographs her plate and Hylens shows the calories and macros":"Une femme photographie son assiette, Hylens affiche les calories et les macros","Blueberry pancakes":"Pancakes aux myrtilles","Salmon poke bowl":"Poke bowl au saumon","Chicken curry with rice":"Curry de poulet et riz","Illustration: a curve rising from today to your goal, with markers at 1 week, 1 month and 3 months, then a trophy":"Illustration : une courbe qui monte d’aujourd’hui à votre objectif, avec un repère à 1 semaine, 1 mois et 3 mois, puis un trophée","you@gmail.com":"vous@gmail.com","you@email.com":"vous@email.com","you@icloud.com":"vous@icloud.com","Recovering":"À récupérer","Ready":"Prêt","Barely worked":"Peu travaillé","yesterday":"hier","today":"aujourd’hui","2 d ago":"il y a 2 j","4 d ago":"il y a 4 j","7+ d ago":"+ de 7 j","Traps":"Trapèzes","Shoulders":"Épaules","Chest":"Pectoraux","Forearms":"Avant-bras","Abs":"Abdominaux","Glutes":"Fessiers","Calves":"Mollets","Lats":"Dorsaux","Lower back":"Lombaires","Hamstrings":"Ischio-jambiers","Infraspinatus":"Sous-épineux","Invalid Gmail.":"Gmail invalide.","Invalid email.":"E-mail invalide.","Send the opened email to confirm.":"Envoyez l’e-mail ouvert pour confirmer.","Saved.":"Enregistré.","Full":"Complet","Copied":"Copié","Selected: copy it.":"Sélectionné : copiez-le.","Hylens beta tester application":"Candidature testeur Hylens","Hello,\n\nApplication for the Android closed beta.\nGmail:\n":"Bonjour,\n\nCandidature à la bêta fermée Android.\nGmail :\n","Hylens Android founder waitlist":"Liste d’attente Android · Hylens","Hello,\n\nAndroid founder waitlist registration.\nEmail:\n":"Bonjour,\n\nInscription à la liste d’attente Android (tarif fondateur).\nE-mail :\n","Hylens iPhone founder waitlist":"Liste d’attente iPhone · Hylens","Hello,\n\niPhone founder waitlist.\nEmail:\n":"Bonjour,\n\nListe d’attente iPhone (tarif fondateur).\nE-mail :\n"};
+  var T = function (t) { return LANG === "fr" && FR[t] != null ? FR[t] : t; };
+  var $ = function (id) { return document.getElementById(id); };
+  var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  // Réglage système « animations réduites » : plus d'effets au défilement, mais la vidéo et les carpes restent (bouton pause en bas à droite).
+  var REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches, PAUSED = false;
 
-  var FR = {
-    "meta.title": "Hylens IA · L’hydratation de précision, calculée sur vos repas",
-    "meta.desc": "Bêta Android (Gmail) · liste iPhone · 100 places fondateur par store (4,99 €/mois ou 29,99 €/an).",
-    "nav.how": "Fonctionnement",
-    "nav.fuel": "Calories",
-    "nav.faq": "Questions",
-    "cta.short": "Rejoindre",
-    "cta.download": "Télécharger",
-    "cta.getiton": "Disponible sur",
-    "cta.android": "Android",
-    "cta.beta": "Candidater",
-    "cta.ios": "Liste iPhone",
-    "hero.proof": "Bêta fermée · <b>{n}</b> testeurs",
-    "hero.h1a": "Votre corps est à 60 % d’eau.",
-    "hero.h1b": "Hylens vous aide à <em class=\"glow\">mieux le comprendre.</em>",
-    "hero.lede": "Photo du repas. Sel, potassium, calories — et votre objectif d’eau ajusté.",
-    "hero.note": "Gmail requis pour l’invitation",
-    "hyd.label": "Démo interactive : l’eau, le sel et le potassium du jour",
-    "hyd.water": "Eau",
-    "hyd.salt": "Sel",
-    "hyd.k": "Potassium",
-    "hyd.hint": "Touchez pour boire un verre",
-    "strip.label": "Hylens en bref",
-    "s1.b": "Quelques secondes",
-    "s1.s": "pour analyser un repas",
-    "s2.b": "Eau · sel · potassium",
-    "s2.s": "suivis ensemble",
-    "s3.b": "0 pub",
-    "s3.s": "et aucune revente de données",
-    "s4.b": "Sur votre téléphone",
-    "s4.s": "vos données restent chez vous",
-    "how.k": "Fonctionnement",
-    "how.h2": "Une photo. Tout le reste est calculé.",
-    "how.p": "De la photo à votre objectif d’eau, en quelques secondes.",
-    "sc.alt": "Démo animée de l’analyse d’un repas",
-    "sc.tag1": "Poulet · 150 g",
-    "sc.tag2": "Brocoli · 200 g",
-    "sc.tag3": "Riz complet · 120 g",
-    "sc.k": "Déjeuner · 12:42",
-    "sc.t": "Poulet, brocoli et riz complet",
-    "m.kcal": "Énergie",
-    "m.prot": "Protéines",
-    "m.salt": "Sel",
-    "m.water": "Eau",
-    "st1.t": "Photographiez votre repas",
-    "st1.p": "Votre assiette, un produit ou une photo de votre galerie.",
-    "st2.t": "Hylens l’analyse",
-    "st2.p": "Chaque aliment est reconnu et sa portion estimée. Vous corrigez tout en deux touches.",
-    "st3.t": "Votre journée s’ajuste",
-    "st3.p": "Calories, sel, potassium, et l’eau qu’il vous reste à boire aujourd’hui.",
-    "fu.k": "Calories",
-    "fu.h2": "Deux assiettes. Pas le même carburant.",
-    "fu.p": "Choisissez un déjeuner et voyez ce qu’il change à votre journée, des calories jusqu’à l’eau.",
-    "fu.pick": "Déjeuner",
-    "fu.lunch": "Déjeuner du jour",
-    "fu.p1": "Bowl poulet et riz",
-    "fu.p2": "Burger frites",
-    "fu.p3": "Pâtes carbonara",
-    "fu.meal": "Ce repas",
-    "fu.bk": "Petit-déjeuner",
-    "fu.lu": "Déjeuner",
-    "fu.in": "Dans l’assiette",
-    "fu.carb": "Glucides",
-    "fu.fat": "Lipides",
-    "fu.wat": "Eau en plus",
-    "fu.note": "Estimations pour un adulte. Dans l’appli, chaque repas a sa fiche complète.",
-    "mt.k": "Dans l’appli",
-    "mt.h2": "Tout ce qui joue sur votre hydratation, au même endroit.",
-    "mt.p": "Ce n’est qu’un aperçu. Le reste vous attend dans l’appli.",
-    "mt.more": "<b>Et plus dans l’appli.</b>",
-    "t1.t": "Eau",
-    "t1.v": "1,8 / 2,6 L",
-    "t1.p": "Votre objectif du jour, verre après verre.",
-    "t2.t": "Sel",
-    "t2.v": "3,1 / 5 g",
-    "t2.p": "Le sel caché de vos repas, jour après jour.",
-    "t3.t": "Potassium",
-    "t3.v": "2,4 / 3,5 g",
-    "t3.p": "L’équilibre avec le sel, repas après repas.",
-    "t4.t": "Calories",
-    "t4.v": "1 480 kcal",
-    "t4.p": "L’énergie de chaque repas.",
-    "t5.t": "Protéines",
-    "t5.v": "58 / 90 g",
-    "t5.p": "Par repas et sur toute la journée.",
-    "t6.t": "Activité",
-    "t6.v": "45 min",
-    "t6.p": "Vos séances, lues avec Health Connect.",
-    "y.k": "Pourquoi Hylens",
-    "y.h2": "Parce que le meilleur suivi, c’est celui qu’on garde.",
-    "y1.t": "Gagnez du temps à chaque repas",
-    "y1.p": "Pas de recherche sans fin dans des listes d’aliments. Une photo et votre repas est noté, même les jours chargés.",
-    "y2.t": "Comprenez votre corps",
-    "y2.p": "Voyez comment ce que vous mangez change ce que vous devez boire. Hylens relie votre assiette, votre sport et votre hydratation.",
-    "y3.t": "Atteignez votre objectif",
-    "y3.p": "Perdre du poids, prendre du muscle ou simplement vous sentir mieux : vous savez chaque jour où vous en êtes, et vous ajustez au bon moment.",
-    "y4.t": "Vos données restent à vous",
-    "y4.p": "Vos repas et votre historique restent sur votre téléphone. Aucune pub, aucune revente, et tout s’efface depuis votre profil.",
-    "a.h2": "Ce qu’en disent nos testeurs",
-    "q.k": "Questions",
-    "q.h2": "Questions fréquentes",
-    "q1.q": "Est-ce précis ?",
-    "q1.a": "Hylens reconnaît les aliments et estime les portions à partir de votre photo. C’est une estimation : vous pouvez corriger un aliment ou entrer son poids exact en deux touches, et tout se met à jour.",
-    "q1.tip": "<b>Astuce :</b> une bonne lumière et une photo prise du dessus donnent les meilleurs résultats.",
-    "q7.q": "Pourquoi suivre le sel et le potassium ?",
-    "q7.a": "Le sel fait retenir l’eau à votre corps, et le potassium aide à l’équilibrer. Les suivre à chaque repas vous aide à comprendre votre hydratation, pas seulement à compter vos verres.",
-    "q2.q": "Que deviennent mes photos ?",
-    "q2.a": "La photo est envoyée à notre service d’analyse le temps du calcul, puis Hylens ne la conserve pas. Vos repas et votre historique restent sur votre téléphone. Tous les détails dans notre <a href=\"https://api.hectorone.fr/privacy\">politique de confidentialité</a>.",
-    "q3.q": "Combien ça coûte ?",
-    "q3.a": "Gratuit en bêta Android. Ensuite Premium : 9,99 €/mois ou 34,99 €/an. Tarif fondateur 4,99 € / 29,99 € pour les 100 premiers abonnements Android et iPhone (tant que l’abonnement reste actif).",
-    "q4.q": "Et sur iPhone ?",
-    "q4.a": "Bêta Android seulement pour l’instant. <a href=\"#formIos\">Liste d’attente iPhone</a> : 100 places au tarif fondateur.",
-    "q5.q": "Faut-il une montre connectée ?",
-    "q5.a": "Non. Avec votre accord, Health Connect ajoute vos pas et vos séances tout seul. Sans lui, vous notez vos séances à la main.",
-    "q6.q": "Est-ce un avis médical ?",
-    "q6.a": "Non. Hylens donne des estimations et des repères de bien-être. Pour toute question de santé, parlez-en à un professionnel.",
-    "j.k": "Accès",
-    "j.h2": "Rejoindre Hylens",
-    "j.prices": "<b>Fondateur</b> · 4,99 €/mois · 100 places / store",
-    "j.hint.test": "Bêta Android · Gmail",
-    "j.hint.found": "Sortie Play · tarif fondateur",
-    "j.hint.ios": "App Store · tarif fondateur",
-    "j.test.h": "Testeur",
-    "j.test.tag": "Maintenant",
-    "j.test.pill": "{n} places",
-    "j.test.label": "Gmail",
-    "j.test.ph": "vous@gmail.com",
-    "j.test.btn": "Candidater",
-    "j.test.bad": "Gmail invalide.",
-    "j.test.full": "Complet",
-    "j.found.h": "Android",
-    "j.found.tag": "Lancement",
-    "j.found.pill": "{r} / {cap}",
-    "j.found.full": "Complet",
-    "j.found.label": "E-mail",
-    "j.found.ph": "vous@email.com",
-    "j.found.btn": "Liste d’attente",
-    "j.found.bad": "E-mail invalide.",
-    "j.ios.h": "iPhone",
-    "j.ios.tag": "Lancement",
-    "j.ios.pill": "{r} / {cap}",
-    "j.ios.full": "Complet",
-    "j.ios.label": "E-mail",
-    "j.ios.ph": "vous@icloud.com",
-    "j.ios.btn": "Liste d’attente",
-    "j.ios.bad": "E-mail invalide.",
-    "j.sent": "Enregistré.",
-    "j.mailHint": "Envoyez l’e-mail ouvert pour confirmer.",
-    "j.or": "Contact",
-    "j.copy": "Copier",
-    "ft.p": "Hydratation et nutrition depuis une photo. Bien-être, pas avis médical.",
-    "ft.app": "Application",
-    "ft.join": "Rejoindre la bêta",
-    "ft.info": "Informations",
-    "ft.privacy": "Politique de confidentialité",
-    "ft.legal": "Mentions légales",
-    "ft.l1": "Éditeur du site et directeur de la publication : Hectorone.",
-    "ft.l2": "Hébergeur : GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis, +1 877 448 4820.",
-    "ft.l3": "Valeurs nutritionnelles : table de composition nutritionnelle Ciqual, Anses. Photo du repas : Pexels."
-  };
+  /* ---- Scan : la vidéo tourne quand elle est à l'écran ---- */
+  var scanV = $("scanVideo"), scanSeen = false;
+  function scanSync() { if (scanSeen && !PAUSED) { var pl = scanV.play(); if (pl && pl.catch) pl.catch(function () {}); } else scanV.pause(); }
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es.forEach(function (e) { scanSeen = e.isIntersecting; scanSync(); }); }, { threshold: 0.2 }).observe(scanV);
 
-  var DYN = {
-    en: { done: "Goal reached. Nicely done.", reset: "Start again", copied: "Copied", locale: "en-US", today: "Today", rest: "{n} kcal left today",
-      beta: ["Hylens beta invite", "Hi,\n\nI'd like to test Hylens on Android.\nThe Gmail address on my phone: \n\nThanks!"],
-      ios: ["Hylens on iPhone", "Hi,\n\nPlease let me know when Hylens is available on iPhone.\n\nThanks!"] },
-    fr: { done: "Objectif atteint. Bien joué.", reset: "Recommencer", copied: "Copié", locale: "fr-FR", today: "Aujourd’hui", rest: "Reste {n} kcal aujourd’hui",
-      beta: ["Invitation bêta Hylens", "Bonjour,\n\nJe souhaite tester Hylens sur Android.\nL'adresse Gmail de mon téléphone : \n\nMerci !"],
-      ios: ["Hylens sur iPhone", "Bonjour,\n\nPrévenez-moi quand Hylens sera disponible sur iPhone.\n\nMerci !"] }
-  };
+  /* ---- Page d'essai : 3 aliments Ciqual, saisie libre avec correcteur, 3 anneaux ---- */
+  var TRY_MAX = 3, tryPlate = [], tryData = null, tryLoad = null, tryOpener = null;
+  // Repères des anneaux : apports de référence UE (règlement 1169/2011).
+  var TRY_RINGS = [{ k: "p", n: "Protein", u: "g", ref: 50, c: "var(--coral)" }, { k: "kc", n: "Calories", u: "kcal", ref: 2000, c: "var(--aqua)" }, { k: "l", n: "Fat", u: "g", ref: 70, c: "var(--violet)" }];
+  TRY_RINGS.forEach(function (r) {
+    var box = el("div", "ring"), dial = el("div", "dial"), mid = el("div", "mid");
+    dial.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="42"/><circle class="fill" cx="50" cy="50" r="42" style="stroke:' + r.c + '"/></svg>';
+    r.value = el("b", "", "0"); mid.appendChild(r.value); mid.appendChild(el("small", "", r.u));
+    dial.appendChild(mid); box.appendChild(dial); box.appendChild(el("span", "", r.n));
+    r.fill = dial.querySelector(".fill");
+    $("tryRings").appendChild(box);
+  });
+  var fold = function (v) { return v.replace(/œ/g, "oe").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); };
+  var singular = function (w) { return w.length > 3 ? w.replace(/(ies)$/, "y").replace(/(s|x)$/, "") : w; };
+  var STOP = { of: 1, de: 1, du: 1, la: 1, le: 1, les: 1, des: 1, the: 1, a: 1, au: 1, aux: 1, et: 1, and: 1, "with": 1, avec: 1, un: 1, une: 1 };
+  function loadTry() {
+    if (!tryLoad) tryLoad = fetch("data/ciqual.json").then(function (r) { if (!r.ok) throw new Error("data"); return r.json(); }).then(function (d) {
+      var vocab = {}, rows = d.f;
+      var foods = rows.map(function (r) {
+        var en = fold(r[0]), fr = fold(r[1]);
+        var stem = " " + (en + " " + fr).split(" ").map(singular).join(" ") + " ";
+        stem.trim().split(" ").forEach(function (w) { vocab[w] = (vocab[w] || 0) + 1; });
+        return { name: r[0], nameFr: r[1], en: en, fr: fr, stem: stem, kc: r[2], p: r[3], l: r[4] };
+      });
+      Object.keys(d.s).forEach(function (k) { k.split(" ").forEach(function (w) { if (!vocab[w]) vocab[w] = 1; }); });
+      tryData = { foods: foods, vocab: vocab, words: Object.keys(vocab), common: d.s };
+      return tryData;
+    }).catch(function (e) { tryLoad = null; throw e; });
+    return tryLoad;
+  }
+  function distance(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    var row = [], i, j;
+    for (j = 0; j <= b.length; j++) row[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      var prev = row[0]; row[0] = i;
+      for (j = 1; j <= b.length; j++) { var cur = row[j]; row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = cur; }
+    }
+    return row[b.length];
+  }
+  // Correcteur : un mot inconnu est remplacé par le mot de la table le plus proche.
+  function correct(word) {
+    if (tryData.vocab[word] || word.length < 3) return word;
+    var max = word.length <= 4 ? 1 : word.length <= 8 ? 2 : 3, best = null, bestD = max + 1, bestN = 0;
+    tryData.words.forEach(function (w) { var d = distance(word, w, max); if (d <= max && (d < bestD || (d === bestD && tryData.vocab[w] > bestN))) { best = w; bestD = d; bestN = tryData.vocab[w]; } });
+    return best || word;
+  }
+  var TRY_COOKED = /\b(cooked|roasted|boiled|baked|grilled|steamed|poached|pan fried|broiled)\b/;
+  var EATEN_COOKED = /\b(rice|riz|pasta|pate|noodle|nouille|spaghetti|quinoa|bulgur|boulgour|semolina|semoule|lentil|lentille|bean|haricot|chickpea|pois|potato|pomme de terre|chicken|poulet|beef|boeuf|steak|pork|porc|turkey|dinde|lamb|agneau|veal|veau|duck|canard|salmon|saumon|cod|cabillaud|tuna|thon|shrimp|crevette|egg|oeuf|broccoli|brocoli|spinach|epinard)\b/;
+  var TRY_PLAIN = /\b(cooked|roasted|raw|boiled|baked|grilled|plain|whole|cuit|cuite|cru|crue)\b/;
+  var TRY_SIDE = /\b(skin|feet|tail|neck|giblet|gizzard|liver|heart|flour|powder|dry|canned|frozen|mix|baby|infant|organic|poudre|surgele|appertise|bio)\b/;
+  function findFood(query) {
+    var typed = fold(query).split(" ").filter(function (w) { return w && !STOP[w]; }).map(singular);
+    if (!typed.length) return null;
+    var words = typed.map(correct), best = null, bestS = 1e9, q = words.join(" ");
+    // Mot courant : le dictionnaire de l'appli donne directement le bon aliment.
+    var known = tryData.common[q];
+    if (known != null) return { food: tryData.foods[known], fixed: words.join(" ") !== typed.join(" ") ? words.join(" ") : null };
+    // Ce qu'on mange cuit (riz, pâtes, viande, poisson…) : la fiche cuite d'abord, sauf si « raw » est écrit.
+    var wantCooked = EATEN_COOKED.test(q) && !/\b(raw|cru|crue)\b/.test(q);
+    tryData.foods.forEach(function (f) {
+      if (!words.every(function (w) { return f.stem.indexOf(" " + w + " ") >= 0 || f.stem.indexOf(" " + w) >= 0; })) return;
+      var start = f.en.indexOf(q) === 0 || f.fr.indexOf(q) === 0 ? 0 : (" " + f.en.split(" ").slice(0, 3).join(" ") + " ").indexOf(" " + q) >= 0 ? 1 : 2;
+      var isCooked = TRY_COOKED.test(f.en), isRaw = /\braw\b/.test(f.en);
+      var score = start + (wantCooked ? (isCooked ? -1.4 : isRaw ? 0.8 : 0) : TRY_PLAIN.test(f.en) || TRY_PLAIN.test(f.fr) ? -0.7 : 0) + (TRY_SIDE.test(f.en) ? 1 : 0) + f.en.length / 300;
+      if (score < bestS) { bestS = score; best = f; }
+    });
+    return best ? { food: best, fixed: words.join(" ") !== typed.join(" ") ? words.join(" ") : null } : null;
+  }
+  function tryTotals() {
+    TRY_RINGS.forEach(function (r) {
+      var v = tryPlate.reduce(function (s, it) { return s + it.g * it.f[r.k] / 100; }, 0);
+      r.value.textContent = String(Math.round(v));
+      r.fill.style.strokeDashoffset = String(264 * (1 - Math.min(1, v / r.ref)));
+    });
+  }
+  function tryRender() {
+    var list = $("tryItems"), full = tryPlate.length >= TRY_MAX;
+    list.textContent = "";
+    $("tryCount").textContent = tryPlate.length + " / " + TRY_MAX + " " + T("foods");
+    $("tryInput").disabled = full; $("tryAdd").disabled = full;
+    $("tryInput").placeholder = T(full ? "3 foods max. Remove one to add another." : "Type a food");
+    if (!tryPlate.length) list.appendChild(el("li", "empty-plate", T("Your plate is empty.")));
+    tryPlate.forEach(function (it, idx) {
+      var li = el("li");
+      var shown = LANG === "fr" ? it.f.nameFr : it.f.name;
+      li.appendChild(el("span", "n", shown));
+      var step = el("div", "stepper"), minus = el("button", "", "−"), input = el("input"), plus = el("button", "", "+");
+      minus.type = plus.type = "button";
+      minus.setAttribute("aria-label", "− 10 g, " + shown);
+      plus.setAttribute("aria-label", "+ 10 g, " + shown);
+      input.type = "number"; input.min = "0"; input.max = "2000"; input.inputMode = "numeric"; input.value = it.g;
+      input.setAttribute("aria-label", "g, " + shown);
+      var set = function (g, refill) { it.g = Math.min(2000, Math.max(0, Math.round(g) || 0)); if (refill) input.value = it.g; tryTotals(); };
+      minus.onclick = function () { set(it.g - 10, true); };
+      plus.onclick = function () { set(it.g + 10, true); };
+      input.oninput = function () { set(Number(input.value), false); };
+      input.onblur = function () { input.value = it.g; };
+      step.appendChild(minus); step.appendChild(input); step.appendChild(el("span", "", "g")); step.appendChild(plus);
+      var rm = el("button", "rm", "×");
+      rm.type = "button"; rm.setAttribute("aria-label", "× " + shown);
+      rm.onclick = function () { tryPlate.splice(idx, 1); $("tryNote").textContent = ""; tryRender(); tryTotals(); };
+      li.appendChild(step); li.appendChild(rm);
+      list.appendChild(li);
+    });
+  }
+  $("tryForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var value = $("tryInput").value;
+    if (!fold(value) || tryPlate.length >= TRY_MAX) return;
+    $("tryNote").textContent = tryData ? "" : T("Loading…");
+    loadTry().then(function () {
+      var hit = findFood(value);
+      if (!hit) { $("tryNote").textContent = T("No food found. Check the spelling."); return; }
+      tryPlate.push({ f: hit.food, g: 100 });
+      $("tryInput").value = "";
+      $("tryNote").textContent = hit.fixed ? T("Corrected to") + " “" + hit.fixed + "”." : "";
+      tryRender(); tryTotals();
+      if (tryPlate.length < TRY_MAX) $("tryInput").focus();
+    }).catch(function () { $("tryNote").textContent = T("Foods unavailable. Reload the page."); });
+  });
+  function tryShow(open) {
+    $("tryPage").hidden = !open;
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    document.querySelector(".page").inert = open;
+    if (open) { tryOpener = document.activeElement; loadTry().catch(function () {}); $("tryInput").focus(); }
+    else if (tryOpener) tryOpener.focus();
+  }
+  $("tryOpen").onclick = function () { tryShow(true); };
+  $("tryClose").onclick = function () { tryShow(false); };
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("tryPage").hidden) tryShow(false); });
+  tryRender(); tryTotals();
 
-  var EN = { "meta.title": document.title, "meta.desc": document.querySelector('meta[name="description"]').content };
-  document.querySelectorAll("[data-t]").forEach(function (el) { EN[el.dataset.t] = el.innerHTML; });
-  document.querySelectorAll("[data-ta]").forEach(function (el) { EN[el.dataset.ta] = el.getAttribute("aria-label"); });
-  EN["j.test.pill"] = "{n} spots";
-  EN["j.found.pill"] = "{r} / {cap}";
-  EN["j.found.full"] = "Full";
-  EN["j.ios.pill"] = "{r} / {cap}";
-  EN["j.ios.full"] = "Full";
-  EN["j.sent"] = "Saved.";
-  EN["j.mailHint"] = "Send the opened email to confirm.";
-  EN["j.test.bad"] = "Invalid Gmail.";
-  EN["j.found.bad"] = EN["j.ios.bad"] = "Invalid email.";
-  EN["j.test.full"] = "Full";
-  EN["mt.more"] = "<b>More in the app.</b>";
-  EN["cta.beta"] = "Apply";
-  EN["j.k"] = "Access";
-  EN["j.prices"] = "<b>Founder</b> · €4.99/mo · 100 spots per store";
-  EN["j.hint.test"] = "Android beta · Gmail";
-  EN["j.hint.found"] = "Play launch · founder rate";
-  EN["j.hint.ios"] = "App Store · founder rate";
-  EN["j.test.tag"] = "Now";
-  EN["j.found.tag"] = EN["j.ios.tag"] = "Launch";
+  /* ---- Mannequin → usure, mêmes calculs et couleurs que l'appli ---- */
+  var HEAT = { none: "var(--heat-none)", low: "var(--heat-low)", mid: "var(--heat-mid)", high: "var(--heat-high)", max: "var(--heat-max)" };
+  var STATE = { recover: "Recovering", ready: "Ready", low: "Barely worked" };
+  var side = "front", group = null, loadRun = 0;
+  var sets = function (v) { return Number.isInteger(v) ? String(v) : "≈ " + Math.max(1, Math.round(v)); };
+  function drawZones() {
+    var svg = $("zones"), NS = "http://www.w3.org/2000/svg";
+    $("mann").src = "assets/mannequin-" + side + ".jpg";
+    $("mann").alt = T(side === "front" ? "Anatomical mannequin, front view" : "Anatomical mannequin, back view");
+    svg.textContent = "";
+    MUSCLES.zones[side].forEach(function (z) {
+      var g = MUSCLES.groups[z.group], c = HEAT[g.level], p = document.createElementNS(NS, "path");
+      p.setAttribute("d", z.d); p.setAttribute("tabindex", "0"); p.setAttribute("role", "button");
+      p.setAttribute("aria-label", T(g.name));
+      if (z.group === group) { p.setAttribute("class", "on"); p.style.fill = c; }
+      p.addEventListener("click", function () { choose(z.group); });
+      p.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(z.group); } });
+      svg.appendChild(p);
+    });
+    $("front").setAttribute("aria-pressed", String(side === "front"));
+    $("back").setAttribute("aria-pressed", String(side === "back"));
+  }
+  // Barre de chargement d'abord, puis remplissage jusqu'à la vraie charge, puis le détail.
+  var LOAD_MS = 650, FILL_MS = 1100;
+  function renderWear() {
+    var g = MUSCLES.groups[group], run = ++loadRun, track = $("mTrack"), bar = $("mBar"), label = $("mLabel"), pct = $("mPct"), state = $("mState"), tiles = $("mTiles");
+    $("wearEmpty").hidden = true; $("wearBody").hidden = false;
+    $("mName").textContent = T(g.name);
+    state.className = "state " + g.state; state.textContent = T(STATE[g.state]);
+    $("mSessions").textContent = g.sessions; $("mHard").textContent = sets(g.hard); $("mLast").textContent = T(g.last);
+    tiles.classList.remove("in");
+    bar.style.width = "0"; bar.style.background = HEAT[g.level];
+    pct.textContent = "0%"; label.textContent = T("Calculating load…");
+    track.classList.add("loading");
+    setTimeout(function () {
+      if (run !== loadRun) return;
+      track.classList.remove("loading");
+      label.textContent = T("Load · 7 days");
+      var t0 = performance.now();
+      (function fill(now) {
+        if (run !== loadRun) return;
+        var t = Math.min(1, (now - t0) / FILL_MS), e = 1 - Math.pow(1 - t, 3);
+        bar.style.width = g.pct * e + "%"; pct.textContent = Math.round(g.pct * e) + "%";
+        if (t < 1) { requestAnimationFrame(fill); return; }
+        state.classList.add("in"); tiles.classList.add("in");
+      })(t0);
+    }, LOAD_MS);
+  }
+  function choose(g) {
+    group = g;
+    var sides = ["front", "back"].filter(function (s) { return MUSCLES.zones[s].some(function (z) { return z.group === g; }); });
+    if (sides.indexOf(side) < 0) side = sides[0];
+    drawZones(); renderWear();
+    // Téléphone : le détail est sous le mannequin, on l'amène à l'écran pour voir la barre.
+    if (innerWidth <= 960) document.querySelector(".wear-col").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" });
+  }
+  $("front").onclick = function () { side = "front"; drawZones(); };
+  $("back").onclick = function () { side = "back"; drawZones(); };
+  drawZones();
 
-  var lang = "en";
-  function fmt(n, d) { return new Intl.NumberFormat(DYN[lang].locale, { minimumFractionDigits: d, maximumFractionDigits: d }).format(n); }
+  /* ---- Feu et brillance des défis (comme l'appli) ---- */
+  var EMBERS = [[.52, 4, 0], [.62, 3, .18], [.71, 5, .42], [.8, 3, .66], [.9, 4, .12], [.28, 3, .55], [.37, 4, .8], [.16, 3, .3], [.46, 5, .9], [.08, 3, .48], [.74, 3, .72], [.33, 4, .05]];
+  var SPARKS = [[.3, .18, 10, 0], [.78, .24, 8, .25], [.62, .42, 12, .5], [.86, .56, 7, .7], [.2, .5, 9, .85]];
+  var SPARK = "M12 2l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z";
+  document.querySelectorAll('[data-fx="fire"]').forEach(function (fx) {
+    EMBERS.forEach(function (e, i) {
+      var n = el("i", "ember");
+      n.style.cssText = "left:" + e[0] * 100 + "%;width:" + e[1] * 2 + "px;height:" + e[1] * 2 + "px;background:" + (i % 3 ? "#FF9F1C" : "#FFE45C") + ";box-shadow:0 0 8px #FF8C28;--dx:" + (i % 2 ? 10 : -10) + "px;animation-delay:" + (-e[2] * 3.2) + "s";
+      fx.appendChild(n);
+    });
+  });
+  document.querySelectorAll('[data-fx="shine"]').forEach(function (fx) {
+    SPARKS.forEach(function (e) {
+      fx.insertAdjacentHTML("beforeend", '<svg class="spark" viewBox="0 0 24 24" aria-hidden="true" style="left:' + e[0] * 100 + "%;top:" + e[1] * 100 + "%;width:" + e[2] * 2.4 + "px;height:" + e[2] * 2.4 + "px;animation-delay:" + (-e[3] * 3.6) + 's"><path d="' + SPARK + '"/></svg>');
+    });
+  });
 
-  /* ---------- Fond : eau, rayons de lumière, plancton et carpes luminescentes ---------- */
-  var sea = (function () {
-    var cv = document.getElementById("sea"), ctx = cv.getContext && cv.getContext("2d");
-    if (!ctx) return { ripple: function () {} };
+  /* ---- Étang : mêmes carpes luminescentes que le site en ligne ---- */
+  var startPond = (function () {
+    var cv = $("pond"), ctx = cv.getContext("2d"), CALM = REDUCED;
     var W = 0, H = 0, fish = [], motes = [], rays = [], ripples = [], mouse = { x: -9999, y: -9999 }, scrollKick = 0;
     var HUES = [[176, 72, 62], [198, 92, 66], [345, 92, 72], [40, 96, 64], [255, 88, 76], [150, 62, 64]];
     var BODY = [0.55, 0.86, 1, 1, 0.96, 0.88, 0.77, 0.65, 0.52, 0.4, 0.29, 0.19, 0.11, 0.06];
@@ -974,11 +884,6 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     Fish.prototype.update = function (k) {
       this.t += k;
       var steer = Math.sin(this.t * this.f1 + this.p1) * 0.004 + Math.sin(this.t * this.f2 + this.p2) * 0.002, fear = 0, lim = 0.009;
-      for (var j = 0; j < fish.length; j++) {
-        var o = fish[j]; if (o === this) continue;
-        var ox = this.x - o.x, oy = this.y - o.y, od = Math.sqrt(ox * ox + oy * oy), near = (this.len + o.len) * 1.4;
-        if (od < near) steer += turnTo(Math.atan2(oy, ox), this.a) * 0.012 * (1 - od / near);
-      }
       var dx = this.x - mouse.x, dy = this.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
       if (d < 180) { fear = 1 - d / 180; steer += turnTo(Math.atan2(dy, dx), this.a) * 0.05 * fear; }
       for (var r = 0; r < ripples.length; r++) {
@@ -1085,235 +990,121 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
       ctx.globalCompositeOperation = "source-over";
       scrollKick *= Math.pow(0.85, k);
     }
-
     resize(); populate();
-    window.addEventListener("resize", resize);
-    if (STILL) {
-      for (var s = 0; s < 60; s++) fish.forEach(function (f) { f.update(1); });
-      draw(0, 0);
-      window.addEventListener("resize", function () { draw(0, 0); });
-      return { ripple: function () {} };
-    }
-    window.addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") { mouse.x = e.clientX; mouse.y = e.clientY; } }, { passive: true });
+    addEventListener("resize", resize);
+    addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") { mouse.x = e.clientX; mouse.y = e.clientY; } }, { passive: true });
     document.addEventListener("mouseleave", function () { mouse.x = mouse.y = -9999; });
-    var lastY = window.scrollY;
-    if (!CALM) window.addEventListener("scroll", function () { scrollKick += (window.scrollY - lastY) * 0.05; lastY = window.scrollY; }, { passive: true });
+    var lastY = scrollY;
+    addEventListener("scroll", function () { scrollKick += (scrollY - lastY) * 0.05; lastY = scrollY; }, { passive: true });
     document.addEventListener("click", function (e) { ripples.push({ x: e.clientX, y: e.clientY, r: 0, life: 1 }); });
-
-    var last = performance.now(), running = true;
+    var last = performance.now(), running = false;
     function frame(t) {
-      if (!running) return;
+      if (PAUSED || document.hidden) { running = false; return; }
+      // Rien à dessiner quand l'étang est caché (vidéo du haut ou zone sombre).
+      if (+pondCv.style.opacity === 0 || +dusk.style.opacity >= 1) { last = t; requestAnimationFrame(frame); return; }
       var k = Math.min(3, (t - last) / 16.67); last = t;
       draw(t, k);
       requestAnimationFrame(frame);
     }
-    document.addEventListener("visibilitychange", function () {
-      running = !document.hidden;
-      if (running) { last = performance.now(); requestAnimationFrame(frame); }
-    });
-    requestAnimationFrame(frame);
-    return { ripple: function (x, y) { ripples.push({ x: x, y: y, r: 0, life: 1 }); } };
+    function start() { if (running || PAUSED || document.hidden) return; running = true; last = performance.now(); requestAnimationFrame(frame); }
+    document.addEventListener("visibilitychange", start);
+    for (var pre = 0; pre < 60; pre++) fish.forEach(function (f) { f.update(1); });
+    start();
+    return start;
   })();
 
-  /* ---------- Widget hydratation ---------- */
-  var HYD = { w: 1.25, goal: 2.6, salt: 3.1, saltMax: 5, k: 2.4, kMax: 3.5, glasses: 5, shown: false };
-  var $ = function (id) { return document.getElementById(id); };
-  function arc(el, p) { el.style.strokeDasharray = Math.max(0.001, Math.min(100, p)) + " 100"; }
-  document.querySelectorAll(".tile svg").forEach(function (s) {
-    var t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    t.setAttribute("class", "pct"); t.setAttribute("x", "32"); t.setAttribute("y", "33");
-    t.textContent = s.querySelector(".arc").dataset.p + "%";
-    s.appendChild(t);
-  });
-  function renderHyd() {
-    if (!HYD.shown) return;
-    arc($("aw"), HYD.w / HYD.goal * 100);
-    arc($("as"), HYD.salt / HYD.saltMax * 100);
-    arc($("ak"), HYD.k / HYD.kMax * 100);
-    $("wlvl").style.transform = "translateY(" + (205 - Math.min(1, HYD.w / HYD.goal) * 160 - 50) + "px)";
-    $("wv").textContent = fmt(HYD.w, 2);
-    $("wg").textContent = "/ " + fmt(HYD.goal, 1) + " L";
-    $("sv").textContent = fmt(HYD.salt, 1);
-    $("kv").textContent = fmt(HYD.k, 1);
-    $("kg").textContent = "/ " + fmt(HYD.kMax, 1) + " g";
-    $("glasses").textContent = HYD.glasses;
+  /* ---- Sortie de la vidéo, apparitions, cartes défi ---- */
+  var film = $("film"), filmV = $("filmVideo"), dusk = $("dusk"), pondCv = $("pond"), duskV = $("duskVideo"), nuit = $("nuit"), heroT = $("heroText"), bar = $("topbar"), defis = [].slice.call(document.querySelectorAll(".defi"));
+  // Mode économie de données : l'image fixe suffit.
+  if (!(navigator.connection && navigator.connection.saveData)) filmV.src = "assets/koi.mp4";
+  function playFilm() { if (PAUSED || !filmV.paused || scrollY >= innerHeight * 0.82) return; filmV.muted = true; var pl = filmV.play(); if (pl && pl.catch) pl.catch(function () {}); }
+  ["pointerdown", "keydown", "touchstart"].forEach(function (t) { addEventListener(t, playFilm, { passive: true }); });
+  filmV.addEventListener("canplay", playFilm);
+  $("motion").onclick = function () {
+    PAUSED = !PAUSED;
+    this.setAttribute("aria-pressed", String(PAUSED));
+    this.setAttribute("aria-label", T(PAUSED ? "Resume animations" : "Pause animations"));
+    $("motionIcon").setAttribute("d", PAUSED ? "M8 5l11 7-11 7z" : "M7 5h4v14H7zM13 5h4v14h-4z");
+    document.body.classList.toggle("still", PAUSED);
+    if (PAUSED) { filmV.pause(); duskV.pause(); scanSync(); } else { playFilm(); startPond(); onScroll(); scanSync(); }
+  };
+  function onScroll() {
+    var y = scrollY, h = innerHeight, p = Math.min(1, y / (h * 0.82));
+    var filmO = Math.max(0, 1 - p / 0.66);
+    film.style.opacity = String(filmO);
+    film.style.visibility = filmO <= 0 ? "hidden" : "visible";
+    pondCv.style.opacity = String(Math.max(0, Math.min(1, (p - 0.72) / 0.28)));
+    film.style.transform = REDUCED ? "" : "scale(" + (1 + p * 0.16) + ")";
+    heroT.style.transform = REDUCED ? "" : "translateY(" + (-y * 0.32) + "px)";
+    heroT.style.opacity = String(Math.max(0, 1 - y / (h * 0.55)));
+    if (p >= 1) { if (!filmV.paused) filmV.pause(); } else playFilm();
+    // On arrive doucement dans le noir, la vidéo tourne tant qu'on est dans la zone, puis retour aux carpes.
+    var rz = nuit.getBoundingClientRect(), enter = Math.max(0, Math.min(1, (h * 0.9 - rz.top) / (h * 0.65))), leave = Math.max(0, Math.min(1, (rz.bottom - h * 0.2) / (h * 0.6))), o = Math.min(enter, leave);
+    dusk.style.opacity = o.toFixed(3); dusk.style.visibility = o > 0 ? "visible" : "hidden";
+    if (o > 0 && !PAUSED) { if (duskV.paused) { duskV.muted = true; var dp = duskV.play(); if (dp && dp.catch) dp.catch(function () {}); } } else if (!duskV.paused) duskV.pause();
+    bar.classList.toggle("on", y > 40);
+    defis.forEach(function (d) { var r = d.getBoundingClientRect(); if (r.bottom > 0 && r.top < h) d.style.setProperty("--py", (((r.top + r.height / 2) / h - 0.5) * -26).toFixed(1) + "px"); });
   }
-  function renderDate() {
-    var d = new Intl.DateTimeFormat(DYN[lang].locale, { weekday: "long", day: "numeric", month: "long" }).format(new Date());
-    $("today").textContent = d.charAt(0).toUpperCase() + d.slice(1);
-  }
-  var hint = $("hint"), drink = $("drink"), card = $("hyd");
-  drink.addEventListener("click", function (e) {
-    e.stopPropagation();
-    var b = drink.getBoundingClientRect();
-    sea.ripple(b.left + b.width / 2, b.top + b.height / 2);
-    if (HYD.w >= HYD.goal) {
-      HYD.w = 1.25; HYD.glasses = 5;
-      $("drinkLabel").textContent = "+ 250 ml";
-      hint.textContent = lang === "fr" ? FR["hyd.hint"] : EN["hyd.hint"];
-    } else {
-      HYD.w = Math.min(HYD.goal, HYD.w + 0.25); HYD.glasses++;
-      if (HYD.w >= HYD.goal) { hint.textContent = DYN[lang].done; $("drinkLabel").textContent = DYN[lang].reset; }
-    }
-    card.classList.add("pulse"); setTimeout(function () { card.classList.remove("pulse"); }, 260);
-    renderHyd();
+  var ticking = false;
+  addEventListener("scroll", function () { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; onScroll(); }); }, { passive: true });
+  addEventListener("resize", onScroll); onScroll();
+  defis.forEach(function (d) {
+    d.addEventListener("pointermove", function (e) { if (REDUCED || e.pointerType !== "mouse") return; var r = d.getBoundingClientRect(); d.style.transform = "rotateY(" + (((e.clientX - r.left) / r.width - 0.5) * 13).toFixed(1) + "deg) rotateX(" + (((e.clientY - r.top) / r.height - 0.5) * -13).toFixed(1) + "deg) translateY(-6px)"; });
+    d.addEventListener("pointerleave", function () { d.style.transform = ""; });
   });
+  if ("IntersectionObserver" in window && !REDUCED) {
+    var rs = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove("pre"); rs.unobserve(e.target); } }); }, { rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll(".rise").forEach(function (n, i) { if (n.getBoundingClientRect().top > innerHeight) { n.classList.add("pre"); n.style.transitionDelay = (i % 3) * 60 + "ms"; rs.observe(n); } });
+  }
 
-  /* ---------- Démo d'analyse ---------- */
-  var scan = $("scan"), steps = document.querySelectorAll("#steps li"), timers = [], scanOn = false;
-  function counts(final) {
-    scan.querySelectorAll("[data-count]").forEach(function (el) {
-      var to = parseFloat(el.dataset.count), dec = +el.dataset.dec;
-      if (final || STILL) { el.textContent = fmt(to, dec); return; }
-      var t0 = performance.now();
-      (function step(t) {
-        var p = Math.min(1, (t - t0) / 1100), e = 1 - Math.pow(1 - p, 3);
-        el.textContent = fmt(to * e, dec);
-        if (p < 1 && scan.dataset.phase === "2") requestAnimationFrame(step);
+  /* ---- Courbe : elle monte quand on arrive dessus, chaque étape s'allume à son passage ---- */
+  (function () {
+    var chart = $("climb"), line = $("climbLine"), head = $("climbHead"), nodes = [].slice.call(chart.querySelectorAll(".node")), steps = [].slice.call($("climbSteps").children), len = line.getTotalLength(), AT = [0.28, 0.58, 0.84], DUR = 3400, run = 0;
+    var times = [].slice.call(chart.querySelectorAll(".c-time"));
+    nodes.forEach(function (n, i) { var pt = line.getPointAtLength(len * AT[i]); n.setAttribute("cx", pt.x); n.setAttribute("cy", pt.y); times[i].style.left = pt.x / 10 + "%"; times[i].style.top = pt.y / 3.8 + "%"; });
+    function at(t) {
+      var pt = line.getPointAtLength(len * t);
+      line.style.strokeDasharray = len; line.style.strokeDashoffset = len * (1 - t);
+      head.setAttribute("cx", pt.x); head.setAttribute("cy", pt.y);
+      nodes.forEach(function (n, i) { n.classList.toggle("on", t >= AT[i]); steps[i].classList.toggle("on", t >= AT[i]); times[i].classList.toggle("on", t >= AT[i]); });
+      head.style.opacity = t >= 1 ? "0" : "1";
+      chart.classList.toggle("done", t >= 1);
+    }
+    at(1);
+    function play() {
+      var me = ++run, t0 = performance.now();
+      (function tick(now) {
+        if (me !== run) return;
+        var t = Math.min(1, (now - t0) / DUR), e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        at(e);
+        if (t < 1) requestAnimationFrame(tick);
       })(t0);
-    });
-  }
-  function phase(p) {
-    scan.dataset.phase = p;
-    steps.forEach(function (s, i) { s.classList.toggle("on", i === p); });
-    if (p === 2) counts(false);
-  }
-  function loop() {
-    timers.forEach(clearTimeout); timers = [];
-    phase(0);
-    timers.push(setTimeout(function () { phase(1); }, 1900));
-    timers.push(setTimeout(function () { phase(2); }, 3700));
-    timers.push(setTimeout(loop, 8600));
-  }
-  if (STILL) { phase(2); counts(true); }
-
-  /* ---------- Carburant : un déjeuner dans la journée ---------- */
-  var DAY = 2200, BREAKFAST = 430;
-  var MEALS = [
-    { k: 521, p: 57, c: 52, f: 9, s: 0.3, w: 0.1 },
-    { k: 1050, p: 38, c: 98, f: 55, s: 3.4, w: 0.5 },
-    { k: 780, p: 30, c: 85, f: 34, s: 2.2, w: 0.3 }
-  ];
-  var MAX = { p: 60, c: 110, f: 60 };
-  var plates = document.querySelectorAll("#fuelBox .plate"), fsegs = document.querySelectorAll("#fuelBox .seg");
-  var fuelI = 0, fuelShown = false, kcalNow = 0, kcalRaf = 0;
-  function tweenKcal(to) {
-    var from = kcalNow, t0 = performance.now(), el = $("fkcal");
-    cancelAnimationFrame(kcalRaf);
-    (function step(t) {
-      var p = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - p, 3);
-      kcalNow = from + (to - from) * e;
-      el.textContent = fmt(kcalNow, 0);
-      if (p < 1) kcalRaf = requestAnimationFrame(step);
-    })(t0);
-  }
-  function renderFuel() {
-    var m = MEALS[fuelI], d = DYN[lang];
-    plates.forEach(function (b, i) {
-      b.setAttribute("aria-checked", i === fuelI ? "true" : "false");
-      b.querySelector("em").textContent = fmt(MEALS[i].k, 0) + " kcal";
-    });
-    if (!fuelShown) return;
-    var bk = BREAKFAST / DAY * 100, lu = m.k / DAY * 100;
-    fsegs[0].style.strokeDasharray = Math.max(0, bk - 0.9) + " 100";
-    fsegs[1].style.strokeDasharray = Math.max(0, lu - 0.9) + " 100";
-    fsegs[1].style.strokeDashoffset = -bk;
-    tweenKcal(m.k);
-    $("frest").textContent = d.rest.replace("{n}", fmt(DAY - BREAKFAST - m.k, 0));
-    [["p", "fp"], ["c", "fc"], ["f", "ff"]].forEach(function (x) {
-      $(x[1]).textContent = fmt(m[x[0]], 0) + " g";
-      $(x[1] + "b").style.setProperty("--w", Math.min(100, m[x[0]] / MAX[x[0]] * 100) + "%");
-    });
-    $("fs").textContent = fmt(m.s, 1) + " g";
-    $("fw").textContent = "+" + fmt(m.w, 1) + " L";
-  }
-  plates.forEach(function (b, i) {
-    b.addEventListener("click", function (e) {
-      e.stopPropagation();
-      if (fuelI === i) return;
-      fuelI = i;
-      var r = b.getBoundingClientRect(); sea.ripple(r.left + 34, r.top + r.height / 2);
-      renderFuel();
-    });
-  });
-
-  /* ---------- Langue ---------- */
-  // Sur ordinateur, "mailto:" ne fait souvent rien (aucune messagerie installée) : on ouvre Gmail web.
-  var DESKTOP = window.matchMedia("(pointer: fine)").matches;
-  function mailLink(a, subject, body) {
-    if (DESKTOP) {
-      a.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(CONTACT) +
-        (subject ? "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body) : "");
-      a.target = "_blank"; a.rel = "noopener";
-    } else {
-      a.href = "mailto:" + CONTACT + (subject ? "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body) : "");
     }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) play(); else if (e.intersectionRatio === 0) run++; }); }, { threshold: 0.35 }).observe(chart);
+  })();
+
+  /* ---- Bêta, avis, barre d'appel ---- */
+  if (PLAY_URL) {
+    document.querySelectorAll("[data-beta]").forEach(function (a) { a.href = PLAY_URL; });
+    $("playLink").href = PLAY_URL; $("playLink").hidden = false; $("signupGrid").hidden = true;
   }
-  function wireMail() {
-    document.querySelectorAll("[data-mail]").forEach(function (a) {
-      var m = DYN[lang][a.dataset.mail];
-      mailLink(a, m[0], m[1]);
-    });
-  }
-  function slotText(tpl, n) { return tpl.replace("{n}", String(n)); }
-  function setFormMsg(el, kind, text) {
-    var box = el.parentElement;
-    el.textContent = text || "";
+  /* Inscription, même système que le site en ligne : sans formulaire Google, l'e-mail s'ouvre, prêt à envoyer. */
+  var CONTACT = "contact@hectorone.fr";
+  /** Places restantes sur la liste testeurs Google Play. Mettre 0 quand la liste est pleine. */
+  var TESTER_SLOTS = 3;
+  /** Formulaires Google (optionnel) : action = URL …/formResponse, entry = id du champ (entry.123456). */
+  var FORM_TESTER = { action: "", entry: "" }, FORM_FOUNDER = { action: "", entry: "" }, FORM_IOS = { action: "", entry: "" };
+  /** Tarif fondateur : augmenter TAKEN à chaque inscription validée. */
+  var FOUNDER_CAP = 100, FOUNDER_TAKEN = 0, IOS_FOUNDER_CAP = 100, IOS_FOUNDER_TAKEN = 0;
+  // Sur ordinateur, « mailto: » ne fait souvent rien : on ouvre Gmail web.
+  var DESKTOP = matchMedia("(pointer: fine)").matches;
+  function setFormMsg(n, kind, text) {
+    var box = n.parentElement;
+    n.textContent = text || "";
     box.classList.remove("is-ok", "is-empty");
-    if (!text) {
-      box.classList.add("is-empty");
-      el.className = "form-msg";
-      return;
-    }
-    el.className = "form-msg " + kind;
+    if (!text) { box.classList.add("is-empty"); n.className = "form-msg"; return; }
+    n.className = "form-msg " + kind;
     if (kind === "ok") box.classList.add("is-ok");
-  }
-  function slotsLeft(cap, taken) { return Math.max(0, cap - taken); }
-  function fillCap(tpl, left, cap) {
-    return tpl.replace("{r}", String(left)).replace("{cap}", String(cap));
-  }
-  function renderFounderCard(formId, pillId, cap, taken, key) {
-    var d = lang === "fr" ? FR : EN;
-    var form = $(formId);
-    var pill = $(pillId);
-    if (!form || !pill) return 0;
-    var left = slotsLeft(cap, taken);
-    var msg = form.querySelector(".form-msg");
-    if (left <= 0) {
-      pill.className = pillId === "iosPill" ? "slot-pill ios is-full" : "slot-pill is-full";
-      pill.textContent = fillCap(d["j." + key + ".full"], 0, cap);
-      form.classList.add("is-full");
-      if (msg && !msg.classList.contains("ok")) setFormMsg(msg, "hint", fillCap(d["j." + key + ".full"], 0, cap));
-    } else {
-      pill.className = (pillId === "iosPill" ? "slot-pill ios" : "slot-pill") + (left <= 10 ? " is-low" : "");
-      pill.textContent = fillCap(d["j." + key + ".pill"], left, cap);
-      form.classList.remove("is-full");
-      if (msg && !msg.classList.contains("ok")) setFormMsg(msg, "", "");
-    }
-    return left;
-  }
-  function renderSlots() {
-    var d = lang === "fr" ? FR : EN;
-    var hp = $("heroProof");
-    if (hp && d["hero.proof"]) hp.innerHTML = slotText(d["hero.proof"], TESTER_SLOTS);
-    var tp = $("testerPill");
-    var card = $("formTester");
-    var tm = $("testerMsg");
-    if (card && tp) {
-      if (TESTER_SLOTS <= 0) {
-        tp.className = "slot-pill is-full";
-        tp.textContent = d["j.test.full"];
-        card.classList.add("is-full");
-        if (tm && !tm.classList.contains("ok")) setFormMsg(tm, "hint", d["j.test.full"]);
-      } else {
-        tp.className = "slot-pill" + (TESTER_SLOTS <= 2 ? " is-low" : "");
-        tp.textContent = slotText(d["j.test.pill"], TESTER_SLOTS);
-        card.classList.remove("is-full");
-        if (tm && !tm.classList.contains("ok")) setFormMsg(tm, "", "");
-      }
-    }
-    renderFounderCard("formFounder", "founderPill", FOUNDER_CAP, FOUNDER_TAKEN, "found");
-    renderFounderCard("formIos", "iosPill", IOS_FOUNDER_CAP, IOS_FOUNDER_TAKEN, "ios");
   }
   function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
   function postGoogleForm(cfg, value) {
@@ -1323,176 +1114,77 @@ footer details div { margin-top: 10px; display: flex; flex-direction: column; ga
     return fetch(cfg.action, { method: "POST", mode: "no-cors", body: body }).then(function () { return true; }).catch(function () { return false; });
   }
   function openCompose(subject, body) {
-    var url = DESKTOP
-      ? "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(CONTACT) + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body)
-      : "mailto:" + CONTACT + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    if (DESKTOP) window.open(url, "_blank", "noopener");
-    else location.href = url;
+    var q = encodeURIComponent(CONTACT);
+    if (DESKTOP) window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + q + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body), "_blank", "noopener");
+    else location.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   }
-  $("formTester").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (TESTER_SLOTS <= 0) return;
-    var d = lang === "fr" ? FR : EN;
-    var gmail = $("gmailTester").value.trim();
-    if (!validEmail(gmail)) {
-      setFormMsg($("testerMsg"), "hint", d["j.test.bad"]);
-      return;
-    }
-    postGoogleForm(FORM_TESTER, gmail).then(function (ok) {
-      if (ok) {
-        setFormMsg($("testerMsg"), "ok", d["j.sent"]);
-        $("formTester").reset();
-      } else {
-        openCompose(
-          lang === "fr" ? "Candidature testeur Hylens" : "Hylens beta tester application",
-          (lang === "fr" ? "Bonjour,\n\nCandidature à la bêta fermée Android.\nGmail :\n" : "Hello,\n\nApplication for the Android closed beta.\nGmail:\n") + gmail + "\n"
-        );
-        setFormMsg($("testerMsg"), "hint", d["j.mailHint"]);
-      }
-    });
-  });
-  $("formFounder").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (slotsLeft(FOUNDER_CAP, FOUNDER_TAKEN) <= 0) return;
-    var d = lang === "fr" ? FR : EN;
-    var email = $("emailFounder").value.trim();
-    if (!validEmail(email)) {
-      setFormMsg($("founderMsg"), "hint", d["j.found.bad"]);
-      return;
-    }
-    postGoogleForm(FORM_FOUNDER, email).then(function (ok) {
-      if (ok) {
-        setFormMsg($("founderMsg"), "ok", d["j.sent"]);
-        $("formFounder").reset();
-      } else {
-        openCompose(
-          lang === "fr" ? "Liste d’attente Android · Hylens" : "Hylens Android founder waitlist",
-          (lang === "fr" ? "Bonjour,\n\nInscription à la liste d’attente Android (tarif fondateur).\nE-mail :\n" : "Hello,\n\nAndroid founder waitlist registration.\nEmail:\n") + email + "\n"
-        );
-        setFormMsg($("founderMsg"), "hint", d["j.mailHint"]);
-      }
-    });
-  });
-  $("formIos").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (slotsLeft(IOS_FOUNDER_CAP, IOS_FOUNDER_TAKEN) <= 0) return;
-    var d = lang === "fr" ? FR : EN;
-    var email = $("emailIos").value.trim();
-    if (!validEmail(email)) {
-      setFormMsg($("iosMsg"), "hint", d["j.ios.bad"]);
-      return;
-    }
-    postGoogleForm(FORM_IOS, email).then(function (ok) {
-      if (ok) {
-        setFormMsg($("iosMsg"), "ok", d["j.sent"]);
-        $("formIos").reset();
-      } else {
-        openCompose(
-          lang === "fr" ? "Liste d’attente iPhone · Hylens" : "Hylens iPhone founder waitlist",
-          (lang === "fr" ? "Bonjour,\n\nListe d’attente iPhone (tarif fondateur).\nE-mail :\n" : "Hello,\n\niPhone founder waitlist.\nEmail:\n") + email + "\n"
-        );
-        setFormMsg($("iosMsg"), "hint", d["j.mailHint"]);
-      }
-    });
-  });
-  function apply(l) {
-    lang = l;
-    var d = l === "fr" ? FR : EN;
-    document.documentElement.lang = l;
-    document.title = d["meta.title"];
-    document.querySelector('meta[name="description"]').content = d["meta.desc"];
-    document.querySelectorAll("[data-t]").forEach(function (el) { if (d[el.dataset.t] != null) el.innerHTML = d[el.dataset.t]; });
-    document.querySelectorAll("[data-ta]").forEach(function (el) { el.setAttribute("aria-label", d[el.dataset.ta]); });
-    document.querySelectorAll("[data-ph]").forEach(function (el) { if (d[el.dataset.ph] != null) el.placeholder = d[el.dataset.ph]; });
-    $("lang").textContent = l === "fr" ? "EN" : "FR";
-    if (HYD.w >= HYD.goal) { hint.textContent = DYN[l].done; $("drinkLabel").textContent = DYN[l].reset; }
-    renderDate(); renderHyd(); renderFuel(); wireMail(); renderSlots();
-    if (scan.dataset.phase === "2") counts(true);
+  function renderPill(formId, pillId, msgId, left, label, lowAt, ios) {
+    var pill = $(pillId), full = left <= 0;
+    pill.className = "slot-pill" + (ios ? " ios" : "") + (full ? " is-full" : left <= lowAt ? " is-low" : "");
+    // Aucun chiffre affiché : la pastille n'apparaît que lorsque la liste est complète.
+    pill.textContent = T("Full"); pill.hidden = !full;
+    $(formId).classList.toggle("is-full", full);
+    if (full) setFormMsg($(msgId), "hint", T("Full"));
   }
-  var saved = null;
-  try { saved = localStorage.getItem("lang"); } catch (e) {}
-  apply(saved || ((navigator.language || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en"));
-  $("lang").addEventListener("click", function (e) {
-    e.stopPropagation();
-    apply(lang === "fr" ? "en" : "fr");
-    try { localStorage.setItem("lang", lang); } catch (err) {}
-  });
+  renderPill("formTester", "testerPill", "testerMsg", TESTER_SLOTS, TESTER_SLOTS + " spots", 2, false);
+  renderPill("formFounder", "founderPill", "founderMsg", FOUNDER_CAP - FOUNDER_TAKEN, (FOUNDER_CAP - FOUNDER_TAKEN) + " / " + FOUNDER_CAP, 10, false);
+  renderPill("formIos", "iosPill", "iosMsg", IOS_FOUNDER_CAP - IOS_FOUNDER_TAKEN, (IOS_FOUNDER_CAP - IOS_FOUNDER_TAKEN) + " / " + IOS_FOUNDER_CAP, 10, true);
+  function wireForm(formId, inputId, msgId, cfg, left, bad, subject, intro) {
+    $(formId).addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (left() <= 0) return;
+      var value = $(inputId).value.trim();
+      if (!validEmail(value)) { setFormMsg($(msgId), "hint", T(bad)); return; }
+      postGoogleForm(cfg, value).then(function (ok) {
+        if (ok) { setFormMsg($(msgId), "ok", T("Saved.")); $(formId).reset(); }
+        else { openCompose(T(subject), T(intro) + value + "\n"); setFormMsg($(msgId), "hint", T("Send the opened email to confirm.")); }
+      });
+    });
+  }
+  wireForm("formTester", "gmailTester", "testerMsg", FORM_TESTER, function () { return TESTER_SLOTS; }, "Invalid Gmail.", "Hylens beta tester application", "Hello,\n\nApplication for the Android closed beta.\nGmail:\n");
+  wireForm("formFounder", "emailFounder", "founderMsg", FORM_FOUNDER, function () { return FOUNDER_CAP - FOUNDER_TAKEN; }, "Invalid email.", "Hylens Android founder waitlist", "Hello,\n\nAndroid founder waitlist registration.\nEmail:\n");
+  wireForm("formIos", "emailIos", "iosMsg", FORM_IOS, function () { return IOS_FOUNDER_CAP - IOS_FOUNDER_TAKEN; }, "Invalid email.", "Hylens iPhone founder waitlist", "Hello,\n\niPhone founder waitlist.\nEmail:\n");
 
-  /* ---------- Contact et Google Play ---------- */
-  document.querySelectorAll(".mail-addr").forEach(function (el) {
-    el.textContent = CONTACT;
-    if (el.tagName === "A") mailLink(el);
+  $("copy").addEventListener("click", function () {
+    var mail = $("mail"), copied = $("copied");
+    var select = function () { var r = document.createRange(); r.selectNodeContents(mail); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copied.textContent = T("Selected: copy it."); };
+    try { navigator.clipboard.writeText(mail.textContent).then(function () { copied.textContent = T("Copied"); }, select); } catch (e) { select(); }
   });
-  document.querySelectorAll('a[href="#mentions"]').forEach(function (a) {
-    a.addEventListener("click", function () { $("mentions").open = true; });
-  });
-  var copy = $("copy");
-  copy.addEventListener("click", function () {
-    if (!navigator.clipboard) return;
-    navigator.clipboard.writeText(CONTACT).then(function () {
-      copy.textContent = DYN[lang].copied;
-      setTimeout(function () { copy.textContent = lang === "fr" ? FR["j.copy"] : EN["j.copy"]; }, 1800);
-    });
-  });
-  if (PLAY_URL) {
-    document.body.classList.add("has-play");
-    document.querySelectorAll("[data-cta]").forEach(function (a) { a.href = PLAY_URL; a.target = "_blank"; a.rel = "noopener"; });
-  }
-
   if (AVIS.length) {
-    var list = $("quotes");
-    AVIS.forEach(function (a) {
-      var li = document.createElement("li");
-      li.className = "glass";
-      li.innerHTML = '<span class="stars" aria-hidden="true">★★★★★</span><blockquote></blockquote><span class="who"><span></span><small></small></span>';
-      li.querySelector("blockquote").textContent = a.texte;
-      li.querySelector(".who > span").textContent = a.prenom;
-      li.querySelector("small").textContent = a.detail || "";
-      list.appendChild(li);
-    });
+    AVIS.forEach(function (a) { var li = el("li", "plate"); li.appendChild(el("blockquote", "", a.texte)); li.appendChild(el("small", "", a.prenom + (a.detail ? " · " + a.detail : ""))); $("quotes").appendChild(li); });
     $("avis").hidden = false;
   }
-
-  /* ---------- Apparitions, en-tête et barre mobile ---------- */
-  var top = $("top");
-  window.addEventListener("scroll", function () { top.classList.toggle("scrolled", window.scrollY > 8); }, { passive: true });
-
-  function showHyd() { if (!HYD.shown) { HYD.shown = true; renderHyd(); } }
-  function showFuel() { if (!fuelShown) { fuelShown = true; renderFuel(); } }
-  if (!("IntersectionObserver" in window)) {
-    document.querySelectorAll(".rv").forEach(function (el) { el.classList.add("in"); });
-    document.querySelectorAll(".tile .arc").forEach(function (a) { arc(a, +a.dataset.p); });
-    showHyd(); showFuel(); if (!STILL) loop();
-    return;
-  }
-  var reveal = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add("in");
-      e.target.querySelectorAll(".tile .arc, .arc[data-p]").forEach(function (a) { setTimeout(function () { arc(a, +a.dataset.p); }, 300); });
-      if (e.target === card) setTimeout(showHyd, 400);
-      if (e.target.id === "fuelBox") setTimeout(showFuel, 300);
-      reveal.unobserve(e.target);
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll(".rv").forEach(function (el) { reveal.observe(el); });
-
-  if (!STILL) {
-    new IntersectionObserver(function (entries) {
-      var vis = entries[0].isIntersecting;
-      if (vis && !scanOn) { scanOn = true; loop(); }
-      else if (!vis && scanOn) { scanOn = false; timers.forEach(clearTimeout); timers = []; }
-    }, { threshold: 0.3 }).observe(scan);
+  if ("IntersectionObserver" in window) {
+    var seen = { hero: true, beta: false };
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { seen[e.target.id === "beta" ? "beta" : "hero"] = e.isIntersecting; }); $("dock").classList.toggle("on", !seen.hero && !seen.beta); });
+    io.observe($("hero")); io.observe($("beta"));
   }
 
-  var dock = $("dock"), seen = { hero: true, join: false };
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { seen[e.target.id === "join" ? "join" : "hero"] = e.isIntersecting; });
-    dock.classList.toggle("on", !seen.hero && !seen.join);
-  });
-  io.observe(document.querySelector(".hero"));
-  io.observe($("join"));
+  /* ---- Langue : anglais par défaut, français au choix (mémorisé) ---- */
+  var DYN = "#mName,#mState,#mLabel,#mPct,#mSessions,#mHard,#mLast,#tryItems,#tryNote,#tryCount,#copied,.form-msg,.slot-pill,#lang,#tryRings b,#tryRings small,script,style";
+  var TITLES = { en: "Hylens IA · Lose weight, gain muscle, eat better", fr: "Hylens IA · Perdre du poids, prendre du muscle, mieux manger" };
+  var ATTRS = ["aria-label", "placeholder", "alt"], nodes = [], attrs = [];
+  (function collect() {
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), n;
+    while ((n = w.nextNode())) { if (n.parentElement.closest(DYN)) continue; var k = n.nodeValue.trim(); if (FR[k] != null) nodes.push({ n: n, en: n.nodeValue, fr: n.nodeValue.replace(k, FR[k]) }); }
+    document.querySelectorAll("[aria-label],[placeholder],[alt]").forEach(function (e) { if (e.closest(DYN)) return; ATTRS.forEach(function (a) { var v = e.getAttribute(a); if (v && FR[v] != null) attrs.push({ e: e, a: a, en: v, fr: FR[v] }); }); });
+  })();
+  function setLang(l) {
+    LANG = l;
+    document.documentElement.lang = l;
+    nodes.forEach(function (x) { x.n.nodeValue = x[l]; });
+    attrs.forEach(function (x) { x.e.setAttribute(x.a, x[l]); });
+    if (document.querySelector('meta[name="description"]')) document.title = TITLES[l];
+    $("lang").textContent = l === "fr" ? "EN" : "FR";
+    $("lang").setAttribute("aria-label", l === "fr" ? "Switch to English" : "Passer en français");
+    drawZones(); tryRender(); if (group) renderWear();
+  }
+  $("lang").onclick = function () { var next = LANG === "fr" ? "en" : "fr"; setLang(next); try { localStorage.setItem("lang", next); } catch (e) {} };
+  var savedLang = null;
+  try { savedLang = localStorage.getItem("lang"); } catch (e) {}
+  if (savedLang === "fr") setLang("fr");
 })();
 </script>
+
 </body>
 </html>
