@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hylens IA · Perdre du poids, prendre du muscle, mieux manger</title>
+<meta name="description" content="Perdre du poids, prendre du muscle, mieux manger. Scannez vos repas et suivez calories, macros, sport, muscles et sommeil avec Hylens. Gratuit pendant la bêta Android.">
+<link rel="canonical" href="https://www.hylensia.fr/fr/">
+<link rel="alternate" hreflang="en" href="https://www.hylensia.fr/">
+<link rel="alternate" hreflang="fr" href="https://www.hylensia.fr/fr/">
+<link rel="alternate" hreflang="x-default" href="https://www.hylensia.fr/">
+<meta property="og:title" content="Hylens IA · Perdre du poids, prendre du muscle, mieux manger">
+<meta property="og:description" content="Une photo de votre repas, tous vos chiffres. Hylens est fait pour vous.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://www.hylensia.fr/fr/">
+<meta property="og:image" content="https://www.hylensia.fr/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#030C18">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<link rel="apple-touch-icon" href="../assets/logo.png">
+<link rel="preload" as="image" href="../assets/koi-poster.jpg" fetchpriority="high">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Hylens IA", "operatingSystem": "Android", "applicationCategory": "HealthApplication", "url": "https://www.hylensia.fr/fr/", "image": "https://www.hylensia.fr/assets/og.jpg", "description": "Perdre du poids, prendre du muscle, mieux manger. Scannez vos repas et suivez calories, macros, sport, muscles et sommeil avec Hylens. Gratuit pendant la bêta Android.", "inLanguage": "fr", "publisher": {"@type": "Organization", "name": "Hectorone"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* L'étang de nuit : la vidéo des carpes ouvre la page, puis on plonge dans un fond où les carpes suivent le défilement. Le contenu flotte sur des plaques de verre sombre. */
+:root {
+  --deep: #030C18; --glass: rgba(9, 25, 45, 0.6); --glass-solid: rgba(10, 28, 51, 0.82); --line: rgba(150, 205, 235, 0.17);
+  --ink: #EFF7FC; --soft: #BCD0E0; --faint: #8DA6BB;
+  --aqua: #3DD6D0; --violet: #B9A4FF; --coral: #FF8A7D; --gold: #FFD66B; --warm: #F2B45A; --mint: #3DD6B0;
+  --heat-none: #3A4A5E; --heat-low: #5B4BFF; --heat-mid: #9B6BFF; --heat-high: #E05BC8; --heat-max: #FF4F8B;
+  --mannequin: #07081C; --on-accent: #04302F;
+  --display: "Manrope", "Segoe UI", system-ui, sans-serif; --body: "Figtree", "Segoe UI", system-ui, sans-serif; --mono: "DM Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+  --wrap: 1140px; --ease: cubic-bezier(0.22, 1, 0.36, 1); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; background: var(--deep); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .rise { transition: none; } }
+body.still .phone-screen, body.still .mannequin path.on, body.still .defi *, body.still .wear-empty svg { animation-play-state: paused; }
+body { margin: 0; background: var(--deep); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--deep); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--aqua); }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, path:focus-visible { outline: 2px solid var(--aqua); outline-offset: 3px; border-radius: 10px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.035em; font-weight: 800; color: var(--ink); }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; color: inherit; }
+.eyebrow { font: 600 13px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--aqua); }
+
+/* Les trois plans du fond */
+#pond { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0; background: radial-gradient(90% 70% at 50% 0%, #0D3550 0%, #06182B 48%, var(--deep) 100%); }
+.film { position: fixed; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; background: #020810; will-change: opacity; }
+.film video, .film img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+.film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(3, 12, 24, 0.5), rgba(3, 12, 24, 0.14) 44%, rgba(3, 12, 24, 0.42)); }
+/* Zone sombre : la vidéo reprend à gauche, avec le mannequin et les défis. */
+.dusk { position: fixed; inset: 0; z-index: 1; background: var(--mannequin); opacity: 0; visibility: hidden; pointer-events: none; will-change: opacity; }
+.dusk video { position: absolute; left: 0; top: 0; height: 100%; width: 42vw; object-fit: cover; object-position: 86% 50%; -webkit-mask-image: linear-gradient(90deg, #000 62%, transparent); mask-image: linear-gradient(90deg, #000 62%, transparent); }
+.nuit-wrap { margin-left: 42vw; padding-right: max(24px, 3vw); padding-left: 12px; }
+.nuit-wrap .head { margin-bottom: 26px; }
+#nuit { margin-bottom: 130vh; }
+@media (max-width: 820px) { #nuit { margin-bottom: 95vh; } }
+@media (max-width: 960px) {
+  .dusk video { width: 100%; object-position: 76% 50%; opacity: .42; -webkit-mask-image: none; mask-image: none; }
+  .nuit-wrap { margin-left: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+}
+.page { position: relative; z-index: 2; }
+section { padding-block: 76px; }
+.head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 13px; max-width: 760px; margin: 0 auto 38px; }
+.head h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.03; }
+.head p { color: var(--soft); max-width: 50ch; font-size: 19px; }
+.pre { opacity: .25; transform: translateY(46px) scale(.985); }
+.rise { transition: opacity .9s var(--ease), transform .9s var(--ease); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 0; background: var(--aqua); color: var(--on-accent); font: 700 16px/1 var(--body); text-decoration: none; cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -12px rgba(61, 214, 208, 0.7); }
+.btn:disabled { opacity: .6; cursor: wait; transform: none; box-shadow: none; }
+.btn.small { min-height: 42px; padding: 0 20px; font-size: 15px; }
+.btn.ghost { background: rgba(255, 255, 255, 0.06); color: var(--ink); border: 1.5px solid rgba(255, 255, 255, 0.28); }
+.btn.ghost:hover { border-color: var(--ink); box-shadow: none; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+
+.top { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); z-index: 20; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s; }
+.top.on { background: rgba(3, 12, 24, 0.82); border-bottom-color: var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 800 20px/1 var(--display); letter-spacing: -0.02em; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a.link { color: var(--soft); text-decoration: none; font-weight: 600; font-size: 15px; }
+.nav a.link:hover { color: var(--ink); }
+.lang { display: inline-grid; place-items: center; color: var(--ink); text-decoration: none; min-width: 42px; min-height: 42px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.06); font: 700 13px/1 var(--body); cursor: pointer; }
+.lang:hover { border-color: var(--ink); }
+@media (max-width: 820px) { .nav a.link { display: none; } }
+
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-start; padding-block: clamp(92px, 12vh, 124px) 150px; }
+.hero .wrap { width: 100%; }
+.hero-text { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; will-change: transform, opacity; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); font: 600 14px/1 var(--body); }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 4px rgba(61, 214, 208, 0.25); }
+.hero h1 { display: flex; flex-direction: column; gap: 10px; line-height: 1; text-shadow: 0 8px 50px rgba(3, 12, 24, 0.75); }
+.hero h1 .h-q { font-size: clamp(27px, 3.5vw, 50px); line-height: 1.1; max-width: 22ch; margin-inline: auto; }
+.hero h1 em { font-style: normal; font-size: clamp(46px, 7.6vw, 108px); line-height: .98; color: var(--aqua); }
+.lede { font-size: clamp(18px, 1.9vw, 22px); color: var(--ink); max-width: 36ch; text-shadow: 0 2px 20px rgba(3, 12, 24, 0.85); }
+.cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+@keyframes bob { 50% { transform: translateY(7px); } }
+
+.plate { background: var(--glass); border: 1px solid var(--line); border-radius: 30px; box-shadow: 0 50px 90px -56px #000; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+@media (max-width: 820px) { .plate { background: var(--glass-solid); backdrop-filter: none; -webkit-backdrop-filter: none; } }
+
+/* Scan : la vidéo au centre, le résumé dessous */
+.scan-solo { display: flex; flex-direction: column; align-items: center; gap: clamp(26px, 4vw, 42px); }
+.scan-film { height: min(82vh, 720px); height: min(82svh, 720px); aspect-ratio: 9 / 16; max-width: 100%; border-radius: 30px; overflow: hidden; background: #030C18; border: 1px solid rgba(150, 205, 235, 0.28); box-shadow: 0 0 70px -14px rgba(61, 214, 208, 0.55), 0 40px 80px -40px #000; }
+.scan-film video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.scan-sum { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 13px; max-width: 680px; }
+.scan-sum h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.03; }
+.scan-sum p { color: var(--soft); font-size: clamp(18px, 1.7vw, 21px); max-width: 44ch; }
+@media (max-width: 820px) { .scan-film { height: auto; width: min(76vw, 340px); border-radius: 24px; } }
+/* Page d'essai : 3 aliments, 3 anneaux */
+.try-btn { min-width: 220px; min-height: 58px; font-size: 18px; box-shadow: 0 0 34px -6px rgba(61, 214, 208, 0.8); }
+.try-page { position: fixed; inset: 0; z-index: 40; overflow-y: auto; background: radial-gradient(90% 70% at 50% 0%, #0D3550, #06182B 50%, var(--deep)); }
+.try-in { min-height: 100%; max-width: 1040px; margin: 0 auto; padding: calc(24px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(32px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; justify-content: center; gap: 26px; }
+.try-close { position: fixed; top: calc(14px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: rgba(3, 12, 24, 0.82); font-size: 24px; line-height: 1; cursor: pointer; }
+.try-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+.try-head h2 { font-size: clamp(34px, 5vw, 58px); line-height: 1.03; }
+.try-head p { color: var(--soft); font-size: 18px; }
+.try-box { padding: clamp(18px, 3vw, 34px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(22px, 4vw, 48px); align-items: center; }
+.try-left { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.try-form { display: flex; gap: 10px; }
+.try-form input { flex: 1; min-width: 0; min-height: 58px; padding: 0 18px; border-radius: 16px; border: 1.5px solid rgba(61, 214, 208, 0.45); background: rgba(255, 255, 255, 0.06); font: 600 18px var(--body); color: var(--ink); }
+.try-form input::placeholder { color: var(--faint); font-weight: 500; }
+.try-form input:disabled { opacity: .55; }
+.try-form .btn { min-height: 58px; border-radius: 16px; padding: 0 24px; }
+.try-form .btn:disabled { cursor: not-allowed; }
+.try-note { min-height: 1.4em; font-size: 15px; font-weight: 600; color: var(--soft); }
+.try-count { font: 500 14px var(--mono); color: var(--soft); }
+.items { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.items li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.items .n { font-weight: 600; font-size: 15px; line-height: 1.25; overflow-wrap: anywhere; }
+.empty-plate { display: block !important; padding: 16px 0 !important; color: var(--soft); font-size: 15px; }
+.stepper { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; }
+.stepper button { width: 36px; height: 36px; border: 0; background: none; font-size: 18px; cursor: pointer; border-radius: 50%; }
+.stepper input { width: 46px; border: 0; background: none; text-align: right; font: 500 15px var(--mono); color: var(--ink); -moz-appearance: textfield; appearance: textfield; }
+.stepper input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.stepper span { font: 500 14px var(--mono); color: var(--faint); padding-right: 2px; }
+.rm { width: 36px; height: 36px; border: 0; background: none; color: var(--faint); font-size: 20px; cursor: pointer; border-radius: 50%; }
+.rings { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.ring { display: flex; align-items: center; gap: 18px; width: 100%; max-width: 270px; }
+.ring .dial { position: relative; flex: none; width: clamp(96px, 11vw, 124px); aspect-ratio: 1; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); display: block; }
+.ring circle { fill: none; stroke-width: 9; }
+.ring .track { stroke: rgba(255, 255, 255, 0.1); }
+.ring .fill { stroke-linecap: round; stroke-dasharray: 264; stroke-dashoffset: 264; transition: stroke-dashoffset .7s var(--ease); }
+.ring .mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ring .mid b { font: 500 25px/1 var(--mono); font-variant-numeric: tabular-nums; }
+.ring .mid small { font: 500 12px/1 var(--mono); color: var(--soft); margin-top: 4px; }
+.ring > span { font: 700 18px/1 var(--display); }
+@media (max-width: 760px) {
+  .try-box { grid-template-columns: minmax(0, 1fr); }
+  .try-in { justify-content: flex-start; padding-top: calc(66px + env(safe-area-inset-top, 0px)); }
+  .try-form .btn { padding: 0 18px; }
+  .items li { grid-template-columns: minmax(0, 1fr) auto; }
+  .items .n { grid-column: 1 / -1; }
+  .rings { flex-direction: row; justify-content: space-between; gap: 8px; }
+  .ring { flex-direction: column; gap: 8px; width: 31%; }
+  .ring .dial { width: 100%; }
+  .ring > span { font-size: 14px; }
+  .ring .mid b { font-size: 20px; }
+}
+
+/* Mannequin et usure, à droite de la vidéo */
+.body-box { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); align-items: center; gap: clamp(8px, 2vw, 28px); }
+.body-stage { padding: 0 8px; display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0; }
+.flip-row { display: flex; gap: 6px; background: rgba(255, 255, 255, 0.08); padding: 4px; border-radius: 999px; }
+.flip-row button { min-height: 38px; padding: 0 20px; border: 0; border-radius: 999px; background: none; font-weight: 600; font-size: 14px; cursor: pointer; }
+.flip-row button[aria-pressed="true"] { background: var(--ink); color: var(--mannequin); }
+.mannequin { position: relative; width: 100%; max-width: 360px; aspect-ratio: 260 / 495; }
+.mannequin img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mannequin svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mannequin path { fill: transparent; stroke: transparent; stroke-width: 2; stroke-linejoin: round; cursor: pointer; transition: fill .2s; }
+.mannequin path:hover { fill: rgba(255, 255, 255, 0.16); }
+.mannequin path.on { stroke: #FFFFFF; stroke-opacity: 1; fill-opacity: .72; animation: breathe 1.6s ease-in-out infinite; }
+@keyframes breathe { 50% { stroke-opacity: .35; } }
+.side { background: var(--glass); border: 1px solid var(--line); border-radius: 24px; padding: clamp(20px, 2.4vw, 30px); display: flex; flex-direction: column; gap: 20px; min-width: 0; justify-content: center; }
+.wear-empty { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; color: var(--soft); font-weight: 600; font-size: 18px; }
+.wear-empty svg { width: 44px; height: 44px; color: var(--aqua); animation: bob 1.8s ease-in-out infinite; }
+.wear-body { display: flex; flex-direction: column; gap: 20px; }
+.wear-top { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; min-height: 44px; }
+.wear-top h3 { font-size: clamp(28px, 3vw, 38px); line-height: 1.05; }
+.state { font: 700 13px/1 var(--body); padding: 7px 10px; border-radius: 9px; opacity: 0; transform: scale(.8); transition: opacity .3s, transform .3s var(--ease); }
+.state.in { opacity: 1; transform: none; }
+.state.recover { background: rgba(242, 180, 90, 0.18); color: var(--warm); }
+.state.ready { background: rgba(61, 214, 176, 0.16); color: var(--mint); }
+.state.low { background: rgba(255, 255, 255, 0.08); color: var(--soft); }
+.load { display: flex; flex-direction: column; gap: 9px; }
+.load-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; color: var(--soft); font-weight: 600; }
+.load-row b { font: 500 clamp(40px, 4.6vw, 62px)/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+.bar { position: relative; display: block; height: 13px; border-radius: 7px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: inherit; width: 0; }
+.bar.loading::after { content: ""; position: absolute; top: 0; bottom: 0; width: 38%; border-radius: inherit; background: linear-gradient(90deg, transparent, var(--aqua), transparent); animation: scanbar .75s linear infinite; }
+@keyframes scanbar { from { left: -40%; } to { left: 104%; } }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.tiles div { background: rgba(255, 255, 255, 0.05); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 7px; min-width: 0; opacity: 0; transform: translateY(10px); }
+.tiles.in div { opacity: 1; transform: none; transition: opacity .4s, transform .4s var(--ease); }
+.tiles.in div:nth-child(2) { transition-delay: .1s; }
+.tiles.in div:nth-child(3) { transition-delay: .2s; }
+.tiles small { font: 600 12px/1.2 var(--body); color: var(--soft); }
+.tiles b { font: 500 16px/1.15 var(--mono); }
+.sample { font-size: 13px; color: var(--faint); }
+@media (max-width: 960px) { .body-box { grid-template-columns: minmax(0, 1fr); } .body-stage { order: -1; } .mannequin { max-width: min(240px, 62vw); } }
+
+/* Défilements et défis */
+.recipe-row { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: center; gap: clamp(30px, 6vw, 90px); }
+.fan { display: flex; justify-content: center; align-items: center; perspective: 1400px; padding-block: 24px; min-width: 0; }
+.phone { flex: none; width: clamp(150px, 15.5vw, 226px); aspect-ratio: 9 / 19; padding: 7px; border-radius: 34px; background: #0B1B2B; box-shadow: 0 0 0 1px rgba(150, 205, 235, 0.25), 0 34px 70px -26px rgba(61, 214, 208, 0.45); transition: transform .45s var(--ease); }
+.phone:nth-child(1) { transform: rotateY(24deg) rotateZ(-8deg) translateY(16px); margin-right: -34px; z-index: 1; }
+.phone:nth-child(2) { transform: translateY(-22px) scale(1.07); z-index: 2; }
+.phone:nth-child(3) { transform: rotateY(-24deg) rotateZ(8deg) translateY(16px); margin-left: -34px; z-index: 1; }
+.fan:hover .phone:nth-child(1) { transform: rotateY(14deg) rotateZ(-5deg) translateY(4px); }
+.fan:hover .phone:nth-child(3) { transform: rotateY(-14deg) rotateZ(5deg) translateY(4px); }
+.phone-screen { position: relative; width: 100%; height: 100%; border-radius: 27px; overflow: hidden; background: var(--mannequin); animation: floaty 7s ease-in-out infinite; }
+.phone:nth-child(2) .phone-screen { animation-delay: -2.3s; }
+.phone:nth-child(3) .phone-screen { animation-delay: -4.6s; }
+.phone-screen img { width: 100%; height: 66%; object-fit: cover; display: block; }
+.phone-screen div { padding: 13px 12px; display: flex; flex-direction: column; gap: 6px; }
+.phone:nth-child(3) .phone-screen div { align-items: flex-end; text-align: right; }
+.phone-screen small { font: 700 11px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--aqua); }
+.phone-screen b { font: 800 clamp(15px, 1.5vw, 20px)/1.15 var(--display); letter-spacing: -0.02em; }
+@keyframes floaty { 50% { transform: translateY(-5px); } }
+.recipe-copy { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.recipe-copy h2 { font-size: clamp(38px, 5.2vw, 66px); line-height: 1.02; }
+.recipe-copy p { font-size: clamp(18px, 1.7vw, 21px); color: var(--soft); max-width: 40ch; }
+@media (max-width: 820px) { .recipe-row { grid-template-columns: minmax(0, 1fr); } .recipe-copy { align-items: center; text-align: center; } .phone { width: 34vw; padding: 5px; border-radius: 24px; } .phone-screen { border-radius: 19px; } .phone:nth-child(1) { margin-right: -22px; } .phone:nth-child(3) { margin-left: -22px; } .phone-screen div { padding: 9px; } .phone-screen small { font-size: 9px; } .phone-screen b { font-size: 14px; } }
+.defis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; perspective: 1100px; }
+.defi { position: relative; aspect-ratio: 3 / 4; border-radius: 26px; overflow: hidden; border: 1px solid var(--line); background: var(--mannequin); transform-style: preserve-3d; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.defi:hover { box-shadow: 0 36px 70px -32px rgba(61, 214, 208, 0.55); }
+.defi img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; object-position: 50% 28%; transform: translateY(var(--py, 0px)) scale(1.03); }
+.defi::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 42%, rgba(3, 12, 24, 0.94)); }
+.fx { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.aura { position: absolute; left: 8%; right: 8%; top: 6%; height: 72%; background: radial-gradient(closest-side, rgba(255, 228, 92, 0.5), rgba(255, 159, 28, 0.3) 45%, rgba(255, 61, 46, 0)); mix-blend-mode: screen; animation: aura 2.4s ease-in-out infinite; }
+@keyframes aura { 0%, 100% { opacity: .45; transform: scale(.94); } 50% { opacity: .9; transform: scale(1.08); } }
+.flames { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; background: linear-gradient(0deg, rgba(255, 61, 46, 0.75), rgba(255, 159, 28, 0.28) 42%, rgba(255, 159, 28, 0)); mix-blend-mode: screen; animation: flick .9s linear infinite; }
+.edge { position: absolute; inset: 0; border-radius: inherit; border: 2px solid #FF9F1C; box-shadow: inset 0 0 26px rgba(255, 140, 40, 0.55); animation: flick .9s linear infinite; }
+@keyframes flick { 0%, 100% { opacity: .55; } 30% { opacity: 1; } 60% { opacity: .65; } }
+.ember { position: absolute; bottom: 12%; border-radius: 50%; animation: ember 3.2s linear infinite; }
+@keyframes ember { 0% { opacity: 0; transform: translate(0, 0); } 15% { opacity: 1; } 50% { transform: translate(var(--dx), -170px); } 80% { opacity: .6; } 100% { opacity: 0; transform: translate(0, -340px); } }
+.sweep { position: absolute; top: -30%; bottom: -30%; left: 0; width: 22%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); transform: translateX(-200%) rotate(20deg); animation: sweep 3.6s linear infinite; mix-blend-mode: screen; }
+@keyframes sweep { 0% { transform: translateX(-200%) rotate(20deg); } 55%, 100% { transform: translateX(560%) rotate(20deg); } }
+.spark { position: absolute; fill: #FFF6C9; filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)); animation: spark 3.6s linear infinite; }
+@keyframes spark { 0%, 25%, 100% { opacity: 0; transform: scale(.3); } 10% { opacity: 1; transform: scale(1.1); } }
+.defi div { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2; display: flex; flex-direction: column; gap: 7px; }
+.defi h3 { font-size: clamp(21px, 1.9vw, 27px); line-height: 1.08; }
+.defi p { font-size: 15px; line-height: 1.4; color: var(--soft); }
+@media (max-width: 960px) { .defis { grid-template-columns: minmax(0, 1fr); gap: 18px; } .defi { aspect-ratio: 4 / 3.4; } }
+.climb { padding: clamp(18px, 3vw, 34px); display: flex; flex-direction: column; gap: 24px; }
+.chart { padding-top: 34px; }
+.plot { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .goal { stroke: var(--gold); stroke-width: 2; stroke-dasharray: 3 9; stroke-linecap: round; fill: none; vector-effect: non-scaling-stroke; }
+.chart .base { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.chart .line { fill: none; stroke: url(#climbGrad); stroke-width: 4; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.chart .node { fill: var(--deep); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; vector-effect: non-scaling-stroke; }
+.chart .node.on { opacity: 1; animation: pop .55s var(--ease); }
+@keyframes pop { 0% { transform: scale(.2); } 60% { transform: scale(1.5); } 100% { transform: scale(1); } }
+.chart .head { fill: #FFFFFF; filter: drop-shadow(0 0 7px var(--aqua)); }
+.c-label { position: absolute; font: 700 clamp(12px, 1.3vw, 15px)/1 var(--body); color: var(--soft); }
+.c-goal { right: 10%; top: 0; color: var(--ink); }
+.c-start { left: 0; bottom: -2px; }
+.c-time { transform: translate(-50%, 16px); padding: 5px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); color: var(--faint); white-space: nowrap; transition: color .4s, background .4s; }
+.c-time.on { color: var(--ink); background: rgba(61, 214, 208, 0.18); }
+.cup { position: absolute; left: 96%; top: 11.5%; width: clamp(38px, 5.4vw, 66px); transform: translate(-50%, -62%) scale(.55); opacity: .4; color: var(--gold); transition: transform .6s cubic-bezier(.3, 1.8, .5, 1), opacity .4s; filter: drop-shadow(0 0 14px rgba(255, 214, 107, 0.65)); }
+.cup svg { display: block; width: 100%; height: auto; fill: currentColor; }
+.chart.done .cup { transform: translate(-50%, -62%) scale(1); opacity: 1; }
+.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.steps3 div { display: flex; flex-direction: column; gap: 7px; padding: 18px; border-radius: 18px; background: rgba(255, 255, 255, 0.05); border-top: 3px solid var(--tone); opacity: .38; transform: translateY(12px); transition: opacity .5s, transform .5s var(--ease); min-width: 0; }
+.steps3 div.on { opacity: 1; transform: none; }
+.steps3 .eyebrow { color: var(--ink); }
+.steps3 h3 { font-size: clamp(20px, 2vw, 25px); line-height: 1.12; }
+.steps3 p { color: var(--soft); font-size: 16px; }
+@media (max-width: 760px) { .steps3 { grid-template-columns: minmax(0, 1fr); } .c-start { display: none; } .c-goal { top: -18px; right: 14%; } }
+
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.quotes li { padding: 26px; display: flex; flex-direction: column; gap: 16px; }
+.quotes blockquote { margin: 0; font: 600 18px/1.45 var(--body); }
+.quotes small { color: var(--faint); }
+@media (max-width: 860px) { .quotes { grid-template-columns: 1fr; } }
+
+.faq { display: flex; flex-direction: column; max-width: 820px; margin: 0 auto; padding: 8px 26px; }
+.faq details + details { border-top: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; font: 700 18px/1.35 var(--display); letter-spacing: -0.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, 0.08); font: 600 20px/1 var(--body); flex: none; }
+.faq details[open] summary::after { content: "−"; background: var(--ink); color: var(--deep); }
+.faq details p { padding: 0 0 20px; color: var(--soft); max-width: 64ch; }
+
+.beta { padding-block: 30px 88px; }
+.beta-box { border-radius: 34px; padding: clamp(24px, 4.4vw, 52px); display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.beta-box h2 { font-size: clamp(34px, 4.8vw, 58px); line-height: 1.02; }
+.beta-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+.price-chip { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(61, 214, 208, 0.28); background: rgba(61, 214, 208, 0.08); color: var(--soft); font-size: 14px; font-weight: 500; }
+.price-chip b { color: var(--aqua); font-weight: 700; }
+.signup-stack { width: 100%; max-width: 980px; display: flex; flex-direction: column; gap: 10px; }
+.join-hints { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0 4px; }
+.join-hints span { font-size: 12px; line-height: 1.35; color: var(--faint); text-align: center; }
+.signup-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; align-items: stretch; }
+.signup-card { --accent: var(--aqua); position: relative; padding: 16px 14px 14px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.035); display: flex; flex-direction: column; gap: 10px; min-width: 0; height: 100%; overflow: hidden; }
+.signup-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); opacity: .85; }
+.signup-card#formFounder { --accent: #4FC3F7; }
+.signup-card.ios { --accent: #9B8CFF; }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; min-height: 40px; }
+.card-title { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.signup-card h3 { font: 700 16px/1.2 var(--body); letter-spacing: -0.02em; }
+.card-tag { font: 500 11px/1.3 var(--body); letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
+.signup-card .field { min-width: 0; margin-top: 2px; }
+.signup-card .field label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.signup-card .field input { width: 100%; padding: 11px 12px; border-radius: 11px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.32); color: var(--ink); font: 500 16px/1.2 var(--body); }
+.signup-card .field input::placeholder { color: var(--faint); }
+.signup-card .btn { width: 100%; margin-top: auto; min-height: 44px; padding: 10px 12px; border-radius: 11px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.signup-card .form-feedback { display: none; margin-top: 4px; padding: 7px 10px; border-radius: 9px; border: 1px solid var(--line); background: rgba(0, 0, 0, 0.22); }
+.signup-card .form-feedback:not(.is-empty) { display: flex; align-items: center; }
+.signup-card .form-feedback.is-ok { border-color: rgba(61, 214, 176, 0.35); background: rgba(61, 214, 176, 0.08); }
+.signup-card .form-msg { font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; width: 100%; }
+.signup-card .form-msg.ok { color: #B8E8C4; font-weight: 600; }
+.signup-card .form-msg.hint { color: var(--soft); font-weight: 500; }
+.signup-card.is-full { opacity: .5; pointer-events: none; }
+.slot-pill { display: inline-flex; align-items: center; flex: none; font: 700 10px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; border: 1px solid rgba(61, 214, 208, 0.35); background: rgba(61, 214, 208, 0.1); color: var(--aqua); white-space: nowrap; }
+.signup-card.ios .slot-pill { border-color: rgba(155, 140, 255, 0.4); background: rgba(155, 140, 255, 0.12); color: #C4B5FF; }
+.slot-pill.is-low { border-color: rgba(245, 179, 1, 0.45); background: rgba(245, 179, 1, 0.1); color: #F5B301; }
+.slot-pill.is-full { border-color: var(--line); background: rgba(255, 255, 255, 0.04); color: var(--faint); font-weight: 600; }
+.copy-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--faint); }
+.copy-row code { font: 500 13px/1 var(--body); color: var(--soft); overflow-wrap: anywhere; max-width: 100%; }
+.copy-row button { background: none; border: 0; padding: 0; color: var(--aqua); font: 600 13px/1 var(--body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.copied { font-size: 13px; color: var(--aqua); }
+@media (max-width: 860px) { .signup-stack { max-width: 420px; margin: 0 auto; } .join-hints { display: none; } .signup-grid { grid-template-columns: minmax(0, 1fr); } }
+
+footer { border-top: 1px solid var(--line); padding-block: 40px 48px; background: rgba(3, 12, 24, 0.88); font-size: 14px; color: var(--faint); }
+footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+footer h4 { margin: 0 0 12px; font: 700 13px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+footer ul { display: flex; flex-direction: column; gap: 9px; }
+footer a { color: var(--soft); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+footer .cols p { color: var(--soft); }
+footer .legal { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+footer details summary { cursor: pointer; color: var(--soft); font-weight: 600; }
+footer details div { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; max-width: 70ch; }
+@media (max-width: 760px) { footer .cols { grid-template-columns: 1fr; } }
+.motion { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 24; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: rgba(3, 12, 24, 0.82); cursor: pointer; }
+.motion svg { width: 18px; height: 18px; fill: var(--ink); }
+@media (max-width: 760px) { .motion { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); } }
+@media (max-width: 820px) {
+  section { padding-block: 54px; }
+  .head { margin-bottom: 26px; }
+  .head h2 { font-size: clamp(31px, 8.6vw, 40px); }
+  .head p { font-size: 17px; }
+  .hero { padding-block: 104px 150px; }
+  .hero .pill { display: none; }
+  .hero-text { max-width: none; width: 100%; align-items: center; text-align: center; gap: 14px; }
+  .cta-row { justify-content: center; gap: 10px; flex-wrap: nowrap; width: 100%; }
+  .cta-row .btn { flex: 1 1 0; min-width: 0; padding: 0 10px; font-size: 15px; white-space: nowrap; }
+  .plate { border-radius: 24px; }
+  .side { padding: 20px 18px; }
+  .body-stage { background: var(--mannequin); border-radius: 24px; padding: 16px; }
+  .wear-empty { padding-block: 10px; font-size: 17px; }
+  .defi { aspect-ratio: 4 / 3.6; }
+  .defi h3 { font-size: 24px; }
+    .faq { padding: 4px 18px; }
+  .faq summary { font-size: 17px; padding: 17px 0; }
+  .beta-box { border-radius: 26px; }
+  .nav .btn.small { min-height: 38px; padding: 0 14px; font-size: 14px; }
+}
+.dock { display: none; }
+@media (max-width: 760px) {
+  .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(3, 12, 24, 0.92); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .35s var(--ease); }
+  .dock.on { transform: none; }
+  .dock .btn { width: 100%; }
+  footer { padding-bottom: 110px; }
+}
+</style>
+
+</head>
+<body>
+<canvas id="pond" aria-hidden="true"></canvas>
+<div class="film" id="film" aria-hidden="true">
+  <img src="../assets/koi-poster.jpg" alt="">
+  <video id="filmVideo" muted loop playsinline autoplay preload="auto" poster="../assets/koi-poster.jpg"></video>
+</div>
+<div class="dusk" id="dusk" aria-hidden="true"><video id="duskVideo" muted loop playsinline preload="none" src="../assets/femme.mp4"></video></div>
+
+<button class="motion" id="motion" type="button" aria-pressed="false" aria-label="Mettre les animations en pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="motionIcon" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+
+<div class="page">
+  <header class="top" id="topbar">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="../assets/logo.png" alt="" width="34" height="34" decoding="async">Hylens IA</a>
+      <nav class="nav" aria-label="Sections">
+        <a class="link" href="#scan">Scan</a>
+        <a class="link" href="#muscles">Muscles</a>
+        <a class="link" href="#fonctions">Recettes</a>
+        <a class="link" href="#questions">Questions</a>
+        <a class="lang" id="lang" href="../" hreflang="en" aria-label="Switch to English">EN</a>
+        <a class="btn small" href="#beta" data-beta>Devenir testeur</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="wrap">
+        <div class="hero-text" id="heroText">
+          <span class="pill"><i></i>Bêta Android · gratuite · places limitées</span>
+          <h1><span class="h-q">Perdre du poids, prendre du muscle, mieux manger ?</span> <em>Hylens est fait pour vous.</em></h1>
+          <p class="lede">Repas, sport, muscles et sommeil, au même endroit.</p>
+          <div class="cta-row">
+            <a class="btn" href="#scan">Voir le scan</a>
+            <a class="btn ghost" href="#beta" data-beta>Devenir testeur</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scan">
+      <div class="wrap scan-solo">
+        <div class="scan-film rise"><video id="scanVideo" muted loop playsinline preload="metadata" poster="../assets/scan-poster.jpg" src="../assets/scan.mp4" aria-label="Une femme photographie son assiette, Hylens affiche les calories et les macros"></video></div>
+        <button class="btn try-btn rise" type="button" id="tryOpen">Essayer</button>
+        <div class="scan-sum rise">
+          <span class="eyebrow">Scan repas</span>
+          <h2>Une photo. Tous vos chiffres.</h2>
+          <p>Hylens reconnaît ce qu’il y a dans votre assiette et calcule les calories et les macros en quelques secondes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="avis" hidden>
+      <div class="wrap">
+        <div class="head"><span class="eyebrow">Bêta-testeurs</span><h2>Ils testent Hylens.</h2></div>
+        <ul class="quotes" id="quotes"></ul>
+      </div>
+    </section>
+
+    <div id="nuit">
+    <section id="defis">
+      <div class="nuit-wrap">
+        <div class="head rise"><span class="eyebrow">Défis</span><h2>Des exercices pour perdre du poids.</h2><p>Et pour se renforcer, à la maison, à votre rythme.</p></div>
+        <div class="defis">
+          <article class="defi rise"><img loading="lazy" src="../assets/defi-burn.jpg" alt=""><span class="fx" data-fx="fire"><i class="aura"></i><i class="flames"></i><i class="edge"></i></span><div><h3>Brûle beaucoup de graisse</h3><p>Des circuits pour augmenter la dépense.</p></div></article>
+          <article class="defi rise"><img loading="lazy" src="../assets/defi-abs.jpg" alt=""><span class="fx" data-fx="shine"><i class="sweep"></i></span><div><h3>Abdos en acier</h3><p>Le muscle du ventre, semaine après semaine.</p></div></article>
+          <article class="defi rise"><img loading="lazy" src="../assets/defi-full.jpg" alt=""><span class="fx" data-fx="shine"><i class="sweep"></i></span><div><h3>Défi corps complet</h3><p>Tout le corps, des séances qui alternent.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="muscles">
+      <div class="nuit-wrap">
+        <div class="head rise"><span class="eyebrow">Essayer</span><h2>Touchez un muscle.</h2><p>Voyez ce que votre semaine lui a demandé.</p></div>
+        <div class="body-box rise">
+          <div class="body-stage">
+            <div class="flip-row" role="group" aria-label="Vue du mannequin">
+              <button type="button" id="front" aria-pressed="true">Face</button>
+              <button type="button" id="back" aria-pressed="false">Dos</button>
+            </div>
+            <div class="mannequin">
+              <img id="mann" alt="Mannequin anatomique">
+              <svg id="zones" viewBox="0 0 260 495" role="group" aria-label="Zones musculaires"></svg>
+            </div>
+          </div>
+          <div class="side wear-col" aria-live="polite">
+            <div class="wear-empty" id="wearEmpty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a2 2 0 0 1 4 0v6M13 10a2 2 0 0 1 4 0v2M17 11a2 2 0 0 1 4 0v4a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L4.5 14.5a2 2 0 0 1 3-2.6L9 13.5"/></svg>Touchez un muscle</div>
+            <div class="wear-body" id="wearBody" hidden>
+              <div class="wear-top"><h3 id="mName"></h3><span class="state" id="mState"></span></div>
+              <div class="load">
+                <div class="load-row"><span id="mLabel">Charge · 7 jours</span><b id="mPct"></b></div>
+                <span class="bar" id="mTrack"><i id="mBar"></i></span>
+              </div>
+              <div class="tiles" id="mTiles">
+                <div><small>Séances</small><b id="mSessions"></b></div>
+                <div><small>Séries dures</small><b id="mHard"></b></div>
+                <div><small>Dernier</small><b id="mLast"></b></div>
+              </div>
+            </div>
+            <p class="sample">Semaine d’exemple. Dans l’appli, vos propres séances.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div>
+
+    <section id="fonctions">
+      <div class="wrap recipe-row">
+        <div class="fan rise">
+          <div class="phone"><div class="phone-screen"><img loading="lazy" src="../assets/f/pancakes.jpg" alt="Pancakes aux myrtilles"><div><small>Petit-déjeuner</small><b>Pancakes</b></div></div></div>
+          <div class="phone"><div class="phone-screen"><img loading="lazy" src="../assets/f/poke.jpg" alt="Poke bowl au saumon"><div><small>Déjeuner</small><b>Poke bowl</b></div></div></div>
+          <div class="phone"><div class="phone-screen"><img loading="lazy" src="../assets/f/curry.jpg" alt="Curry de poulet et riz"><div><small>Dîner</small><b>Curry de poulet</b></div></div></div>
+        </div>
+        <div class="recipe-copy rise">
+          <span class="eyebrow">Recettes</span>
+          <h2>Des recettes pour vous</h2>
+          <p>Un large catalogue de plats et de boissons, avec leurs valeurs, pour chaque moment de la journée.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="plus">
+      <div class="wrap">
+        <div class="head rise"><span class="eyebrow">Votre progression</span><h2>Votre objectif, un peu plus près chaque jour.</h2></div>
+        <div class="climb plate rise">
+          <div class="chart" id="climb" role="img" aria-label="Illustration : une courbe qui monte d’aujourd’hui à votre objectif, avec un repère à 1 semaine, 1 mois et 3 mois, puis un trophée">
+            <div class="plot">
+            <svg viewBox="0 0 1000 380" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs><linearGradient id="climbGrad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#4FC3F7"/><stop offset=".55" stop-color="#3DD6D0"/><stop offset="1" stop-color="#FFD66B"/></linearGradient></defs>
+              <line class="base" x1="0" y1="350" x2="1000" y2="350"/>
+              <line class="goal" x1="0" y1="40" x2="1000" y2="40"/>
+              <path class="line" id="climbLine" d="M10 340 C 130 335, 190 300, 300 270 S 470 235, 560 180 S 790 70, 960 44"/>
+              <circle class="node" r="9" style="stroke:#4FC3F7"/><circle class="node" r="9" style="stroke:#3DD6D0"/><circle class="node" r="9" style="stroke:#B9A4FF"/>
+              <circle class="head" id="climbHead" r="8"/>
+            </svg>
+            <span class="c-label c-goal">Votre objectif</span>
+            <span class="c-label c-start">Aujourd’hui</span>
+            <span class="c-label c-time">1 semaine</span><span class="c-label c-time">1 mois</span><span class="c-label c-time">3 mois</span>
+            <span class="cup" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7 2h10v2h4v4a5 5 0 0 1-5 5h-.3A5.5 5.5 0 0 1 13 15.9V18h3v2.5H8V18h3v-2.1A5.5 5.5 0 0 1 8.3 13H8a5 5 0 0 1-5-5V4h4V2zM5 6v2a3 3 0 0 0 2.2 2.9A9 9 0 0 1 7 9V6H5zm14 0h-2v3c0 .7-.1 1.3-.2 1.9A3 3 0 0 0 19 8V6z"/></svg></span>
+            </div>
+          </div>
+          <div class="steps3" id="climbSteps">
+            <div style="--tone:#4FC3F7"><span class="eyebrow">1 semaine</span><h3>Vous y voyez clair</h3><p>Repas, eau et sport : vos journées en chiffres.</p></div>
+            <div style="--tone:#3DD6D0"><span class="eyebrow">1 mois</span><h3>Vos habitudes s’installent</h3><p>Vos courbes montrent ce qui change.</p></div>
+            <div style="--tone:#B9A4FF"><span class="eyebrow">3 mois</span><h3>Vos efforts se mesurent</h3><p>Poids, muscles et sommeil : vos progrès en un coup d’œil.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="questions">
+      <div class="wrap">
+        <div class="head rise"><span class="eyebrow">Questions</span><h2>Avant de télécharger.</h2></div>
+        <div class="faq plate rise">
+          <details><summary>Est-ce précis ?</summary><p>Les valeurs viennent de tables officielles : Ciqual de l’Anses en France, USDA ailleurs. Les portions sont estimées sur la photo : c’est une estimation, pas une pesée, et vous pouvez corriger chaque aliment.</p></details>
+          <details><summary>Où vont les photos dans l’appli ?</summary><p>La photo est envoyée à notre service d’analyse, qui s’appuie sur OpenAI, puis elle n’est pas conservée par Hylens. Dans l’appli, vos repas et votre suivi restent sur votre téléphone.</p></details>
+          <details><summary>Combien ça coûte ?</summary><p>La bêta est gratuite, sans carte bancaire. Un tarif fondateur à places limitées sera proposé au lancement.</p></details>
+          <details><summary>Faut-il Health Connect ou une montre ?</summary><p>Non. Avec votre accord, Health Connect ajoute vos pas et vos séances tout seul. Sans lui, vous notez vos séances à la main.</p></details>
+          <details><summary>Et sur iPhone ?</summary><p>Pas encore. Hylens est en bêta sur Android ; la version iPhone viendra ensuite.</p></details>
+          <details><summary>Est-ce un avis médical ?</summary><p>Non. Hylens donne des estimations et des repères de bien-être. Pour une question de santé, parlez-en à un professionnel.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="beta" class="beta">
+      <div class="wrap">
+        <div class="beta-box plate rise">
+          <div class="beta-head">
+            <span class="eyebrow">Accès</span>
+            <h2>Rejoindre Hylens</h2>
+            <p class="price-chip"><b>Fondateur</b> · places limitées</p>
+          </div>
+          <a class="btn" id="playLink" href="#beta" hidden>Télécharger Hylens</a>
+          <div class="signup-stack" id="signupGrid">
+            <div class="join-hints" aria-hidden="true"><span>Bêta Android · Gmail</span><span>Sortie Play · tarif fondateur</span><span>App Store · tarif fondateur</span></div>
+            <div class="signup-grid">
+              <form class="signup-card" id="formTester" novalidate>
+                <div class="card-head"><div class="card-title"><h3>Testeur</h3><span class="card-tag">Maintenant</span></div><p class="slot-pill" id="testerPill" aria-live="polite"></p></div>
+                <div class="field"><label for="gmailTester">Gmail</label><input type="email" id="gmailTester" name="gmail" inputmode="email" autocomplete="email" required placeholder="vous@gmail.com"></div>
+                <button class="btn" type="submit">Candidater</button>
+                <div class="form-feedback is-empty"><p class="form-msg" id="testerMsg" aria-live="polite"></p></div>
+              </form>
+              <form class="signup-card" id="formFounder" novalidate>
+                <div class="card-head"><div class="card-title"><h3>Android</h3><span class="card-tag">Lancement</span></div><p class="slot-pill" id="founderPill" aria-live="polite"></p></div>
+                <div class="field"><label for="emailFounder">E-mail</label><input type="email" id="emailFounder" name="email" inputmode="email" autocomplete="email" required placeholder="vous@email.com"></div>
+                <button class="btn ghost" type="submit">Liste d’attente</button>
+                <div class="form-feedback is-empty"><p class="form-msg" id="founderMsg" aria-live="polite"></p></div>
+              </form>
+              <form class="signup-card ios" id="formIos" novalidate>
+                <div class="card-head"><div class="card-title"><h3>iPhone</h3><span class="card-tag">Lancement</span></div><p class="slot-pill ios" id="iosPill" aria-live="polite"></p></div>
+                <div class="field"><label for="emailIos">E-mail</label><input type="email" id="emailIos" name="email" inputmode="email" autocomplete="email" required placeholder="vous@icloud.com"></div>
+                <button class="btn ghost" type="submit">Liste d’attente</button>
+                <div class="form-feedback is-empty"><p class="form-msg" id="iosMsg" aria-live="polite"></p></div>
+              </form>
+            </div>
+          </div>
+          <div class="copy-row"><span>Contact</span> <code id="mail">contact@hectorone.fr</code> <button type="button" id="copy">Copier</button> <span class="copied" id="copied" aria-live="polite"></span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div><a class="brand" href="#top"><img src="../assets/logo.png" alt="">Hylens IA</a><p style="margin-top: 12px; max-width: 40ch;">Repas, eau, sport et sommeil. Informations nutritionnelles générales, pas un avis médical.</p></div>
+        <div><h4>Application</h4><ul><li><a href="#scan">Scan repas</a></li><li><a href="#muscles">Muscles</a></li><li><a href="#questions">Questions</a></li><li><a href="#beta">Rejoindre la bêta</a></li></ul></div>
+        <div><h4>Informations</h4><ul><li><a href="https://api.hectorone.fr/privacy">Politique de confidentialité</a></li><li><a href="#mentions">Mentions légales</a></li><li>contact@hectorone.fr</li></ul></div>
+      </div>
+      <div class="legal">
+        <details id="mentions"><summary>Mentions légales</summary><div>
+          <p>Éditeur du site et directeur de la publication : Hectorone, contact@hectorone.fr.</p>
+          <p>Hébergeur : GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis, +1 877 448 4820.</p>
+          <p>Valeurs nutritionnelles : table Ciqual (Anses) et USDA FoodData Central. Photos : Pexels.</p>
+        </div></details>
+        <span>© 2026 Hylens IA</span>
+      </div>
+    </div>
+  </footer>
+  <div class="dock" id="dock"><a class="btn" href="#beta" data-beta>Devenir testeur, c’est gratuit</a></div>
+</div>
+
+<div class="try-page" id="tryPage" role="dialog" aria-modal="true" aria-labelledby="tryTitle" hidden>
+  <button class="try-close" type="button" id="tryClose" aria-label="Fermer">×</button>
+  <div class="try-in">
+    <div class="try-head"><span class="eyebrow">Essayer</span><h2 id="tryTitle">Composez votre assiette.</h2><p>Écrivez jusqu’à 3 aliments. Hylens fait le calcul.</p></div>
+    <div class="try-box plate">
+      <div class="try-left">
+        <form class="try-form" id="tryForm" autocomplete="off">
+          <input id="tryInput" type="text" spellcheck="true" autocapitalize="off" enterkeyhint="done" placeholder="Écrivez un aliment" aria-label="Écrivez un aliment">
+          <button class="btn" type="submit" id="tryAdd">Ajouter</button>
+        </form>
+        <p class="try-note" id="tryNote" role="status" aria-live="polite"></p>
+        <span class="try-count" id="tryCount"></span>
+        <ul class="items" id="tryItems"></ul>
+      </div>
+      <div class="rings" id="tryRings"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Lien d'inscription Google Play : une fois collé ici, les boutons y mènent et la démarche par e-mail disparaît.
+  var PLAY_URL = "";
+  // Avis RÉELS de bêta-testeurs, avec leur accord écrit. Vide = section cachée. { prenom, detail, texte }
+  var AVIS = [];
+
+  var MUSCLES = {"zones":{"front":[{"group":"pecs","d":"M90 100L110 103L128 108L128 140L116 146L100 144L90 134L87 116Z M170 100L150 103L132 108L132 140L144 146L160 144L170 134L173 116Z"},{"group":"quads","d":"M88 214L102 226L114 240L122 262L122 300L116 332L104 342L92 332L85 300L83 256Z M172 214L158 226L146 240L138 262L138 300L144 332L156 342L168 332L175 300L177 256Z"},{"group":"obliques","d":"M91 146L103 146L104 170L108 192L112 210L100 212L94 196L89 170Z M169 146L157 146L156 170L152 192L148 210L160 212L166 196L171 170Z"},{"group":"abs","d":"M104 146L128 148L152 146L156 170L152 192L140 202L130 205L120 202L108 192L104 170Z"},{"group":"delts","d":"M66 98L78 92L90 98L88 112L80 124L68 128L63 114Z M194 98L182 92L170 98L172 112L180 124L192 128L197 114Z"},{"group":"biceps","d":"M64 130L78 126L84 140L80 160L70 170L58 166L56 148Z M196 130L182 126L176 140L180 160L190 170L202 166L204 148Z"},{"group":"forearms","d":"M56 168L72 170L66 200L56 228L46 236L42 222L48 196Z M204 168L188 170L194 200L204 228L214 236L218 222L212 196Z"},{"group":"calves","d":"M87 352L99 350L106 372L104 410L96 424L89 400L86 374Z M173 352L161 350L154 372L156 410L164 424L171 400L174 374Z"},{"group":"traps","d":"M113 74L116 90L104 99L87 97L97 88Z M147 74L144 90L156 99L173 97L163 88Z"}],"back":[{"group":"lats","d":"M88 124L108 128L122 156L122 182L108 194L96 192L90 170L86 146Z M172 124L152 128L138 156L138 182L152 194L164 192L170 170L174 146Z"},{"group":"glutes","d":"M90 206L110 204L128 212L129 250L122 266L104 266L91 252L86 230Z M170 206L150 204L132 212L131 250L138 266L156 266L169 252L174 230Z"},{"group":"hams","d":"M86 270L108 270L126 272L124 300L116 340L102 346L92 332L85 300Z M174 270L152 270L134 272L136 300L144 340L158 346L168 332L175 300Z"},{"group":"lower","d":"M116 168L130 176L144 168L150 198L130 206L110 198Z"},{"group":"traps","d":"M118 66L142 66L146 82L176 90L156 100L146 120L138 150L130 168L122 150L114 120L104 100L84 90L114 82Z"},{"group":"infra","d":"M88 98L102 101L112 118L108 126L90 124L85 112Z M172 98L158 101L148 118L152 126L170 124L175 112Z"},{"group":"delts","d":"M64 100L80 90L92 96L88 112L80 126L66 130L61 116Z M196 100L180 90L168 96L172 112L180 126L194 130L199 116Z"},{"group":"triceps","d":"M62 132L80 128L84 144L78 164L66 172L55 164L56 148Z M198 132L180 128L176 144L182 164L194 172L205 164L204 148Z"},{"group":"forearms","d":"M56 170L74 168L70 198L58 226L46 232L44 218L50 194Z M204 170L186 168L190 198L202 226L214 232L216 218L210 194Z"},{"group":"calves","d":"M86 352L102 348L118 352L116 380L108 404L96 404L87 384Z M174 352L158 348L142 352L144 380L152 404L164 404L173 384Z"}]},"groups":{"pecs":{"name":"Chest","pct":88,"level":"max","state":"recover","sessions":2,"hard":9.5,"last":"yesterday"},"quads":{"name":"Quadriceps","pct":44,"level":"mid","state":"ready","sessions":1,"hard":7,"last":"4 d ago"},"obliques":{"name":"Obliques","pct":30,"level":"low","state":"ready","sessions":1,"hard":1.5,"last":"yesterday"},"abs":{"name":"Abs","pct":54,"level":"mid","state":"recover","sessions":1,"hard":3,"last":"yesterday"},"delts":{"name":"Shoulders","pct":100,"level":"max","state":"recover","sessions":1,"hard":7,"last":"yesterday"},"biceps":{"name":"Biceps","pct":54,"level":"mid","state":"ready","sessions":1,"hard":6.5,"last":"2 d ago"},"forearms":{"name":"Forearms","pct":9,"level":"low","state":"ready","sessions":0,"hard":0,"last":"7+ d ago"},"calves":{"name":"Calves","pct":17,"level":"low","state":"ready","sessions":0,"hard":3,"last":"4 d ago"},"traps":{"name":"Traps","pct":35,"level":"mid","state":"ready","sessions":1,"hard":0,"last":"7+ d ago"},"lats":{"name":"Lats","pct":51,"level":"mid","state":"ready","sessions":1,"hard":7,"last":"2 d ago"},"glutes":{"name":"Glutes","pct":54,"level":"mid","state":"ready","sessions":1,"hard":6.5,"last":"4 d ago"},"hams":{"name":"Hamstrings","pct":30,"level":"low","state":"ready","sessions":1,"hard":1.5,"last":"4 d ago"},"lower":{"name":"Lower back","pct":0,"level":"none","state":"low","sessions":0,"hard":0,"last":"7+ d ago"},"infra":{"name":"Infraspinatus","pct":39,"level":"mid","state":"ready","sessions":1,"hard":3.5,"last":"2 d ago"},"triceps":{"name":"Triceps","pct":82,"level":"high","state":"recover","sessions":2,"hard":7,"last":"yesterday"}}};
+  var LANG = document.documentElement.lang === "fr" ? "fr" : "en", FR = {"Recipes":"Recettes","Become a tester":"Devenir testeur","Android beta · free · limited spots":"Bêta Android · gratuite · places limitées","Lose weight, gain muscle, eat better?":"Perdre du poids, prendre du muscle, mieux manger ?","Hylens is for you.":"Hylens est fait pour vous.","Meals, training, muscles and sleep, all in one place.":"Repas, sport, muscles et sommeil, au même endroit.","See the scan":"Voir le scan","Try it":"Essayer","Meal scan":"Scan repas","One photo. All your numbers.":"Une photo. Tous vos chiffres.","Hylens recognizes what’s on your plate and calculates calories and macros in seconds.":"Hylens reconnaît ce qu’il y a dans votre assiette et calcule les calories et les macros en quelques secondes.","Beta testers":"Bêta-testeurs","They’re testing Hylens.":"Ils testent Hylens.","Challenges":"Défis","Workouts to lose weight.":"Des exercices pour perdre du poids.","And to get stronger, at home, at your own pace.":"Et pour se renforcer, à la maison, à votre rythme.","Big fat burn":"Brûle beaucoup de graisse","Circuits that raise your calorie burn.":"Des circuits pour augmenter la dépense.","Steel abs":"Abdos en acier","Your core, week after week.":"Le muscle du ventre, semaine après semaine.","Full-body challenge":"Défi corps complet","Your whole body, in alternating sessions.":"Tout le corps, des séances qui alternent.","Tap a muscle.":"Touchez un muscle.","See what your week asked of it.":"Voyez ce que votre semaine lui a demandé.","Front":"Face","Back":"Dos","Tap a muscle":"Touchez un muscle","Load · 7 days":"Charge · 7 jours","Calculating load…":"Calcul de la charge…","Workouts":"Séances","Hard sets":"Séries dures","Last":"Dernier","Sample week. In the app, your own workouts.":"Semaine d’exemple. Dans l’appli, vos propres séances.","Breakfast":"Petit-déjeuner","Lunch":"Déjeuner","Dinner":"Dîner","Chicken curry":"Curry de poulet","Recipes for you":"Des recettes pour vous","A large catalog of meals and drinks, with their nutrition values, for every moment of the day.":"Un large catalogue de plats et de boissons, avec leurs valeurs, pour chaque moment de la journée.","Your progress":"Votre progression","Your goal, a little closer every day.":"Votre objectif, un peu plus près chaque jour.","Your goal":"Votre objectif","Today":"Aujourd’hui","1 week":"1 semaine","1 month":"1 mois","3 months":"3 mois","See the full picture":"Vous y voyez clair","Meals, water and training: your days in numbers.":"Repas, eau et sport : vos journées en chiffres.","Habits take hold":"Vos habitudes s’installent","Your charts show what’s changing.":"Vos courbes montrent ce qui change.","Your effort, measured":"Vos efforts se mesurent","Weight, muscles and sleep: your progress at a glance.":"Poids, muscles et sommeil : vos progrès en un coup d’œil.","FAQ":"Questions","Before you download.":"Avant de télécharger.","Is it accurate?":"Est-ce précis ?","Values come from official food tables: Ciqual (ANSES) in France, USDA elsewhere. Portions are estimated from the photo: it’s an estimate, not a weigh-in, and you can correct every food.":"Les valeurs viennent de tables officielles : Ciqual de l’Anses en France, USDA ailleurs. Les portions sont estimées sur la photo : c’est une estimation, pas une pesée, et vous pouvez corriger chaque aliment.","Where do photos go in the app?":"Où vont les photos dans l’appli ?","Your photo is sent to our analysis service, powered by OpenAI, and Hylens doesn’t keep it. In the app, your meals and tracking stay on your phone.":"La photo est envoyée à notre service d’analyse, qui s’appuie sur OpenAI, puis elle n’est pas conservée par Hylens. Dans l’appli, vos repas et votre suivi restent sur votre téléphone.","How much does it cost?":"Combien ça coûte ?","The beta is free, no credit card. A founder rate with limited spots will be available at launch.":"La bêta est gratuite, sans carte bancaire. Un tarif fondateur à places limitées sera proposé au lancement.","Do I need Health Connect or a watch?":"Faut-il Health Connect ou une montre ?","No. With your permission, Health Connect adds your steps and workouts automatically. Without it, you log workouts by hand.":"Non. Avec votre accord, Health Connect ajoute vos pas et vos séances tout seul. Sans lui, vous notez vos séances à la main.","What about iPhone?":"Et sur iPhone ?","Not yet. Hylens is in beta on Android; the iPhone version comes next.":"Pas encore. Hylens est en bêta sur Android ; la version iPhone viendra ensuite.","Is this medical advice?":"Est-ce un avis médical ?","No. Hylens provides estimates and wellness guidelines. For any health question, talk to a professional.":"Non. Hylens donne des estimations et des repères de bien-être. Pour une question de santé, parlez-en à un professionnel.","Access":"Accès","Join Hylens":"Rejoindre Hylens","Founder":"Fondateur","rate · limited spots":"· places limitées","Android beta · Gmail":"Bêta Android · Gmail","Play launch · founder rate":"Sortie Play · tarif fondateur","App Store · founder rate":"App Store · tarif fondateur","Download Hylens":"Télécharger Hylens","Tester":"Testeur","Now":"Maintenant","Launch":"Lancement","Email":"E-mail","Apply":"Candidater","Waitlist":"Liste d’attente","Copy":"Copier","Meals, water, training and sleep. General nutrition information, not medical advice.":"Repas, eau, sport et sommeil. Informations nutritionnelles générales, pas un avis médical.","App":"Application","Join the beta":"Rejoindre la bêta","Information":"Informations","Privacy policy":"Politique de confidentialité","Legal notice":"Mentions légales","Publisher and publication director: Hectorone, contact@hectorone.fr.":"Éditeur du site et directeur de la publication : Hectorone, contact@hectorone.fr.","Host: GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA, +1 877 448 4820.":"Hébergeur : GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis, +1 877 448 4820.","Nutrition values: Ciqual table (ANSES) and USDA FoodData Central. Photos: Pexels.":"Valeurs nutritionnelles : table Ciqual (Anses) et USDA FoodData Central. Photos : Pexels.","Become a tester, it’s free":"Devenir testeur, c’est gratuit","Build your plate.":"Composez votre assiette.","Type up to 3 foods. Hylens does the math.":"Écrivez jusqu’à 3 aliments. Hylens fait le calcul.","Add":"Ajouter","Protein":"Protéines","Fat":"Lipides","Type a food":"Écrivez un aliment","3 foods max. Remove one to add another.":"3 aliments maximum. Retirez-en un pour en ajouter.","foods":"aliments","Your plate is empty.":"Votre assiette est vide.","No food found. Check the spelling.":"Aucun aliment trouvé. Vérifiez l’orthographe.","Loading…":"Chargement…","Foods unavailable. Reload the page.":"Aliments indisponibles. Rechargez la page.","Corrected to":"Corrigé en","Close":"Fermer","Pause animations":"Mettre les animations en pause","Resume animations":"Relancer les animations","Mannequin view":"Vue du mannequin","Muscle zones":"Zones musculaires","Anatomical mannequin":"Mannequin anatomique","Anatomical mannequin, front view":"Mannequin anatomique, de face","Anatomical mannequin, back view":"Mannequin anatomique, de dos","A woman photographs her plate and Hylens shows the calories and macros":"Une femme photographie son assiette, Hylens affiche les calories et les macros","Blueberry pancakes":"Pancakes aux myrtilles","Salmon poke bowl":"Poke bowl au saumon","Chicken curry with rice":"Curry de poulet et riz","Illustration: a curve rising from today to your goal, with markers at 1 week, 1 month and 3 months, then a trophy":"Illustration : une courbe qui monte d’aujourd’hui à votre objectif, avec un repère à 1 semaine, 1 mois et 3 mois, puis un trophée","you@gmail.com":"vous@gmail.com","you@email.com":"vous@email.com","you@icloud.com":"vous@icloud.com","Recovering":"À récupérer","Ready":"Prêt","Barely worked":"Peu travaillé","yesterday":"hier","today":"aujourd’hui","2 d ago":"il y a 2 j","4 d ago":"il y a 4 j","7+ d ago":"+ de 7 j","Traps":"Trapèzes","Shoulders":"Épaules","Chest":"Pectoraux","Forearms":"Avant-bras","Abs":"Abdominaux","Glutes":"Fessiers","Calves":"Mollets","Lats":"Dorsaux","Lower back":"Lombaires","Hamstrings":"Ischio-jambiers","Infraspinatus":"Sous-épineux","Invalid Gmail.":"Gmail invalide.","Invalid email.":"E-mail invalide.","Send the opened email to confirm.":"Envoyez l’e-mail ouvert pour confirmer.","Saved.":"Enregistré.","Full":"Complet","Copied":"Copié","Selected: copy it.":"Sélectionné : copiez-le.","Hylens beta tester application":"Candidature testeur Hylens","Hello,\n\nApplication for the Android closed beta.\nGmail:\n":"Bonjour,\n\nCandidature à la bêta fermée Android.\nGmail :\n","Hylens Android founder waitlist":"Liste d’attente Android · Hylens","Hello,\n\nAndroid founder waitlist registration.\nEmail:\n":"Bonjour,\n\nInscription à la liste d’attente Android (tarif fondateur).\nE-mail :\n","Hylens iPhone founder waitlist":"Liste d’attente iPhone · Hylens","Hello,\n\niPhone founder waitlist.\nEmail:\n":"Bonjour,\n\nListe d’attente iPhone (tarif fondateur).\nE-mail :\n"};
+  var T = function (t) { return LANG === "fr" && FR[t] != null ? FR[t] : t; };
+  var $ = function (id) { return document.getElementById(id); };
+  var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  // Réglage système « animations réduites » : plus d'effets au défilement, mais la vidéo et les carpes restent (bouton pause en bas à droite).
+  var REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches, PAUSED = false;
+
+  /* ---- Scan : la vidéo tourne quand elle est à l'écran ---- */
+  var scanV = $("scanVideo"), scanSeen = false;
+  function scanSync() { if (scanSeen && !PAUSED) { var pl = scanV.play(); if (pl && pl.catch) pl.catch(function () {}); } else scanV.pause(); }
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es.forEach(function (e) { scanSeen = e.isIntersecting; scanSync(); }); }, { threshold: 0.2 }).observe(scanV);
+
+  /* ---- Page d'essai : 3 aliments Ciqual, saisie libre avec correcteur, 3 anneaux ---- */
+  var TRY_MAX = 3, tryPlate = [], tryData = null, tryLoad = null, tryOpener = null;
+  // Repères des anneaux : apports de référence UE (règlement 1169/2011).
+  var TRY_RINGS = [{ k: "p", n: "Protein", u: "g", ref: 50, c: "var(--coral)" }, { k: "kc", n: "Calories", u: "kcal", ref: 2000, c: "var(--aqua)" }, { k: "l", n: "Fat", u: "g", ref: 70, c: "var(--violet)" }];
+  TRY_RINGS.forEach(function (r) {
+    var box = el("div", "ring"), dial = el("div", "dial"), mid = el("div", "mid");
+    dial.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="42"/><circle class="fill" cx="50" cy="50" r="42" style="stroke:' + r.c + '"/></svg>';
+    r.value = el("b", "", "0"); mid.appendChild(r.value); mid.appendChild(el("small", "", r.u));
+    dial.appendChild(mid); box.appendChild(dial); box.appendChild(el("span", "", T(r.n)));
+    r.fill = dial.querySelector(".fill");
+    $("tryRings").appendChild(box);
+  });
+  var fold = function (v) { return v.replace(/œ/g, "oe").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); };
+  var singular = function (w) { return w.length > 3 ? w.replace(/(ies)$/, "y").replace(/(s|x)$/, "") : w; };
+  var STOP = { of: 1, de: 1, du: 1, la: 1, le: 1, les: 1, des: 1, the: 1, a: 1, au: 1, aux: 1, et: 1, and: 1, "with": 1, avec: 1, un: 1, une: 1 };
+  function loadTry() {
+    if (!tryLoad) tryLoad = fetch("../data/ciqual.json").then(function (r) { if (!r.ok) throw new Error("data"); return r.json(); }).then(function (d) {
+      var vocab = {}, rows = d.f;
+      var foods = rows.map(function (r) {
+        var en = fold(r[0]), fr = fold(r[1]);
+        var stem = " " + (en + " " + fr).split(" ").map(singular).join(" ") + " ";
+        stem.trim().split(" ").forEach(function (w) { vocab[w] = (vocab[w] || 0) + 1; });
+        return { name: r[0], nameFr: r[1], en: en, fr: fr, stem: stem, kc: r[2], p: r[3], l: r[4] };
+      });
+      Object.keys(d.s).forEach(function (k) { k.split(" ").forEach(function (w) { if (!vocab[w]) vocab[w] = 1; }); });
+      tryData = { foods: foods, vocab: vocab, words: Object.keys(vocab), common: d.s };
+      return tryData;
+    }).catch(function (e) { tryLoad = null; throw e; });
+    return tryLoad;
+  }
+  function distance(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    var row = [], i, j;
+    for (j = 0; j <= b.length; j++) row[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      var prev = row[0]; row[0] = i;
+      for (j = 1; j <= b.length; j++) { var cur = row[j]; row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = cur; }
+    }
+    return row[b.length];
+  }
+  // Correcteur : un mot inconnu est remplacé par le mot de la table le plus proche.
+  function correct(word) {
+    if (tryData.vocab[word] || word.length < 3) return word;
+    var max = word.length <= 4 ? 1 : word.length <= 8 ? 2 : 3, best = null, bestD = max + 1, bestN = 0;
+    tryData.words.forEach(function (w) { var d = distance(word, w, max); if (d <= max && (d < bestD || (d === bestD && tryData.vocab[w] > bestN))) { best = w; bestD = d; bestN = tryData.vocab[w]; } });
+    return best || word;
+  }
+  var TRY_COOKED = /\b(cooked|roasted|boiled|baked|grilled|steamed|poached|pan fried|broiled)\b/;
+  var EATEN_COOKED = /\b(rice|riz|pasta|pate|noodle|nouille|spaghetti|quinoa|bulgur|boulgour|semolina|semoule|lentil|lentille|bean|haricot|chickpea|pois|potato|pomme de terre|chicken|poulet|beef|boeuf|steak|pork|porc|turkey|dinde|lamb|agneau|veal|veau|duck|canard|salmon|saumon|cod|cabillaud|tuna|thon|shrimp|crevette|egg|oeuf|broccoli|brocoli|spinach|epinard)\b/;
+  var TRY_PLAIN = /\b(cooked|roasted|raw|boiled|baked|grilled|plain|whole|cuit|cuite|cru|crue)\b/;
+  var TRY_SIDE = /\b(skin|feet|tail|neck|giblet|gizzard|liver|heart|flour|powder|dry|canned|frozen|mix|baby|infant|organic|poudre|surgele|appertise|bio)\b/;
+  function findFood(query) {
+    var typed = fold(query).split(" ").filter(function (w) { return w && !STOP[w]; }).map(singular);
+    if (!typed.length) return null;
+    var words = typed.map(correct), best = null, bestS = 1e9, q = words.join(" ");
+    // Mot courant : le dictionnaire de l'appli donne directement le bon aliment.
+    var known = tryData.common[q];
+    if (known != null) return { food: tryData.foods[known], fixed: words.join(" ") !== typed.join(" ") ? words.join(" ") : null };
+    // Ce qu'on mange cuit (riz, pâtes, viande, poisson…) : la fiche cuite d'abord, sauf si « raw » est écrit.
+    var wantCooked = EATEN_COOKED.test(q) && !/\b(raw|cru|crue)\b/.test(q);
+    tryData.foods.forEach(function (f) {
+      if (!words.every(function (w) { return f.stem.indexOf(" " + w + " ") >= 0 || f.stem.indexOf(" " + w) >= 0; })) return;
+      var start = f.en.indexOf(q) === 0 || f.fr.indexOf(q) === 0 ? 0 : (" " + f.en.split(" ").slice(0, 3).join(" ") + " ").indexOf(" " + q) >= 0 ? 1 : 2;
+      var isCooked = TRY_COOKED.test(f.en), isRaw = /\braw\b/.test(f.en);
+      var score = start + (wantCooked ? (isCooked ? -1.4 : isRaw ? 0.8 : 0) : TRY_PLAIN.test(f.en) || TRY_PLAIN.test(f.fr) ? -0.7 : 0) + (TRY_SIDE.test(f.en) ? 1 : 0) + f.en.length / 300;
+      if (score < bestS) { bestS = score; best = f; }
+    });
+    return best ? { food: best, fixed: words.join(" ") !== typed.join(" ") ? words.join(" ") : null } : null;
+  }
+  function tryTotals() {
+    TRY_RINGS.forEach(function (r) {
+      var v = tryPlate.reduce(function (s, it) { return s + it.g * it.f[r.k] / 100; }, 0);
+      r.value.textContent = String(Math.round(v));
+      r.fill.style.strokeDashoffset = String(264 * (1 - Math.min(1, v / r.ref)));
+    });
+  }
+  function tryRender() {
+    var list = $("tryItems"), full = tryPlate.length >= TRY_MAX;
+    list.textContent = "";
+    $("tryCount").textContent = tryPlate.length + " / " + TRY_MAX + " " + T("foods");
+    $("tryInput").disabled = full; $("tryAdd").disabled = full;
+    $("tryInput").placeholder = T(full ? "3 foods max. Remove one to add another." : "Type a food");
+    if (!tryPlate.length) list.appendChild(el("li", "empty-plate", T("Your plate is empty.")));
+    tryPlate.forEach(function (it, idx) {
+      var li = el("li");
+      var shown = LANG === "fr" ? it.f.nameFr : it.f.name;
+      li.appendChild(el("span", "n", shown));
+      var step = el("div", "stepper"), minus = el("button", "", "−"), input = el("input"), plus = el("button", "", "+");
+      minus.type = plus.type = "button";
+      minus.setAttribute("aria-label", "− 10 g, " + shown);
+      plus.setAttribute("aria-label", "+ 10 g, " + shown);
+      input.type = "number"; input.min = "0"; input.max = "2000"; input.inputMode = "numeric"; input.value = it.g;
+      input.setAttribute("aria-label", "g, " + shown);
+      var set = function (g, refill) { it.g = Math.min(2000, Math.max(0, Math.round(g) || 0)); if (refill) input.value = it.g; tryTotals(); };
+      minus.onclick = function () { set(it.g - 10, true); };
+      plus.onclick = function () { set(it.g + 10, true); };
+      input.oninput = function () { set(Number(input.value), false); };
+      input.onblur = function () { input.value = it.g; };
+      step.appendChild(minus); step.appendChild(input); step.appendChild(el("span", "", "g")); step.appendChild(plus);
+      var rm = el("button", "rm", "×");
+      rm.type = "button"; rm.setAttribute("aria-label", "× " + shown);
+      rm.onclick = function () { tryPlate.splice(idx, 1); $("tryNote").textContent = ""; tryRender(); tryTotals(); };
+      li.appendChild(step); li.appendChild(rm);
+      list.appendChild(li);
+    });
+  }
+  $("tryForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var value = $("tryInput").value;
+    if (!fold(value) || tryPlate.length >= TRY_MAX) return;
+    $("tryNote").textContent = tryData ? "" : T("Loading…");
+    loadTry().then(function () {
+      var hit = findFood(value);
+      if (!hit) { $("tryNote").textContent = T("No food found. Check the spelling."); return; }
+      tryPlate.push({ f: hit.food, g: 100 });
+      $("tryInput").value = "";
+      $("tryNote").textContent = hit.fixed ? T("Corrected to") + " “" + hit.fixed + "”." : "";
+      tryRender(); tryTotals();
+      if (tryPlate.length < TRY_MAX) $("tryInput").focus();
+    }).catch(function () { $("tryNote").textContent = T("Foods unavailable. Reload the page."); });
+  });
+  function tryShow(open) {
+    $("tryPage").hidden = !open;
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    document.querySelector(".page").inert = open;
+    if (open) { tryOpener = document.activeElement; loadTry().catch(function () {}); $("tryInput").focus(); }
+    else if (tryOpener) tryOpener.focus();
+  }
+  $("tryOpen").onclick = function () { tryShow(true); };
+  $("tryClose").onclick = function () { tryShow(false); };
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("tryPage").hidden) tryShow(false); });
+  tryRender(); tryTotals();
+
+  /* ---- Mannequin → usure, mêmes calculs et couleurs que l'appli ---- */
+  var HEAT = { none: "var(--heat-none)", low: "var(--heat-low)", mid: "var(--heat-mid)", high: "var(--heat-high)", max: "var(--heat-max)" };
+  var STATE = { recover: "Recovering", ready: "Ready", low: "Barely worked" };
+  var side = "front", group = null, loadRun = 0;
+  var sets = function (v) { return Number.isInteger(v) ? String(v) : "≈ " + Math.max(1, Math.round(v)); };
+  function drawZones() {
+    var svg = $("zones"), NS = "http://www.w3.org/2000/svg";
+    $("mann").src = "../assets/mannequin-" + side + ".jpg";
+    $("mann").alt = T(side === "front" ? "Anatomical mannequin, front view" : "Anatomical mannequin, back view");
+    svg.textContent = "";
+    MUSCLES.zones[side].forEach(function (z) {
+      var g = MUSCLES.groups[z.group], c = HEAT[g.level], p = document.createElementNS(NS, "path");
+      p.setAttribute("d", z.d); p.setAttribute("tabindex", "0"); p.setAttribute("role", "button");
+      p.setAttribute("aria-label", T(g.name));
+      if (z.group === group) { p.setAttribute("class", "on"); p.style.fill = c; }
+      p.addEventListener("click", function () { choose(z.group); });
+      p.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(z.group); } });
+      svg.appendChild(p);
+    });
+    $("front").setAttribute("aria-pressed", String(side === "front"));
+    $("back").setAttribute("aria-pressed", String(side === "back"));
+  }
+  // Barre de chargement d'abord, puis remplissage jusqu'à la vraie charge, puis le détail.
+  var LOAD_MS = 650, FILL_MS = 1100;
+  function renderWear() {
+    var g = MUSCLES.groups[group], run = ++loadRun, track = $("mTrack"), bar = $("mBar"), label = $("mLabel"), pct = $("mPct"), state = $("mState"), tiles = $("mTiles");
+    $("wearEmpty").hidden = true; $("wearBody").hidden = false;
+    $("mName").textContent = T(g.name);
+    state.className = "state " + g.state; state.textContent = T(STATE[g.state]);
+    $("mSessions").textContent = g.sessions; $("mHard").textContent = sets(g.hard); $("mLast").textContent = T(g.last);
+    tiles.classList.remove("in");
+    bar.style.width = "0"; bar.style.background = HEAT[g.level];
+    pct.textContent = "0%"; label.textContent = T("Calculating load…");
+    track.classList.add("loading");
+    setTimeout(function () {
+      if (run !== loadRun) return;
+      track.classList.remove("loading");
+      label.textContent = T("Load · 7 days");
+      var t0 = performance.now();
+      (function fill(now) {
+        if (run !== loadRun) return;
+        var t = Math.min(1, (now - t0) / FILL_MS), e = 1 - Math.pow(1 - t, 3);
+        bar.style.width = g.pct * e + "%"; pct.textContent = Math.round(g.pct * e) + "%";
+        if (t < 1) { requestAnimationFrame(fill); return; }
+        state.classList.add("in"); tiles.classList.add("in");
+      })(t0);
+    }, LOAD_MS);
+  }
+  function choose(g) {
+    group = g;
+    var sides = ["front", "back"].filter(function (s) { return MUSCLES.zones[s].some(function (z) { return z.group === g; }); });
+    if (sides.indexOf(side) < 0) side = sides[0];
+    drawZones(); renderWear();
+    // Téléphone : le détail est sous le mannequin, on l'amène à l'écran pour voir la barre.
+    if (innerWidth <= 960) document.querySelector(".wear-col").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" });
+  }
+  $("front").onclick = function () { side = "front"; drawZones(); };
+  $("back").onclick = function () { side = "back"; drawZones(); };
+  drawZones();
+
+  /* ---- Feu et brillance des défis (comme l'appli) ---- */
+  var EMBERS = [[.52, 4, 0], [.62, 3, .18], [.71, 5, .42], [.8, 3, .66], [.9, 4, .12], [.28, 3, .55], [.37, 4, .8], [.16, 3, .3], [.46, 5, .9], [.08, 3, .48], [.74, 3, .72], [.33, 4, .05]];
+  var SPARKS = [[.3, .18, 10, 0], [.78, .24, 8, .25], [.62, .42, 12, .5], [.86, .56, 7, .7], [.2, .5, 9, .85]];
+  var SPARK = "M12 2l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z";
+  document.querySelectorAll('[data-fx="fire"]').forEach(function (fx) {
+    EMBERS.forEach(function (e, i) {
+      var n = el("i", "ember");
+      n.style.cssText = "left:" + e[0] * 100 + "%;width:" + e[1] * 2 + "px;height:" + e[1] * 2 + "px;background:" + (i % 3 ? "#FF9F1C" : "#FFE45C") + ";box-shadow:0 0 8px #FF8C28;--dx:" + (i % 2 ? 10 : -10) + "px;animation-delay:" + (-e[2] * 3.2) + "s";
+      fx.appendChild(n);
+    });
+  });
+  document.querySelectorAll('[data-fx="shine"]').forEach(function (fx) {
+    SPARKS.forEach(function (e) {
+      fx.insertAdjacentHTML("beforeend", '<svg class="spark" viewBox="0 0 24 24" aria-hidden="true" style="left:' + e[0] * 100 + "%;top:" + e[1] * 100 + "%;width:" + e[2] * 2.4 + "px;height:" + e[2] * 2.4 + "px;animation-delay:" + (-e[3] * 3.6) + 's"><path d="' + SPARK + '"/></svg>');
+    });
+  });
+
+  /* ---- Étang : mêmes carpes luminescentes que le site en ligne ---- */
+  var startPond = (function () {
+    var cv = $("pond"), ctx = cv.getContext("2d"), CALM = REDUCED;
+    var W = 0, H = 0, fish = [], motes = [], rays = [], ripples = [], mouse = { x: -9999, y: -9999 }, scrollKick = 0;
+    var HUES = [[176, 72, 62], [198, 92, 66], [345, 92, 72], [40, 96, 64], [255, 88, 76], [150, 62, 64]];
+    var BODY = [0.55, 0.86, 1, 1, 0.96, 0.88, 0.77, 0.65, 0.52, 0.4, 0.29, 0.19, 0.11, 0.06];
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function turnTo(target, a) { var d = target - a; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return d; }
+    function hsla(c, a, dl) { return "hsla(" + c[0] + "," + c[1] + "%," + (c[2] + (dl || 0)) + "%," + a + ")"; }
+
+    function Fish(i) {
+      var s = W < 700 ? 0.7 : 1;
+      this.len = rnd(70, 125) * s; this.n = BODY.length; this.seg = this.len / this.n;
+      this.base = rnd(0.35, 0.75) * (CALM ? 0.6 : 1); this.v = this.base; this.ph = rnd(0, 6.283);
+      this.c = HUES[i % HUES.length];
+      this.spots = [Math.floor(rnd(2, 5)), Math.floor(rnd(5, 9))];
+      this.t = rnd(0, 5000); this.f1 = rnd(0.004, 0.008); this.f2 = rnd(0.0015, 0.003); this.p1 = rnd(0, 6.283); this.p2 = rnd(0, 6.283);
+      var cols = W < 700 ? 2 : 4, col = i % cols, row = Math.floor(i / cols) % 2;
+      this.place(((col + rnd(0.2, 0.8)) / cols) * W, ((row + rnd(0.2, 0.8)) / 2) * H, rnd(0, 6.283));
+    }
+    Fish.prototype.place = function (x, y, a) {
+      this.x = x; this.y = y; this.a = a; this.pts = [];
+      for (var k = 0; k < this.n; k++) this.pts.push({ x: x - Math.cos(a) * this.seg * k, y: y - Math.sin(a) * this.seg * k });
+    };
+    Fish.prototype.respawn = function () {
+      var pad = this.len + 10, side = Math.floor(rnd(0, 4)), x, y, a;
+      if (side === 0) { x = -pad; y = rnd(0.15, 0.85) * H; a = rnd(-0.5, 0.5); }
+      else if (side === 1) { x = W + pad; y = rnd(0.15, 0.85) * H; a = Math.PI + rnd(-0.5, 0.5); }
+      else if (side === 2) { x = rnd(0.15, 0.85) * W; y = -pad; a = Math.PI / 2 + rnd(-0.5, 0.5); }
+      else { x = rnd(0.15, 0.85) * W; y = H + pad; a = -Math.PI / 2 + rnd(-0.5, 0.5); }
+      this.place(x, y, a);
+    };
+    Fish.prototype.update = function (k) {
+      this.t += k;
+      var steer = Math.sin(this.t * this.f1 + this.p1) * 0.004 + Math.sin(this.t * this.f2 + this.p2) * 0.002, fear = 0, lim = 0.009;
+      var dx = this.x - mouse.x, dy = this.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 180) { fear = 1 - d / 180; steer += turnTo(Math.atan2(dy, dx), this.a) * 0.05 * fear; }
+      for (var r = 0; r < ripples.length; r++) {
+        var rp = ripples[r], rx = this.x - rp.x, ry = this.y - rp.y, rd = Math.sqrt(rx * rx + ry * ry);
+        if (rd < 220 && rp.life > 0.5) { steer += turnTo(Math.atan2(ry, rx), this.a) * 0.04; fear = Math.max(fear, 0.9); }
+      }
+      if (fear > 0) lim = 0.035;
+      this.a += Math.max(-lim, Math.min(lim, steer)) * k;
+      this.v += (this.base * (1 + fear * 3.2) - this.v) * 0.05 * k;
+      this.x += Math.cos(this.a) * this.v * k;
+      this.y += Math.sin(this.a) * this.v * k;
+      this.ph += (0.07 + this.v * 0.11) * k;
+      var out = this.len * 2 + 20;
+      if (this.x < -out || this.x > W + out || this.y < -out || this.y > H + out) { this.respawn(); return; }
+      var p0 = this.pts[0]; p0.x = this.x; p0.y = this.y;
+      for (var i = 1; i < this.n; i++) {
+        var p = this.pts[i], q = this.pts[i - 1], ex = p.x - q.x, ey = p.y - q.y, el = Math.sqrt(ex * ex + ey * ey) || 1;
+        p.x = q.x + ex / el * this.seg; p.y = q.y + ey / el * this.seg;
+      }
+    };
+    Fish.prototype.draw = function () {
+      var n = this.n, C = [], L = [], R = [], wmax = this.len * 0.12, i, ang;
+      for (i = 0; i < n; i++) {
+        var p = this.pts[i];
+        ang = i === 0 ? this.a : Math.atan2(this.pts[i - 1].y - p.y, this.pts[i - 1].x - p.x);
+        var wave = Math.sin(this.ph - i * 0.55) * this.len * 0.05 * (i / n);
+        var nx = -Math.sin(ang), ny = Math.cos(ang), cx = p.x + nx * wave, cy = p.y + ny * wave, w = BODY[i] * wmax;
+        C.push([cx, cy, ang, nx, ny]); L.push([cx + nx * w, cy + ny * w]); R.push([cx - nx * w, cy - ny * w]);
+      }
+      var mid = C[4], g = ctx.createRadialGradient(mid[0], mid[1], 0, mid[0], mid[1], this.len);
+      g.addColorStop(0, hsla(this.c, 0.17)); g.addColorStop(1, hsla(this.c, 0));
+      ctx.fillStyle = g; ctx.fillRect(mid[0] - this.len, mid[1] - this.len, this.len * 2, this.len * 2);
+
+      ctx.fillStyle = hsla(this.c, 0.32, 6);
+      for (var side = -1; side <= 1; side += 2) {
+        var f = C[2];
+        ctx.save(); ctx.translate(f[0], f[1]); ctx.rotate(f[2] + side * (2.1 + Math.sin(this.ph * 0.7) * 0.25));
+        ctx.beginPath(); ctx.ellipse(this.len * 0.1, 0, this.len * 0.12, this.len * 0.04, 0, 0, 6.283); ctx.fill(); ctx.restore();
+      }
+      var t = C[n - 1], ta = t[2] + Math.PI, sp = 0.42 + Math.sin(this.ph) * 0.14, tl = this.len * 0.3;
+      ctx.beginPath(); ctx.moveTo(t[0], t[1]);
+      ctx.quadraticCurveTo(t[0] + Math.cos(ta + sp) * tl * 0.6, t[1] + Math.sin(ta + sp) * tl * 0.6, t[0] + Math.cos(ta + sp) * tl, t[1] + Math.sin(ta + sp) * tl);
+      ctx.quadraticCurveTo(t[0] + Math.cos(ta) * tl * 0.55, t[1] + Math.sin(ta) * tl * 0.55, t[0] + Math.cos(ta - sp) * tl, t[1] + Math.sin(ta - sp) * tl);
+      ctx.quadraticCurveTo(t[0] + Math.cos(ta - sp) * tl * 0.6, t[1] + Math.sin(ta - sp) * tl * 0.6, t[0], t[1]);
+      ctx.fillStyle = hsla(this.c, 0.3, 8); ctx.fill();
+
+      var h = C[0], head = [h[0] + Math.cos(this.a) * wmax * 0.7, h[1] + Math.sin(this.a) * wmax * 0.7];
+      var body = ctx.createLinearGradient(head[0], head[1], t[0], t[1]);
+      body.addColorStop(0, hsla(this.c, 0.62, 12)); body.addColorStop(0.5, hsla(this.c, 0.4)); body.addColorStop(1, hsla(this.c, 0.14));
+      ctx.beginPath(); ctx.moveTo(head[0], head[1]);
+      ctx.quadraticCurveTo(L[0][0] + Math.cos(this.a) * wmax * 0.4, L[0][1] + Math.sin(this.a) * wmax * 0.4, L[1][0], L[1][1]);
+      for (i = 2; i < n; i++) ctx.lineTo(L[i][0], L[i][1]);
+      for (i = n - 1; i > 0; i--) ctx.lineTo(R[i][0], R[i][1]);
+      ctx.quadraticCurveTo(R[0][0] + Math.cos(this.a) * wmax * 0.4, R[0][1] + Math.sin(this.a) * wmax * 0.4, head[0], head[1]);
+      ctx.fillStyle = body; ctx.fill();
+
+      ctx.fillStyle = "rgba(255,255,255,0.22)";
+      for (i = 0; i < this.spots.length; i++) {
+        var s = C[this.spots[i]];
+        ctx.beginPath(); ctx.ellipse(s[0], s[1], BODY[this.spots[i]] * wmax * 0.55, BODY[this.spots[i]] * wmax * 0.35, s[2], 0, 6.283); ctx.fill();
+      }
+      ctx.fillStyle = "rgba(255,255,255,0.6)";
+      for (var e = -1; e <= 1; e += 2) { ctx.beginPath(); ctx.arc(h[0] + h[3] * wmax * 0.45 * e, h[1] + h[4] * wmax * 0.45 * e, Math.max(1, wmax * 0.1), 0, 6.283); ctx.fill(); }
+    };
+
+    function resize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      W = window.innerWidth; H = window.innerHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function populate() {
+      var nf = W < 700 ? 4 : 7, nm = W < 700 ? 36 : 70, i;
+      for (i = 0; i < nf; i++) fish.push(new Fish(i));
+      for (i = 0; i < nm; i++) motes.push({ x: rnd(0, W), y: rnd(0, H), r: rnd(0.5, 1.9), vy: rnd(0.08, 0.32), ph: rnd(0, 6.283), z: rnd(0.3, 1) });
+      for (i = 0; i < 5; i++) rays.push({ x: rnd(0, 1), w: rnd(60, 170), ph: rnd(0, 6.283), sp: rnd(0.00012, 0.00026), a: rnd(0.03, 0.065) });
+    }
+    function draw(t, k) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = "lighter";
+      for (var i = 0; i < rays.length; i++) {
+        var r = rays[i], x = r.x * W + Math.sin(t * r.sp + r.ph) * 70, g = ctx.createLinearGradient(0, 0, 0, H * 0.85);
+        g.addColorStop(0, "rgba(120,215,255," + r.a + ")"); g.addColorStop(1, "rgba(120,215,255,0)");
+        ctx.fillStyle = g; ctx.beginPath();
+        ctx.moveTo(x - r.w / 2, -10); ctx.lineTo(x + r.w / 2, -10); ctx.lineTo(x + r.w * 1.3 + H * 0.12, H * 0.85); ctx.lineTo(x - r.w * 1.3 + H * 0.12, H * 0.85);
+        ctx.fill();
+      }
+      for (i = 0; i < motes.length; i++) {
+        var m = motes[i];
+        m.y -= (m.vy + scrollKick * m.z * 0.18) * k; m.x += Math.sin(t * 0.001 + m.ph) * 0.15 * k;
+        if (m.y < -10) { m.y = H + 10; m.x = rnd(0, W); } else if (m.y > H + 10) { m.y = -10; m.x = rnd(0, W); }
+        var tw = Math.sin(t * 0.0018 + m.ph);
+        ctx.fillStyle = "rgba(190,240,255," + (0.18 + 0.4 * tw * tw) * m.z + ")";
+        ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, 6.283); ctx.fill();
+      }
+      for (i = 0; i < fish.length; i++) { fish[i].update(k); fish[i].draw(); }
+      for (i = ripples.length - 1; i >= 0; i--) {
+        var rp = ripples[i]; rp.r += 3.4 * k; rp.life -= 0.013 * k;
+        if (rp.life <= 0) { ripples.splice(i, 1); continue; }
+        ctx.strokeStyle = "rgba(140,230,255," + rp.life * 0.5 + ")"; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(rp.x, rp.y, rp.r, 0, 6.283); ctx.stroke();
+        ctx.beginPath(); ctx.arc(rp.x, rp.y, rp.r * 0.62, 0, 6.283); ctx.stroke();
+      }
+      ctx.globalCompositeOperation = "source-over";
+      scrollKick *= Math.pow(0.85, k);
+    }
+    resize(); populate();
+    addEventListener("resize", resize);
+    addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") { mouse.x = e.clientX; mouse.y = e.clientY; } }, { passive: true });
+    document.addEventListener("mouseleave", function () { mouse.x = mouse.y = -9999; });
+    var lastY = scrollY;
+    addEventListener("scroll", function () { scrollKick += (scrollY - lastY) * 0.05; lastY = scrollY; }, { passive: true });
+    document.addEventListener("click", function (e) { ripples.push({ x: e.clientX, y: e.clientY, r: 0, life: 1 }); });
+    var last = performance.now(), running = false;
+    function frame(t) {
+      if (PAUSED || document.hidden) { running = false; return; }
+      // Rien à dessiner quand l'étang est caché (vidéo du haut ou zone sombre).
+      if (+pondCv.style.opacity === 0 || +dusk.style.opacity >= 1) { last = t; requestAnimationFrame(frame); return; }
+      var k = Math.min(3, (t - last) / 16.67); last = t;
+      draw(t, k);
+      requestAnimationFrame(frame);
+    }
+    function start() { if (running || PAUSED || document.hidden) return; running = true; last = performance.now(); requestAnimationFrame(frame); }
+    document.addEventListener("visibilitychange", start);
+    for (var pre = 0; pre < 60; pre++) fish.forEach(function (f) { f.update(1); });
+    start();
+    return start;
+  })();
+
+  /* ---- Sortie de la vidéo, apparitions, cartes défi ---- */
+  var film = $("film"), filmV = $("filmVideo"), dusk = $("dusk"), pondCv = $("pond"), duskV = $("duskVideo"), nuit = $("nuit"), heroT = $("heroText"), bar = $("topbar"), defis = [].slice.call(document.querySelectorAll(".defi"));
+  // Mode économie de données : l'image fixe suffit.
+  if (!(navigator.connection && navigator.connection.saveData)) filmV.src = "../assets/koi.mp4";
+  function playFilm() { if (PAUSED || !filmV.paused || scrollY >= innerHeight * 0.82) return; filmV.muted = true; var pl = filmV.play(); if (pl && pl.catch) pl.catch(function () {}); }
+  ["pointerdown", "keydown", "touchstart"].forEach(function (t) { addEventListener(t, playFilm, { passive: true }); });
+  filmV.addEventListener("canplay", playFilm);
+  $("motion").onclick = function () {
+    PAUSED = !PAUSED;
+    this.setAttribute("aria-pressed", String(PAUSED));
+    this.setAttribute("aria-label", T(PAUSED ? "Resume animations" : "Pause animations"));
+    $("motionIcon").setAttribute("d", PAUSED ? "M8 5l11 7-11 7z" : "M7 5h4v14H7zM13 5h4v14h-4z");
+    document.body.classList.toggle("still", PAUSED);
+    if (PAUSED) { filmV.pause(); duskV.pause(); scanSync(); } else { playFilm(); startPond(); onScroll(); scanSync(); }
+  };
+  function onScroll() {
+    var y = scrollY, h = innerHeight, p = Math.min(1, y / (h * 0.82));
+    var filmO = Math.max(0, 1 - p / 0.66);
+    film.style.opacity = String(filmO);
+    film.style.visibility = filmO <= 0 ? "hidden" : "visible";
+    pondCv.style.opacity = String(Math.max(0, Math.min(1, (p - 0.72) / 0.28)));
+    film.style.transform = REDUCED ? "" : "scale(" + (1 + p * 0.16) + ")";
+    heroT.style.transform = REDUCED ? "" : "translateY(" + (-y * 0.32) + "px)";
+    heroT.style.opacity = String(Math.max(0, 1 - y / (h * 0.55)));
+    if (p >= 1) { if (!filmV.paused) filmV.pause(); } else playFilm();
+    // On arrive doucement dans le noir, la vidéo tourne tant qu'on est dans la zone, puis retour aux carpes.
+    var rz = nuit.getBoundingClientRect(), enter = Math.max(0, Math.min(1, (h * 0.9 - rz.top) / (h * 0.65))), leave = Math.max(0, Math.min(1, (rz.bottom - h * 0.2) / (h * 0.6))), o = Math.min(enter, leave);
+    dusk.style.opacity = o.toFixed(3); dusk.style.visibility = o > 0 ? "visible" : "hidden";
+    if (o > 0 && !PAUSED) { if (duskV.paused) { duskV.muted = true; var dp = duskV.play(); if (dp && dp.catch) dp.catch(function () {}); } } else if (!duskV.paused) duskV.pause();
+    bar.classList.toggle("on", y > 40);
+    defis.forEach(function (d) { var r = d.getBoundingClientRect(); if (r.bottom > 0 && r.top < h) d.style.setProperty("--py", (((r.top + r.height / 2) / h - 0.5) * -26).toFixed(1) + "px"); });
+  }
+  var ticking = false;
+  addEventListener("scroll", function () { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; onScroll(); }); }, { passive: true });
+  addEventListener("resize", onScroll); onScroll();
+  defis.forEach(function (d) {
+    d.addEventListener("pointermove", function (e) { if (REDUCED || e.pointerType !== "mouse") return; var r = d.getBoundingClientRect(); d.style.transform = "rotateY(" + (((e.clientX - r.left) / r.width - 0.5) * 13).toFixed(1) + "deg) rotateX(" + (((e.clientY - r.top) / r.height - 0.5) * -13).toFixed(1) + "deg) translateY(-6px)"; });
+    d.addEventListener("pointerleave", function () { d.style.transform = ""; });
+  });
+  if ("IntersectionObserver" in window && !REDUCED) {
+    var rs = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove("pre"); rs.unobserve(e.target); } }); }, { rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll(".rise").forEach(function (n, i) { if (n.getBoundingClientRect().top > innerHeight) { n.classList.add("pre"); n.style.transitionDelay = (i % 3) * 60 + "ms"; rs.observe(n); } });
+  }
+
+  /* ---- Courbe : elle monte quand on arrive dessus, chaque étape s'allume à son passage ---- */
+  (function () {
+    var chart = $("climb"), line = $("climbLine"), head = $("climbHead"), nodes = [].slice.call(chart.querySelectorAll(".node")), steps = [].slice.call($("climbSteps").children), len = line.getTotalLength(), AT = [0.28, 0.58, 0.84], DUR = 3400, run = 0;
+    var times = [].slice.call(chart.querySelectorAll(".c-time"));
+    nodes.forEach(function (n, i) { var pt = line.getPointAtLength(len * AT[i]); n.setAttribute("cx", pt.x); n.setAttribute("cy", pt.y); times[i].style.left = pt.x / 10 + "%"; times[i].style.top = pt.y / 3.8 + "%"; });
+    function at(t) {
+      var pt = line.getPointAtLength(len * t);
+      line.style.strokeDasharray = len; line.style.strokeDashoffset = len * (1 - t);
+      head.setAttribute("cx", pt.x); head.setAttribute("cy", pt.y);
+      nodes.forEach(function (n, i) { n.classList.toggle("on", t >= AT[i]); steps[i].classList.toggle("on", t >= AT[i]); times[i].classList.toggle("on", t >= AT[i]); });
+      head.style.opacity = t >= 1 ? "0" : "1";
+      chart.classList.toggle("done", t >= 1);
+    }
+    at(1);
+    function play() {
+      var me = ++run, t0 = performance.now();
+      (function tick(now) {
+        if (me !== run) return;
+        var t = Math.min(1, (now - t0) / DUR), e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        at(e);
+        if (t < 1) requestAnimationFrame(tick);
+      })(t0);
+    }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) play(); else if (e.intersectionRatio === 0) run++; }); }, { threshold: 0.35 }).observe(chart);
+  })();
+
+  /* ---- Bêta, avis, barre d'appel ---- */
+  if (PLAY_URL) {
+    document.querySelectorAll("[data-beta]").forEach(function (a) { a.href = PLAY_URL; });
+    $("playLink").href = PLAY_URL; $("playLink").hidden = false; $("signupGrid").hidden = true;
+  }
+  /* Inscription, même système que le site en ligne : sans formulaire Google, l'e-mail s'ouvre, prêt à envoyer. */
+  var CONTACT = "contact@hectorone.fr";
+  /** Places restantes sur la liste testeurs Google Play. Mettre 0 quand la liste est pleine. */
+  var TESTER_SLOTS = 3;
+  /** Formulaires Google (optionnel) : action = URL …/formResponse, entry = id du champ (entry.123456). */
+  var FORM_TESTER = { action: "", entry: "" }, FORM_FOUNDER = { action: "", entry: "" }, FORM_IOS = { action: "", entry: "" };
+  /** Tarif fondateur : augmenter TAKEN à chaque inscription validée. */
+  var FOUNDER_CAP = 100, FOUNDER_TAKEN = 0, IOS_FOUNDER_CAP = 100, IOS_FOUNDER_TAKEN = 0;
+  // Sur ordinateur, « mailto: » ne fait souvent rien : on ouvre Gmail web.
+  var DESKTOP = matchMedia("(pointer: fine)").matches;
+  function setFormMsg(n, kind, text) {
+    var box = n.parentElement;
+    n.textContent = text || "";
+    box.classList.remove("is-ok", "is-empty");
+    if (!text) { box.classList.add("is-empty"); n.className = "form-msg"; return; }
+    n.className = "form-msg " + kind;
+    if (kind === "ok") box.classList.add("is-ok");
+  }
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function postGoogleForm(cfg, value) {
+    if (!cfg.action || !cfg.entry) return Promise.resolve(false);
+    var body = new URLSearchParams();
+    body.append(cfg.entry, value);
+    return fetch(cfg.action, { method: "POST", mode: "no-cors", body: body }).then(function () { return true; }).catch(function () { return false; });
+  }
+  function openCompose(subject, body) {
+    var q = encodeURIComponent(CONTACT);
+    if (DESKTOP) window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + q + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body), "_blank", "noopener");
+    else location.href = "mailto:" + CONTACT + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  }
+  function renderPill(formId, pillId, msgId, left, label, lowAt, ios) {
+    var pill = $(pillId), full = left <= 0;
+    pill.className = "slot-pill" + (ios ? " ios" : "") + (full ? " is-full" : left <= lowAt ? " is-low" : "");
+    // Aucun chiffre affiché : la pastille n'apparaît que lorsque la liste est complète.
+    pill.textContent = T("Full"); pill.hidden = !full;
+    $(formId).classList.toggle("is-full", full);
+    if (full) setFormMsg($(msgId), "hint", T("Full"));
+  }
+  renderPill("formTester", "testerPill", "testerMsg", TESTER_SLOTS, TESTER_SLOTS + " spots", 2, false);
+  renderPill("formFounder", "founderPill", "founderMsg", FOUNDER_CAP - FOUNDER_TAKEN, (FOUNDER_CAP - FOUNDER_TAKEN) + " / " + FOUNDER_CAP, 10, false);
+  renderPill("formIos", "iosPill", "iosMsg", IOS_FOUNDER_CAP - IOS_FOUNDER_TAKEN, (IOS_FOUNDER_CAP - IOS_FOUNDER_TAKEN) + " / " + IOS_FOUNDER_CAP, 10, true);
+  function wireForm(formId, inputId, msgId, cfg, left, bad, subject, intro) {
+    $(formId).addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (left() <= 0) return;
+      var value = $(inputId).value.trim();
+      if (!validEmail(value)) { setFormMsg($(msgId), "hint", T(bad)); return; }
+      postGoogleForm(cfg, value).then(function (ok) {
+        if (ok) { setFormMsg($(msgId), "ok", T("Saved.")); $(formId).reset(); }
+        else { openCompose(T(subject), T(intro) + value + "\n"); setFormMsg($(msgId), "hint", T("Send the opened email to confirm.")); }
+      });
+    });
+  }
+  wireForm("formTester", "gmailTester", "testerMsg", FORM_TESTER, function () { return TESTER_SLOTS; }, "Invalid Gmail.", "Hylens beta tester application", "Hello,\n\nApplication for the Android closed beta.\nGmail:\n");
+  wireForm("formFounder", "emailFounder", "founderMsg", FORM_FOUNDER, function () { return FOUNDER_CAP - FOUNDER_TAKEN; }, "Invalid email.", "Hylens Android founder waitlist", "Hello,\n\nAndroid founder waitlist registration.\nEmail:\n");
+  wireForm("formIos", "emailIos", "iosMsg", FORM_IOS, function () { return IOS_FOUNDER_CAP - IOS_FOUNDER_TAKEN; }, "Invalid email.", "Hylens iPhone founder waitlist", "Hello,\n\niPhone founder waitlist.\nEmail:\n");
+
+  $("copy").addEventListener("click", function () {
+    var mail = $("mail"), copied = $("copied");
+    var select = function () { var r = document.createRange(); r.selectNodeContents(mail); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copied.textContent = T("Selected: copy it."); };
+    try { navigator.clipboard.writeText(mail.textContent).then(function () { copied.textContent = T("Copied"); }, select); } catch (e) { select(); }
+  });
+  if (AVIS.length) {
+    AVIS.forEach(function (a) { var li = el("li", "plate"); li.appendChild(el("blockquote", "", a.texte)); li.appendChild(el("small", "", a.prenom + (a.detail ? " · " + a.detail : ""))); $("quotes").appendChild(li); });
+    $("avis").hidden = false;
+  }
+  if ("IntersectionObserver" in window) {
+    var seen = { hero: true, beta: false };
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { seen[e.target.id === "beta" ? "beta" : "hero"] = e.isIntersecting; }); $("dock").classList.toggle("on", !seen.hero && !seen.beta); });
+    io.observe($("hero")); io.observe($("beta"));
+  }
+
+  /* ---- Langue : une page par langue ; le choix est mémorisé ---- */
+  $("lang").addEventListener("click", function () { try { localStorage.setItem("lang", LANG === "fr" ? "en" : "fr"); } catch (e) {} });
+})();
+</script>
+
+</body>
+</html>
